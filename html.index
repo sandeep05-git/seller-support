@@ -1,3 +1,29 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    // Validate data (optional)
+    if (empty($name) || empty($email) || empty($message)) {
+        $error_message = "All fields are required!";
+    } else {
+        // Set up the email
+        $to = "your-email@example.com";  // Replace with your email
+        $subject = "New message from $name";
+        $body = "Name: $name\nEmail: $email\nMessage: $message";
+
+        // Send the email
+        if (mail($to, $subject, $body)) {
+            header("Location: thank_you.html");
+            exit();
+        } else {
+            $error_message = "There was an error sending your message. Please try again later.";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +40,6 @@
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .service { background: #f0f0f0; padding: 20px; border-radius: 8px; }
     footer { background: #00695c; color: white; text-align: center; padding: 10px; }
-    .contact-button { background-color: #00b894; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
-    .logo { font-size: 24px; font-weight: bold; }
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 10px;
@@ -33,6 +57,9 @@
     }
     .contact-form button:hover {
       background-color: #00695c;
+    }
+    .error-message {
+      color: red;
     }
   </style>
 </head>
@@ -96,18 +123,24 @@
 <section id="contact">
   <h2>Contact Us</h2>
   <p>Have questions or ready to get started? Connect with us today!</p>
-  <form class="contact-form" action="submit_form.php" method="POST">
+
+  <?php if (isset($error_message)): ?>
+    <p class="error-message"><?php echo $error_message; ?></p>
+  <?php endif; ?>
+
+  <form class="contact-form" action="" method="POST">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
-    
+
     <label for="email">Email Address:</label>
     <input type="email" id="email" name="email" required>
-    
+
     <label for="message">Message:</label>
     <textarea id="message" name="message" rows="4" required></textarea>
-    
+
     <button type="submit">Send Message</button>
   </form>
+
   <p>Or email us at: <a href="mailto:yearfamilies@gmail.com">yearfamilies@gmail.com</a></p>
 </section>
 
