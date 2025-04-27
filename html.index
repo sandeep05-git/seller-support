@@ -16,7 +16,24 @@
     footer { background: #00695c; color: white; text-align: center; padding: 10px; }
     .contact-button { background-color: #00b894; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
     .logo { font-size: 24px; font-weight: bold; }
-    .whatsapp-button { background: #25D366; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; display: inline-block; margin-top: 20px; }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background-color: #00b894;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background-color: #00695c;
+    }
   </style>
 </head>
 
@@ -40,13 +57,11 @@
 <section id="home">
   <h2>Welcome to EcoQuickSup</h2>
   <p>We help sellers launch and grow their stores on Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto, and other quick commerce platforms — fast and hassle-free!</p>
-  <!-- Home section image (not linked here) -->
 </section>
 
 <section id="about">
   <h2>About Us</h2>
   <p>At EcoQuickSup, we are passionate about empowering sellers. We know the challenges of starting out, and we make it easy with our end-to-end support for setting up accounts, listing products, and training on platform management.</p>
-  <!-- About Us section image (not linked here) -->
 </section>
 
 <section id="services">
@@ -81,8 +96,19 @@
 <section id="contact">
   <h2>Contact Us</h2>
   <p>Have questions or ready to get started? Connect with us today!</p>
-  <a class="whatsapp-button" href="https://wa.me/+918248256201" target="_blank">Chat on WhatsApp</a>
-  <p>Or email us at: yearfamilies@gmail.com</p>
+  <form class="contact-form" action="submit_form.php" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+    
+    <button type="submit">Send Message</button>
+  </form>
+  <p>Or email us at: <a href="mailto:yearfamilies@gmail.com">yearfamilies@gmail.com</a></p>
 </section>
 
 <footer>
@@ -91,4 +117,3 @@
 
 </body>
 </html>
-
