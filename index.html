@@ -127,22 +127,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <section id="contact">
   <h2>Contact Us</h2>
-  <form action="https://formspree.io/f/xqaqpyjv" method="POST">
-    <label for="name">Name</label><br>
-    <input type="text" name="name" id="name" placeholder="Your Name" required><br><br>
-
-    <label for="email">Email</label><br>
-    <input type="email" name="email" id="email" placeholder="Your Email" required><br><br>
-
-    <label for="message">Message</label><br>
-    <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea><br><br>
- <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
-
-    <button type="submit">Send Message</button>
-  </form>
+  <form
+  action="https://formspree.io/f/xqaqpyjv"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
 </section>
-
-  <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
+ <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
 </section>
 
 <footer>
