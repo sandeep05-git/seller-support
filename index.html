@@ -129,9 +129,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p class="error-message"><?php echo $error_message; ?></p>
   <?php endif; ?>
 
- <section id="contact">
+<section id="contact">
   <h2>Contact Us</h2>
-  <form action="https://formspree.io/f/xqaqpyjv" method="POST">
+  <form id="contact-form">
     
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
@@ -145,17 +145,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="message">Message:</label><br>
     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
 
-    <!-- Optional: redirect after submit -->
-    <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
+    <input type="submit" value="Send">
+  </form>
+
+  <!-- Thank You message with GIF -->
+  <div id="thank-you-message" class="hidden">
+    <h3>Thank you for contacting us!</h3>
+    <p>We appreciate your message. Visit again!</p>
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
+  </div>
+</section>
+
+<style>
+/* Smooth fade-in animation */
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.show {
+  display: block;
+  opacity: 1;
+}
+</style>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const formData = new FormData(form);
+
+  fetch("https://formspree.io/f/xqaqpyjv", {
+    method: "POST",
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      form.style.display = "none";
+      const thankYou = document.getElementById("thank-you-message");
+      thankYou.classList.remove("hidden");
+      setTimeout(() => {
+        thankYou.classList.add("show");
+      }, 100);
+    } else {
+      alert("Oops! There was a problem submitting your form.");
+    }
+  });
+});
+</script>
+
     <input type="submit" value="Send">
   </form>
 </section>
-
-
-    <button type="submit">Send</button>
-  </form>
-</section>
-    <img src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="Thank You Animation" width="350">
+<img src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="Thank You Animation" width="350">
 
 </section>
  <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
