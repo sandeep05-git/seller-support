@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .nav-links { display: none; flex-direction: column; background: #00695c; }
     .nav-links.show { display: flex; }
     .menu-toggle { display: block; cursor: pointer; color: white; font-size: 24px; }
-    section { padding: 40px 20px; }
+    section { padding: 20px 20px; margin-bottom: 20px; } /* Reduced padding and margin for compactness */
     h2 { color: #00b894; }
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
     .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
@@ -116,86 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="400">
     </div>
     <div class="service">
-      <p>Ongoing Seller Support and Growth Tips</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="400">
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <h2>How It Works</h2>
-  <ol>
-    <li>Contact Us with Your Details</li>
-    <li>Send Required Documents</li>
-    <li>Get Your Seller Account Approved</li>
-    <li>List Your Products</li>
-    <li>Start Receiving Orders and Scale Up!</li>
-  </ol>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <form id="contact-form">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
-
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
-
-    <label for="phone">Phone Number:</label><br>
-    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br><br>
-
-    <label for="message">Message:</label><br>
-    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
-
-    <input type="submit" value="Send">
-  </form>
-
-  <div id="thank-you-message" class="hidden">
-    <h3>😊 Thank you for contacting us!</h3>
-    <p>We appreciate your message. Visit again!</p>
-    <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
-  </div>
-
-  <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
-</section>
-
-<footer>
-  <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
-</footer>
-
-<script>
-function toggleMenu() {
-  const nav = document.getElementById("navLinks");
-  nav.classList.toggle("show");
-}
-
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const form = event.target;
-  const formData = new FormData(form);
-
-  fetch("https://formspree.io/f/xqaqpyjv", {
-    method: "POST",
-    body: formData,
-    headers: {
-      'Accept': 'application/json'
-    }
-  }).then(response => {
-    if (response.ok) {
-      form.style.display = "none";
-      const thankYou = document.getElementById("thank-you-message");
-      thankYou.classList.remove("hidden");
-      setTimeout(() => {
-        thankYou.classList.add("show");
-      }, 100);
-    } else {
-      alert("Oops! There was a problem submitting your form.");
-    }
-  });
-});
-</script>
-
-</body>
-</html>
+      <p>Ongoing Seller Support
+    
+     
