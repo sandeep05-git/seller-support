@@ -33,8 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
     header { background-color: #00b894; color: white; padding: 10px; text-align: center; }
-    nav { background: #00695c; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+    nav { background: #00695c; padding: 10px; position: relative; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; display: block; padding: 10px 0; }
+    .nav-links { display: none; flex-direction: column; background: #00695c; }
+    .nav-links.show { display: flex; }
+    .menu-toggle { display: block; cursor: pointer; color: white; font-size: 24px; }
     section { padding: 40px 20px; }
     h2 { color: #00b894; }
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
@@ -58,56 +61,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .contact-form button:hover {
       background-color: #00695c;
     }
-    .error-message {
-      color: red;
+    .hidden { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
+    .show { display: block; opacity: 1; }
+    @media(min-width: 600px) {
+      nav a { display: inline; padding: 0; }
+      .menu-toggle { display: none; }
+      .nav-links { display: flex !important; flex-direction: row; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <!-- Logo Image -->
-  </div>
+  <div class="logo"></div>
   <p>Your Partner to Quick Commerce Success!</p>
 </header>
 
 <nav>
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#how">How It Works</a>
-  <a href="#contact">Contact</a>
+  <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
 <section id="home">
   <h2>Welcome to EcoQuickSup</h2>
   <p>We help sellers launch and grow their stores on Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto, and other quick commerce platforms — fast and hassle-free!</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="Customer Support" width="400">
+  <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="Customer Support" width="400">
 </section>
- <section id="about">
+
+<section id="about">
   <h2>About Us</h2>
   <p>At EcoQuickSup, we are passionate about empowering sellers. We know the challenges of starting out, and we make it easy with our end-to-end support for setting up accounts, listing products, and training on platform management.</p>
-<img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Customer Support" width="400">
+  <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Customer Support" width="400">
 </section>
+
 <section id="services">
   <h2>Our Services</h2>
   <div class="services">
     <div class="service">
       <p>Account Creation Assistance</p>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Support Image" width="400">
- </div>
+      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Support Image" width="400">
+    </div>
     <div class="service">
- <p>Product Listing and Catalog Support</p>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/patrick-tomasso-fMntI8HAAB8-unsplash.jpg" alt="Support Image" width="400">
+      <p>Product Listing and Catalog Support</p>
+      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/patrick-tomasso-fMntI8HAAB8-unsplash.jpg" alt="Support Image" width="400">
     </div>
     <div class="service">
       <p>Training on Order and Inventory Management</p>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="400">
+      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="400">
     </div>
     <div class="service">
       <p>Ongoing Seller Support and Growth Tips</p>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="400">
+      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="400">
     </div>
   </div>
 </section>
@@ -122,16 +132,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <li>Start Receiving Orders and Scale Up!</li>
   </ol>
 </section>
-  <p>Have questions or ready to get started? Connect with us today!</p>
-
-  <?php if (isset($error_message)): ?>
-    <p class="error-message"><?php echo $error_message; ?></p>
-  <?php endif; ?>
 
 <section id="contact">
   <h2>Contact Us</h2>
   <form id="contact-form">
-    
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
 
@@ -147,29 +151,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="submit" value="Send">
   </form>
 
-  <!-- Thank You message with GIF -->
   <div id="thank-you-message" class="hidden">
-    <h3>Thank you for contacting us!</h3>
+    <h3>😊 Thank you for contacting us!</h3>
     <p>We appreciate your message. Visit again!</p>
-    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
+    <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
   </div>
+
+  <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
 </section>
 
-<style>
-/* Smooth fade-in animation */
-.hidden {
-  display: none;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.show {
-  display: block;
-  opacity: 1;
-}
-</style>
+<footer>
+  <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
+</footer>
 
 <script>
+function toggleMenu() {
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("show");
+}
+
 document.getElementById("contact-form").addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -196,17 +196,6 @@ document.getElementById("contact-form").addEventListener("submit", function(even
   });
 });
 </script>
-</form>
-</section>
-<img src="https://media.giphy.com/media/3ohs4BSacFKI7A717y/giphy.gif" alt="Thank You Animation" width="350">
-
-</section>
- <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
-</section>
-
-<footer>
-  <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
-</footer>
 
 </body>
 </html>
