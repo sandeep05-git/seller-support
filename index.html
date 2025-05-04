@@ -139,11 +139,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="email">Email:</label><br>
     <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
 
+    <label for="phone">Phone Number:</label><br>
+    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br><br>
+
     <label for="message">Message:</label><br>
     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
 
     <!-- Optional: redirect after submit -->
     <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
+    <input type="submit" value="Send">
+  </form>
+</section>
+
 
     <button type="submit">Send</button>
   </form>
