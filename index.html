@@ -235,12 +235,12 @@ document.getElementById("contact-form").addEventListener("submit", function(even
       thankYou.classList.remove("hidden");
       setTimeout(() => {
         thankYou.classList.add("show");
-      }, 100);
+      }, 100); // Slight delay to show thank you message
 
-      // Refresh the page automatically after a short delay
+      // Refresh the page after 3 seconds to give time for the thank you message
       setTimeout(() => {
         window.location.reload(); // Refresh page after thank you message
-      }, 3000); // 3-second delay for "Thank you" message display before page reload
+      }, 3000); // 3-second delay for the "Thank You" message to show before reload
     } else {
       alert("Oops! There was a problem submitting your form.");
     }
