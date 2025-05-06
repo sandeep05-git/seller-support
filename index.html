@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
     .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
     footer { background: #00695c; color: white; text-align: center; padding: 7px; }
-    .contact-form input, .contact-form textarea {
+    .contact-form input, .contact-form textarea, .contact-form select {
       width: 90%;
       padding: 7px;
       margin-bottom: 7px;
@@ -61,8 +61,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .contact-form button:hover {
       background-color: #00695c;
     }
-    .hidden { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
-    .show { display: block; opacity: 1; }
+    .hidden { display: none; }
+    #thank-you-message {
+      background-color: #e0f7fa;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
     @media(min-width: 600px) {
       nav a { display: inline; padding: 0; }
       .menu-toggle { display: none; }
@@ -136,36 +147,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <section id="contact">
   <h2>Contact Us</h2>
   <form id="contact-form" class="contact-form">
-    <!-- Service Selection first -->
-    <select id="platform" name="platform" required>
-      <option value="" disabled selected>Choose Service</option>
-      <option value="Account Creation">Account Creation Assistance</option>
-      <option value="Product Listing">Product Listing and Catalog Support</option>
-      <option value="Order Management">Training on Order and Inventory Management</option>
-      <option value="Seller Support">Ongoing Seller Support and Growth Tips</option>
-    </select><br>
-
-    <!-- Issue Type Selection -->
-    <select id="issue-type" name="issue-type" required>
-      <option value="Feedback">Feedback</option>
-      <option value="Complaint">Complaint</option>
-      <option value="Service">Service</option>
-      <option value="Other">Other</option>
-    </select><br>
-
     <input type="text" id="name" name="name" placeholder="Your Name" required><br>
     <input type="email" id="email" name="email" placeholder="Your Email" required><br>
     <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
-    
+    <select id="platform" name="platform" required>
+      <option value="" disabled selected>Choose Platform</option>
+      <option value="Amazon">Amazon</option>
+      <option value="Flipkart">Flipkart</option>
+      <option value="Meesho">Meesho</option>
+      <option value="Myntra">Myntra</option>
+      <option value="Instamart">Instamart</option>
+      <option value="Zepto">Zepto</option>
+      <option value="Other">Other</option>
+    </select><br>
+    <select id="issue-type" name="issue-type" required>
+      <option value="Service">Service</option>
+      <option value="Feedback">Feedback</option>
+      <option value="Complaint">Complaint</option>
+      <option value="Other">Other</option>
+    </select><br>
     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
     <button type="submit">Send</button>
   </form>
 
-  <div id="thank-you-message" class="hidden">
-    <h3>😊 Thank you for contacting us!</h3>
-    <p>We appreciate your message. Visit again!</p>
-    <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
-  </div>
+  <div id="thank-you-message" class="hidden"></div>
 
   <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
 </section>
@@ -181,10 +186,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form from refreshing the page
+    event.preventDefault();
 
     const form = event.target;
     const formData = new FormData(form);
+
+    const issueType = formData.get("issue-type");
+    const message = formData.get("message").toLowerCase();
+
+    const abusiveWords = ["bad", "worst", "idiot", "stupid", "useless"];
+    let containsAbuse = abusiveWords.some(word => message.includes(word));
+
+    let thankMessage = "";
+    if (containsAbuse) {
+      thankMessage = `
+        <h3>⚠️ We’re sorry if you had a bad experience.</h3>
+        <p>Our team will look into this issue. Thank you for informing us.</p>`;
+    } else {
+      switch (issueType) {
+        case "Service":
+          thankMessage = `<h3>🎉 Thank you for choosing our services!</h3><p>We truly appreciate your trust in us. We’ll be in touch shortly.</p>`;
+          break;
+        case "Feedback":
+          thankMessage = `<h3>😊 Thank you for your feedback!</h3><p>We value your input and will use it to improve.</p>`;
+          break;
+        case "Complaint":
+          thankMessage = `<h3>🛠️ We’ve received your complaint.</h3><p>We’ll investigate and get back to you as soon as possible.</p>`;
+          break;
+        default:
+          thankMessage = `<h3>🙏 Thank you for contacting us!</h3><p>We’ll respond shortly. Have a great day!</p>`;
+      }
+    }
 
     fetch("https://formspree.io/f/xqaqpyjv", {
       method: "POST",
@@ -192,18 +224,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       headers: { 'Accept': 'application/json' }
     }).then(response => {
       if (response.ok) {
-        form.style.display = "none"; // Hide the form after submission
+        form.style.display = "none";
         const thankYou = document.getElementById("thank-you-message");
-        thankYou.classList.remove("hidden"); // Show the "Thank you" message
+        thankYou.innerHTML = `
+          ${thankMessage}
+          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto; margin-top: 15px;">
+        `;
+        thankYou.classList.remove("hidden");
 
-        setTimeout(() => {
-          thankYou.classList.add("show");
-        }, 100); // Slight delay to show the "Thank You" message
-
-        // Refresh the page after 3 seconds
-        setTimeout(() => {
-          window.location.reload(); // Refresh page after the "Thank You" message
-        }, 3000);
+        setTimeout(() => window.location.reload(), 5000);
       } else {
         alert("Oops! There was a problem submitting your form.");
       }
