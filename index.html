@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
     .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
     footer { background: #00695c; color: white; text-align: center; padding: 7px; }
-    .contact-form input, .contact-form textarea, .contact-form select {
+    .contact-form input, .contact-form textarea {
       width: 90%;
       padding: 7px;
       margin-bottom: 7px;
@@ -135,42 +135,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <section id="contact">
   <h2>Contact Us</h2>
-
-  <form id="contact-form" class="contact-form" enctype="multipart/form-data">
-    <select name="type" required>
-      <option value="">Select Type</option>
-      <option value="Issue">Issue</option>
-      <option value="Complaint">Complaint</option>
-      <option value="Feedback">Feedback</option>
-    </select><br>
-
-    <select name="platform" required>
-      <option value="">Select Platform</option>
-      <option value="Amazon">Amazon</option>
-      <option value="Flipkart">Flipkart</option>
-      <option value="Meesho">Meesho</option>
-      <option value="Myntra">Myntra</option>
-      <option value="Instamart">Instamart</option>
-      <option value="Zepto">Zepto</option>
-      <option value="Other">Other</option>
-    </select><br>
-
+  <form id="contact-form" class="contact-form">
     <input type="text" id="name" name="name" placeholder="Your Name" required><br>
     <input type="email" id="email" name="email" placeholder="Your Email" required><br>
     <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
-    <input type="text" id="orderid" name="orderid" placeholder="Order ID (optional)"><br>
+    
+    <select id="type" name="type" required>
+      <option value="">-- Select Type --</option>
+      <option value="services">Services</option>
+      <option value="issues">Issues</option>
+      <option value="feedback">Feedback</option>
+      <option value="other">Other</option>
+    </select><br>
 
-    <textarea id="message" name="message" placeholder="Describe your issue, complaint, or feedback" rows="5" required></textarea><br>
-
-    <label for="screenshot">Attach Screenshot (optional):</label><br>
-    <input type="file" id="screenshot" name="screenshot" accept="image/*"><br><br>
-
+    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
     <button type="submit">Send</button>
   </form>
 
   <div id="thank-you-message" class="hidden">
-    <h3>😊 Thank you for contacting us!</h3>
-    <p>We appreciate your message. Visit again!</p>
+    <h3 id="thank-heading"></h3>
+    <p id="thank-text"></p>
     <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
   </div>
 
@@ -192,6 +176,12 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 
   const form = event.target;
   const formData = new FormData(form);
+  const type = formData.get("type");
+  const message = formData.get("message").toLowerCase();
+
+  // Check for abusive words
+  const abusiveWords = ["idiot", "useless", "stupid", "worst", "shit"];
+  const containsAbuse = abusiveWords.some(word => message.includes(word));
 
   fetch("https://formspree.io/f/xqaqpyjv", {
     method: "POST",
@@ -201,6 +191,42 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     if (response.ok) {
       form.style.display = "none";
       const thankYou = document.getElementById("thank-you-message");
+      const heading = document.getElementById("thank-heading");
+      const text = document.getElementById("thank-text");
+
+      if (containsAbuse) {
+        if (type === "feedback") {
+          heading.textContent = "🙏 Thank You";
+          text.textContent = "We apologize for the inconvenience. Please elaborate on the issues you're facing.";
+        } else {
+          heading.textContent = "🙏 Thank You";
+          text.textContent = "We apologize if you faced any trouble. We're here to help.";
+        }
+      } else {
+        switch (type) {
+          case "services":
+            heading.textContent = "🙏 Thank You!";
+            text.textContent = "Thank you for selecting us for your services. It’s our pleasure to assist you!";
+            break;
+          case "issues":
+            heading.textContent = "🛠️ Thank You!";
+            text.textContent = "Thank you for your valuable time. We’ll resolve your issue as quickly as possible.";
+            break;
+          case "feedback":
+            heading.textContent = "📝 Thank You!";
+            text.textContent = "Thank you for your valuable feedback and your time. We appreciate your input!";
+            break;
+          case "other":
+            heading.textContent = "🙏 Thank You!";
+            text.textContent = "Thank you for reaching out. We’ll get back to you shortly.";
+            break;
+          default:
+            heading.textContent = "🙏 Thank You!";
+            text.textContent = "We appreciate your message and will respond shortly.";
+            break;
+        }
+      }
+
       thankYou.classList.remove("hidden");
       setTimeout(() => {
         thankYou.classList.add("show");
@@ -218,7 +244,7 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
-s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+s1.src='https://embed.tawk.to/6817654fc1c8c9149dcfbb7c/1v2b9j11g';
 s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
