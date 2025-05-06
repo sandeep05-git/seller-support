@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
     .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
     footer { background: #00695c; color: white; text-align: center; padding: 7px; }
-    .contact-form input, .contact-form textarea {
+    .contact-form input, .contact-form select, .contact-form textarea {
       width: 90%;
       padding: 7px;
       margin-bottom: 7px;
@@ -63,6 +63,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     .hidden { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
     .show { display: block; opacity: 1; }
+    .suggestions {
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px;
+      max-width: 90%;
+      font-size: 14px;
+      margin-top: -5px;
+    }
+    .suggestion-item {
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    .suggestion-item:hover {
+      background-color: #e0e0e0;
+    }
     @media(min-width: 600px) {
       nav a { display: inline; padding: 0; }
       .menu-toggle { display: none; }
@@ -73,7 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <header>
-  <div class="logo"></div>
   <p>Your Partner to Quick Commerce Success!</p>
 </header>
 
@@ -91,34 +106,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <section id="home">
   <h2>Welcome to EcoQuickSup</h2>
   <p>We help sellers launch and grow their stores on Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto, and other quick commerce platforms — fast and hassle-free!</p>
-  <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="Customer Support" width="100%">
 </section>
 
 <section id="about">
   <h2>About Us</h2>
-  <p>At EcoQuickSup, we are passionate about empowering sellers. We know the challenges of starting out, and we make it easy with our end-to-end support for setting up accounts, listing products, and training on platform management.</p>
-  <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Customer Support" width="100%">
+  <p>We offer full support for sellers on major platforms with a focus on onboarding, catalog management, and long-term growth.</p>
 </section>
 
 <section id="services">
   <h2>Our Services</h2>
   <div class="services">
-    <div class="service">
-      <p>Account Creation Assistance</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Support Image" width="100%">
-    </div>
-    <div class="service">
-      <p>Product Listing and Catalog Support</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/patrick-tomasso-fMntI8HAAB8-unsplash.jpg" alt="Support Image" width="100%">
-    </div>
-    <div class="service">
-      <p>Training on Order and Inventory Management</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="100%">
-    </div>
-    <div class="service">
-      <p>Ongoing Seller Support and Growth Tips</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="100%">
-    </div>
+    <div class="service">Account Creation Assistance</div>
+    <div class="service">Product Listing and Catalog Support</div>
+    <div class="service">Training on Order and Inventory Management</div>
+    <div class="service">Ongoing Seller Support and Growth Tips</div>
   </div>
 </section>
 
@@ -139,20 +140,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" id="name" name="name" placeholder="Your Name" required><br>
     <input type="email" id="email" name="email" placeholder="Your Email" required><br>
     <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
-    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
-    <select id="dropdown" name="dropdown" required>
+
+    <select id="reason" name="reason" required>
+      <option value="">Select Reason</option>
       <option value="services">Services</option>
-      <option value="issues">Issues</option>
       <option value="feedback">Feedback</option>
-      <option value="others">Other</option>
+      <option value="issues">Issues</option>
+      <option value="others">Others</option>
     </select><br>
+
+    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+    <div class="suggestions" id="suggestions-box"></div><br>
+
     <button type="submit">Send</button>
   </form>
 
   <div id="thank-you-message" class="hidden">
     <h3>😊 Thank you for contacting us!</h3>
-    <p>We appreciate your message. Visit again!</p>
-    <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto;">
+    <p id="thank-you-text">We appreciate your message. Visit again!</p>
   </div>
 
   <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
@@ -168,43 +173,74 @@ function toggleMenu() {
   nav.classList.toggle("show");
 }
 
-document.getElementById("contact-form").addEventListener("submit", function(event) {
+// Abuse word detection list
+const abuseWords = ["bad", "worst", "sucks", "stupid"];
+
+// Suggestions by category
+const suggestionData = {
+  services: ["I want help with product listing", "Please assist with account setup", "Need catalog update support"],
+  feedback: ["Your team was helpful", "Excellent support!", "Thanks for the quick response"],
+  issues: ["My account is not approved", "Products are not showing up", "Need urgent support"],
+  others: ["I need more details", "Please call me back", "Connect for partnership"]
+};
+
+document.getElementById("message").addEventListener("input", function () {
+  const reason = document.getElementById("reason").value;
+  const suggestionsBox = document.getElementById("suggestions-box");
+  const input = this.value.toLowerCase();
+
+  suggestionsBox.innerHTML = "";
+  if (!reason || !suggestionData[reason]) return;
+
+  const matches = suggestionData[reason].filter(s => s.toLowerCase().includes(input));
+  matches.forEach(s => {
+    const div = document.createElement("div");
+    div.textContent = s;
+    div.className = "suggestion-item";
+    div.onclick = () => {
+      document.getElementById("message").value = s;
+      suggestionsBox.innerHTML = "";
+    };
+    suggestionsBox.appendChild(div);
+  });
+});
+
+// Form submission
+document.getElementById("contact-form").addEventListener("submit", function (event) {
   event.preventDefault();
 
   const form = event.target;
   const formData = new FormData(form);
+  const reason = formData.get("reason");
+  const message = formData.get("message").toLowerCase();
+  const thankYouBox = document.getElementById("thank-you-message");
+  const thankYouText = document.getElementById("thank-you-text");
+
+  let thankMsg = "We appreciate your message.";
+  const hasAbuse = abuseWords.some(word => message.includes(word));
+
+  if (reason === "services") {
+    thankMsg = "Thank you for selecting us for your services. It's our pleasure to assist you!";
+  } else if (reason === "feedback") {
+    thankMsg = hasAbuse
+      ? "We apologize for the inconvenience. Please elaborate the issue clearly."
+      : "Thank you for your valuable feedback and your time!";
+  } else if (reason === "issues") {
+    thankMsg = "Thank you for your valuable time. We'll resolve your issue promptly.";
+  } else if (reason === "others") {
+    thankMsg = "Thanks for reaching out. We’ll get back to you shortly.";
+  }
 
   fetch("https://formspree.io/f/xqaqpyjv", {
     method: "POST",
     body: formData,
     headers: { 'Accept': 'application/json' }
   }).then(response => {
-    const dropdown = document.getElementById("dropdown").value;
-    let thankYouMessage = "😊 Thank you for contacting us! We appreciate your message.";
-    
-    if (dropdown === "services") {
-      thankYouMessage = "Thank you for selecting us for your services. It's our pleasure to assist you!";
-    } else if (dropdown === "issues") {
-      thankYouMessage = "Thank you for your valuable time. We will sort your issues and get back to you soon.";
-    } else if (dropdown === "feedback") {
-      const message = document.getElementById("message").value.toLowerCase();
-      if (/badword|abuse|problematicword/.test(message)) {
-        thankYouMessage = "Thank you for your valuable feedback. We apologize for the inconvenience, please elaborate on the issue you're facing.";
-      } else {
-        thankYouMessage = "Thank you for your valuable feedback and your time!";
-      }
-    }
-    
     if (response.ok) {
       form.style.display = "none";
-      const thankYou = document.getElementById("thank-you-message");
-      thankYou.classList.remove("hidden");
-      thankYou.innerHTML = `<h3>${thankYouMessage}</h3>`;
-      
-      setTimeout(() => {
-        thankYou.classList.add("show");
-        location.reload();  // This will reload the page after the delay.
-      }, 3000);  // 3 seconds delay before reload
+      thankYouBox.classList.remove("hidden");
+      thankYouText.textContent = thankMsg;
+      setTimeout(() => location.reload(), 3000);
     } else {
       alert("Oops! There was a problem submitting your form.");
     }
@@ -212,19 +248,19 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 });
 </script>
 
-<!-- Start of Tawk.to Script -->
+<!--Start of Tawk.to Script-->
 <script type="text/javascript">
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
-  var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-  s1.async = true;
-  s1.src = 'https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
-  s1.charset = 'UTF-8';
-  s1.setAttribute('crossorigin', '*');
-  s0.parentNode.insertBefore(s1, s0);
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!-- End of Tawk.to Script -->
+<!--End of Tawk.to Script-->
 
 </body>
 </html>
