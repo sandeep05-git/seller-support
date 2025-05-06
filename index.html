@@ -218,7 +218,6 @@ function toggleMenu() {
   const nav = document.getElementById("navLinks");
   nav.classList.toggle("show");
 }
-
 document.getElementById("contact-form").addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -236,14 +235,14 @@ document.getElementById("contact-form").addEventListener("submit", function(even
       thankYou.classList.remove("hidden");
       setTimeout(() => {
         thankYou.classList.add("show");
-      }, 100);
+        // Refresh the page after showing the thank you message
+        location.reload();
+      }, 1000); // Give it a second to display the thank you message before refreshing
     } else {
       alert("Oops! There was a problem submitting your form.");
     }
   });
 });
-</script>
-
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
