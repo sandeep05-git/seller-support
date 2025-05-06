@@ -230,14 +230,17 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     headers: { 'Accept': 'application/json' }
   }).then(response => {
     if (response.ok) {
-      form.style.display = "none";
+      form.style.display = "none"; // Hide the form after submission
       const thankYou = document.getElementById("thank-you-message");
       thankYou.classList.remove("hidden");
       setTimeout(() => {
         thankYou.classList.add("show");
-        // Refresh the page after showing the thank you message
-        location.reload();
-      }, 1000); // Give it a second to display the thank you message before refreshing
+      }, 100);
+
+      // Refresh the page automatically after a short delay
+      setTimeout(() => {
+        window.location.reload(); // Refresh page after thank you message
+      }, 3000); // 3-second delay for "Thank you" message display before page reload
     } else {
       alert("Oops! There was a problem submitting your form.");
     }
