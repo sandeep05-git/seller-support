@@ -63,59 +63,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     .hidden { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
     .show { display: block; opacity: 1; }
+    .suggestion-box {
+      border: 1px solid #ccc;
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-top: 5px;
+      display: none;
+      position: absolute;
+      width: 90%;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    .suggestion-box div {
+      padding: 5px;
+      cursor: pointer;
+    }
+    .suggestion-box div:hover {
+      background-color: #ddd;
+    }
     @media(min-width: 600px) {
       nav a { display: inline; padding: 0; }
       .menu-toggle { display: none; }
       .nav-links { display: flex !important; flex-direction: row; }
-    }
-    .chat-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-      height: 400px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      background-color: white;
-      overflow: hidden;
-      z-index: 1000;
-    }
-    .chat-header {
-      background-color: #00695c;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-    }
-    .chat-body {
-      padding: 15px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .chat-messages {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding-bottom: 10px;
-    }
-    .chat-input {
-      display: flex;
-      align-items: center;
-    }
-    .chat-input input {
-      width: 80%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .chat-input button {
-      width: 20%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #00b894;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
     }
   </style>
 </head>
@@ -188,15 +157,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" id="name" name="name" placeholder="Your Name" required><br>
     <input type="email" id="email" name="email" placeholder="Your Email" required><br>
     <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
+    <select id="platform" name="platform" required>
+      <option value="" disabled selected>Choose Platform</option>
+      <option value="Amazon">Amazon</option>
+      <option value="Flipkart">Flipkart</option>
+      <option value="Meesho">Meesho</option>
+      <option value="Myntra">Myntra</option>
+      <option value="Instamart">Instamart</option>
+      <option value="Zepto">Zepto</option>
+    </select><br>
+    <select id="issue-type" name="issue-type" required>
+      <option value="Feedback">Feedback</option>
+      <option value="Complaint">Complaint</option>
+      <option value="Service">Service</option>
+      <option value="Other">Other</option>
+    </select><br>
     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
-    <label for="category">Please select your category:</label>
-    <select id="category" name="category" required>
-      <option value="issues">Issues</option>
-      <option value="feedback">Feedback</option>
-      <option value="complaints">Complaints</option>
-      <option value="services">Services</option>
-      <option value="other">Other</option>
-    </select><br><br>
+    <div id="suggestion-box" class="suggestion-box"></div>
     <button type="submit">Send</button>
   </form>
 
@@ -214,38 +191,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </footer>
 
 <script>
-function toggleMenu() {
-  const nav = document.getElementById("navLinks");
-  nav.classList.toggle("show");
-}
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-  event.preventDefault();
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("show");
+  }
 
-  const form = event.target;
-  const formData = new FormData(form);
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form from refreshing the page
 
-  fetch("https://formspree.io/f/xqaqpyjv", {
-    method: "POST",
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  }).then(response => {
-    if (response.ok) {
-      form.style.display = "none"; // Hide the form after submission
-      const thankYou = document.getElementById("thank-you-message");
-      thankYou.classList.remove("hidden");
-      setTimeout(() => {
-        thankYou.classList.add("show");
-      }, 100); // Slight delay to show thank you message
+    const form = event.target;
+    const formData = new FormData(form);
 
-      // Refresh the page after 3 seconds to give time for the thank you message
-      setTimeout(() => {
-        window.location.reload(); // Refresh page after thank you message
-      }, 3000); // 3-second delay for the "Thank You" message to show before reload
+    fetch("https://formspree.io/f/xqaqpyjv", {
+      method: "POST",
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = "none"; // Hide the form after submission
+        const thankYou = document.getElementById("thank-you-message");
+        thankYou.classList.remove("hidden"); // Show the "Thank you" message
+
+        setTimeout(() => {
+          thankYou.classList.add("show");
+        }, 100); // Slight delay to show the "Thank You" message
+
+        // Refresh the page after 3 seconds
+        setTimeout(() => {
+          window.location.reload(); // Refresh page after the "Thank You" message
+        }, 3000);
+      } else {
+        alert("Oops! There was a problem submitting your form.");
+      }
+    });
+  });
+
+  // Suggestions Box
+  const suggestionBox = document.getElementById("suggestion-box");
+  const messageBox = document.getElementById("message");
+
+  const suggestions = [
+    "Great service!",
+    "Thank you for your prompt reply.",
+    "Excellent product range.",
+    "Looking forward to working together.",
+    "I need support with my seller account.",
+    "How do I list my products?",
+    "Can you assist with inventory management?"
+  ];
+
+  messageBox.addEventListener("input", () => {
+    const userInput = messageBox.value.toLowerCase();
+    suggestionBox.innerHTML = "";
+    if (userInput.length > 2) {
+      const filteredSuggestions = suggestions.filter(suggestion => suggestion.toLowerCase().includes(userInput));
+      filteredSuggestions.forEach(suggestion => {
+        const div = document.createElement("div");
+        div.textContent = suggestion;
+        div.onclick = () => messageBox.value = suggestion;
+        suggestionBox.appendChild(div);
+      });
+      suggestionBox.style.display = "block";
     } else {
-      alert("Oops! There was a problem submitting your form.");
+      suggestionBox.style.display = "none";
     }
   });
-});
+</script>
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
