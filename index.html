@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
     .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
     footer { background: #00695c; color: white; text-align: center; padding: 7px; }
-    .contact-form input, .contact-form textarea {
+    .contact-form input, .contact-form textarea, .contact-form select {
       width: 90%;
       padding: 7px;
       margin-bottom: 7px;
@@ -135,11 +135,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <form id="contact-form" class="contact-form">
+
+  <form id="contact-form" class="contact-form" enctype="multipart/form-data">
+    <select name="type" required>
+      <option value="">Select Type</option>
+      <option value="Issue">Issue</option>
+      <option value="Complaint">Complaint</option>
+      <option value="Feedback">Feedback</option>
+    </select><br>
+
+    <select name="platform" required>
+      <option value="">Select Platform</option>
+      <option value="Amazon">Amazon</option>
+      <option value="Flipkart">Flipkart</option>
+      <option value="Meesho">Meesho</option>
+      <option value="Myntra">Myntra</option>
+      <option value="Instamart">Instamart</option>
+      <option value="Zepto">Zepto</option>
+      <option value="Other">Other</option>
+    </select><br>
+
     <input type="text" id="name" name="name" placeholder="Your Name" required><br>
     <input type="email" id="email" name="email" placeholder="Your Email" required><br>
     <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
-    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
+    <input type="text" id="orderid" name="orderid" placeholder="Order ID (optional)"><br>
+
+    <textarea id="message" name="message" placeholder="Describe your issue, complaint, or feedback" rows="5" required></textarea><br>
+
+    <label for="screenshot">Attach Screenshot (optional):</label><br>
+    <input type="file" id="screenshot" name="screenshot" accept="image/*"><br><br>
+
     <button type="submit">Send</button>
   </form>
 
