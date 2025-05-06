@@ -63,24 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     .hidden { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
     .show { display: block; opacity: 1; }
-    .suggestion-box {
-      border: 1px solid #ccc;
-      background-color: #f0f0f0;
-      padding: 10px;
-      margin-top: 5px;
-      display: none;
-      position: absolute;
-      width: 90%;
-      max-height: 150px;
-      overflow-y: auto;
-    }
-    .suggestion-box div {
-      padding: 5px;
-      cursor: pointer;
-    }
-    .suggestion-box div:hover {
-      background-color: #ddd;
-    }
     @media(min-width: 600px) {
       nav a { display: inline; padding: 0; }
       .menu-toggle { display: none; }
@@ -154,27 +136,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <section id="contact">
   <h2>Contact Us</h2>
   <form id="contact-form" class="contact-form">
-    <input type="text" id="name" name="name" placeholder="Your Name" required><br>
-    <input type="email" id="email" name="email" placeholder="Your Email" required><br>
-    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
+    <!-- Service Selection first -->
     <select id="platform" name="platform" required>
-      <option value="" disabled selected>Choose Platform</option>
-      <option value="Amazon">Amazon</option>
-      <option value="Flipkart">Flipkart</option>
-      <option value="Meesho">Meesho</option>
-      <option value="Myntra">Myntra</option>
-      <option value="Instamart">Instamart</option>
-      <option value="Zepto">Zepto</option>
-      <option value="Other">Other</option>
+      <option value="" disabled selected>Choose Service</option>
+      <option value="Account Creation">Account Creation Assistance</option>
+      <option value="Product Listing">Product Listing and Catalog Support</option>
+      <option value="Order Management">Training on Order and Inventory Management</option>
+      <option value="Seller Support">Ongoing Seller Support and Growth Tips</option>
     </select><br>
+
+    <!-- Issue Type Selection -->
     <select id="issue-type" name="issue-type" required>
       <option value="Feedback">Feedback</option>
       <option value="Complaint">Complaint</option>
       <option value="Service">Service</option>
       <option value="Other">Other</option>
     </select><br>
+
+    <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+    <input type="email" id="email" name="email" placeholder="Your Email" required><br>
+    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
+    
     <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
-    <div id="suggestion-box" class="suggestion-box"></div>
     <button type="submit">Send</button>
   </form>
 
@@ -226,53 +209,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     });
   });
-
-  // Suggestions Box
-  const suggestionBox = document.getElementById("suggestion-box");
-  const messageBox = document.getElementById("message");
-
-  const suggestions = [
-    "Great service!",
-    "Thank you for your prompt reply.",
-    "Excellent product range.",
-    "Looking forward to working together.",
-    "I need support with my seller account.",
-    "How do I list my products?",
-    "Can you assist with inventory management?"
-  ];
-
-  messageBox.addEventListener("input", () => {
-    const userInput = messageBox.value.toLowerCase();
-    suggestionBox.innerHTML = "";
-    if (userInput.length > 2) {
-      const filteredSuggestions = suggestions.filter(suggestion => suggestion.toLowerCase().includes(userInput));
-      filteredSuggestions.forEach(suggestion => {
-        const div = document.createElement("div");
-        div.textContent = suggestion;
-        div.onclick = () => messageBox.value = suggestion;
-        suggestionBox.appendChild(div);
-      });
-      suggestionBox.style.display = "block";
-    } else {
-      suggestionBox.style.display = "none";
-    }
-  });
-
-  // Detecting abusive words
-  const abusiveWords = ["badword1", "badword2", "abusiveword"];
-  const apologies = "We apologize if any part of your message was inappropriate. Please feel free to rephrase.";
-
-  messageBox.addEventListener("blur", () => {
-    let messageText = messageBox.value.toLowerCase();
-    abusiveWords.forEach(word => {
-      if (messageText.includes(word)) {
-        messageBox.value = apologies;
-      }
-    });
-  });
 </script>
 
-<!-- Start of Tawk.to Script -->
+<!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -284,7 +223,7 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!-- End of Tawk.to Script -->
+<!--End of Tawk.to Script-->
 
 </body>
 </html>
