@@ -80,6 +80,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       .nav-links { display: flex !important; flex-direction: row; }
     }
   </style>
+    <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoQuickSup - Quick Commerce Seller Services</title>
+
+  <!-- Add the translations.js script here -->
+  <script src="translations.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const userLang = navigator.language || navigator.userLanguage; 
+      const lang = userLang.split('-')[0]; // Extract the language code (e.g., en, ta)
+
+      const selectedLang = translations[lang] || translations.en; // Default to English if language is not found
+
+      // Update text content dynamically based on selected language
+      document.getElementById("header-slogan").textContent = selectedLang.header_slogan;
+      document.getElementById("home-title").textContent = selectedLang.home_title;
+      document.getElementById("home-description").textContent = selectedLang.home_description;
+      document.getElementById("about-title").textContent = selectedLang.about_title;
+      document.getElementById("about-description").textContent = selectedLang.about_description;
+      document.getElementById("contact-us-title").textContent = selectedLang.contact_us_title;
+      document.getElementById("contact-us-description").textContent = selectedLang.contact_us_description;
+    });
+  </script>
+
+  <style>
+    /* Your styles remain the same */
+  </style>
+</head>
 </head>
 <body>
 
