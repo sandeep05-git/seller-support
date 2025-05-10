@@ -1,186 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EcoQuickSup - Quick Commerce Seller Services</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header { background-color: #00b894; color: white; padding: 10px; text-align: center; }
-    nav { background: #00695c; padding: 10px; position: relative; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; display: block; padding: 10px 0; }
-    .nav-links { display: none; flex-direction: column; background: #00695c; }
-    .nav-links.show { display: flex; }
-    .menu-toggle { display: block; cursor: pointer; color: white; font-size: 24px; }
-    section { padding: 25px 15px; }
-    h2 { color: #00b894; margin-bottom: 10px; }
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
-    .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
-    footer { background: #00695c; color: white; text-align: center; padding: 7px; }
-    .contact-form input, .contact-form textarea, .contact-form select {
-      width: 90%; padding: 7px; margin-bottom: 7px; border: 1px solid #ccc; border-radius: 4px;
-    }
-    .contact-form button {
-      background-color: #00b894; color: white; padding: 7px 15px; border: none;
-      border-radius: 5px; cursor: pointer;
-    }
-    .contact-form button:hover { background-color: #00695c; }
-    #thank-you-message {
-      background-color: #e0f7fa; padding: 20px; text-align: center;
-      border-radius: 10px; margin-top: 20px; animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @media(min-width: 600px) {
-      nav a { display: inline; padding: 0; }
-      .menu-toggle { display: none; }
-      .nav-links { display: flex !important; flex-direction: row; }
-    }
-  </style>
-  <script src="translations.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Seller Support</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@formspree/form@5.0.0"></script>
 </head>
-<body onload="detectLanguage()">
 
-<header>
-  <p id="header-slogan">Your Partner to Quick Commerce Success!</p>
-</header>
+<body>
 
-<nav>
-  <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
-  <div class="nav-links" id="navLinks">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#how">How It Works</a>
-    <a href="#jobs">Jobs</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-<section id="home">
-  <h2 id="home-title">Welcome to EcoQuickSup</h2>
-  <p id="home-description">Helping sellers grow on Amazon, Flipkart, Meesho, Zepto & more!</p>
-  <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" width="100%">
-</section>
-
-<section id="about">
-  <h2 id="about-title">About Us</h2>
-  <p id="about-description">We provide end-to-end support for seller onboarding, catalog, account setup and training.</p>
-  <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" width="100%">
-</section>
-
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="services">
-    <div class="service">
-      <p>Account Creation</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" width="100%">
+    <!-- Navigation Menu (Hamburger) -->
+    <div class="menu-icon" id="menu-icon">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
     </div>
-    <div class="service">
-      <p>Product Listing</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/patrick-tomasso-fMntI8HAAB8-unsplash.jpg" width="100%">
+
+    <div id="menu" class="menu">
+        <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#jobs">Jobs</a></li>
+        </ul>
     </div>
-    <div class="service">
-      <p>Inventory Training</p>
-      <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" width="100%">
-    </div>
-  </div>
-</section>
 
-<section id="how">
-  <h2>How It Works</h2>
-  <p>We onboard your seller account, guide listing, assist with training and resolve any queries through our expert support team.</p>
-</section>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Seller Support</h1>
+        <p>Your one-stop solution for support and services.</p>
+        <!-- Add header image -->
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/header-image.jpg" alt="Seller Support">
+    </header>
 
-<section id="jobs">
-  <h2>Jobs and Caution Notice</h2>
-  <p>Looking for jobs? Visit trusted sites below. <strong>Never pay money</strong> to get hired!</p>
-  <ul>
-    <li><a href="https://www.naukri.com/" target="_blank">Naukri.com</a></li>
-    <li><a href="https://www.linkedin.com/jobs/" target="_blank">LinkedIn Jobs</a></li>
-  </ul>
-  </section>
-<section id="contact">
-  <h2 id="contact-us-title">Contact Us</h2>
-  <p id="contact-us-description">Submit your details. We'll get back to you shortly!</p>
-  <form class="contact-form" method="POST" action="https://formspree.io/f/your-form-id" onsubmit="return handleSubmit(event)">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <select name="service" id="service-select" required onchange="detectService()">
-      <option value="service">Service</option>
-      <option value="feedback">Feedback</option>
-      <option value="complaint">Complaint</option>
-      <option value="job">Job Scam Report</option>
-    </select>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Submit</button>
-  </form>
-  <div id="thank-you-message" class="hidden"></div>
-</section>
+    <!-- About Us Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing support for sellers. Our services are designed to help you succeed in your business.</p>
+        <!-- Add About Us Image -->
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/about-image.jpg" alt="About Us">
+    </section>
 
-<!-- Chat Widget -->
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <p>We offer a step-by-step guide for sellers to access and utilize our services effectively.</p>
+        <!-- Add How It Works Image -->
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/how-it-works-image.jpg" alt="How It Works">
+    </section>
+
+    <!-- Contact Us Section with Form -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form" action="https://formspree.io/f/yourformid" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="platform">Platform</label>
+            <select id="platform" name="platform" required>
+                <option value="service">Service</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div id="other-option" style="display:none;">
+                <label for="other-platform">Please specify:</label>
+                <input type="text" id="other-platform" name="other-platform">
+            </div>
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="thank-you-message" style="display:none;">
+            <h3>Thank you for contacting us!</h3>
+        </div>
+
+        <script>
+            $('#platform').change(function () {
+                if ($(this).val() == 'other') {
+                    $('#other-option').show();
+                } else {
+                    $('#other-option').hide();
+                }
+            });
+
+            $('#contact-form').submit(function (e) {
+                e.preventDefault();
+                var form = $(this);
+                $.ajax({
+                    url: form.attr('action'),
+                    method: form.attr('method'),
+                    data: form.serialize(),
+                    success: function () {
+                        $('#contact-form').hide();
+                        $('#thank-you-message').show();
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 3000);
+                    }
+                });
+            });
+        </script>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>We offer a range of services tailored to the needs of online sellers.</p>
+        <!-- Add Services Image -->
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/services-image.jpg" alt="Services">
+    </section>
+
+    <!-- Jobs Section with Scam Alert -->
+    <section id="jobs">
+        <h2>Job Opportunities</h2>
+        <p>Explore job opportunities from trusted job portals. Please be aware of scam job offers that ask for money.</p>
+        <ul>
+            <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
+            <!-- Add other job portals as needed -->
+        </ul>
+
+        <div id="job-report-form">
+            <h3>Report Fake Jobs</h3>
+            <form action="https://formspree.io/f/yourformid" method="POST">
+                <label for="job-title">Job Title</label>
+                <input type="text" id="job-title" name="job-title" required>
+                
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" required>
+                
+                <label for="job-link">Job Link</label>
+                <input type="url" id="job-link" name="job-link" required>
+                
+                <button type="submit">Report</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget">
+        <h3>Chat with Us</h3>
+        <div id="chat-box">
+          <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function() {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/your-tawk-id';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-  })();
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
+<!--End of Tawk.to Script-->
+            <!-- This could be a third-party chat integration or a custom implementation -->
+            <p>Live Chat: <span>We're online!</span></p>
+        </div>
+    </div>
 
-<script>
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('show');
-  }
+    <footer>
+        <p>&copy; 2025 Seller Support. All rights reserved.</p>
+    </footer>
 
-  function detectLanguage() {
-    const supported = ['en', 'hi', 'ta', 'te', 'ml'];
-    const lang = navigator.language.slice(0, 2);
-    const preferred = supported.includes(lang) ? lang : 'en';
-    changeLanguage(preferred);
-  }
-
-  function changeLanguage(lang = document.getElementById('languageSelector').value) {
-    fetch(`js/transcript/${lang}.json`).then(r => r.json()).then(t => {
-      document.getElementById("header-slogan").textContent = t.header_slogan;
-      document.getElementById("home-title").textContent = t.home_title;
-      document.getElementById("home-description").textContent = t.home_description;
-      document.getElementById("about-title").textContent = t.about_title;
-      document.getElementById("about-description").textContent = t.about_description;
-      document.getElementById("contact-us-title").textContent = t.contact_us_title;
-      document.getElementById("contact-us-description").textContent = t.contact_us_description;
-    });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    fetch(form.action, { method: 'POST', body: new FormData(form) })
-      .then(() => {
-        document.getElementById("thank-you-message").classList.remove("hidden");
-        document.getElementById("thank-you-message").textContent = getThankYouMsg();
-        form.reset();
-        setTimeout(() => location.reload(), 2500);
-      });
-    return false;
-  }
-
-  function detectService() {
-    const service = document.getElementById("service-select").value;
-    const msg = {
-      service: "Thanks for reaching out for service. We’ll get in touch soon!",
-      feedback: "Thanks for your feedback!",
-      complaint: "We received your complaint. Our team will resolve it quickly.",
-      job: "Thank you for reporting. We’ll investigate the job scam immediately."
-    };
-    window.getThankYouMsg = () => msg[service] || "Thank you for contacting us!";
-  }
-</script>
-
-<footer>
-  <p>&copy; 2025 EcoQuickSup | All rights reserved.</p>
-</footer>
+    <script>
+        // Hamburger Menu Toggle
+        $('#menu-icon').click(function () {
+            $('#menu').toggleClass('active');
+        });
+    </script>
 
 </body>
+
 </html>
