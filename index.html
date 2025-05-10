@@ -1,29 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-
-    // Validate data (optional)
-    if (empty($name) || empty($email) || empty($message)) {
-        $error_message = "All fields are required!";
-    } else {
-        // Set up the email
-        $to = "your-email@example.com";  // Replace with your email
-        $subject = "New message from $name";
-        $body = "Name: $name\nEmail: $email\nMessage: $message";
-
-        // Send the email
-        if (mail($to, $subject, $body)) {
-            header("Location: thank_you.html");
-            exit();
-        } else {
-            $error_message = "There was an error sending your message. Please try again later.";
-        }
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,25 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       .nav-links { display: flex !important; flex-direction: row; }
     }
   </style>
-    <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EcoQuickSup - Quick Commerce Seller Services</title>
-
-  <!-- Add the translations.js script here -->
   <script src="translations.js"></script>
-<select id="languageSelector">
-  <option value="en">English</option>
-  <option value="ta">தமிழ்</option>
-  <option value="te">తెలుగు</option>
-  <option value="ml">മലയാളം</option>
-  <option value="hi">हिंदी</option>
-</select>
- <script>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const userLang = navigator.language || navigator.userLanguage; 
+      const userLang = navigator.language || navigator.userLanguage;
       const lang = userLang.split('-')[0]; // Extract the language code (e.g., en, ta)
-
       const selectedLang = translations[lang] || translations.en; // Default to English if language is not found
 
       // Update text content dynamically based on selected language
@@ -110,18 +70,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       document.getElementById("contact-us-title").textContent = selectedLang.contact_us_title;
       document.getElementById("contact-us-description").textContent = selectedLang.contact_us_description;
     });
-  </script>
 
-  <style>
-    /* Your styles remain the same */
-  </style>
+    function changeLanguage() {
+      const selectedLang = document.getElementById("languageSelector").value;
+      const translationsForLanguage = translations[selectedLang] || translations.en;
+
+      document.getElementById("header-slogan").textContent = translationsForLanguage.header_slogan;
+      document.getElementById("home-title").textContent = translationsForLanguage.home_title;
+      document.getElementById("home-description").textContent = translationsForLanguage.home_description;
+      document.getElementById("about-title").textContent = translationsForLanguage.about_title;
+      document.getElementById("about-description").textContent = translationsForLanguage.about_description;
+      document.getElementById("contact-us-title").textContent = translationsForLanguage.contact_us_title;
+      document.getElementById("contact-us-description").textContent = translationsForLanguage.contact_us_description;
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('navLinks');
+      menu.classList.toggle('show');
+    }
+  </script>
 </head>
-</head>
+
 <body>
 
 <header>
   <div class="logo"></div>
-  <p>Your Partner to Quick Commerce Success!</p>
+  <p id="header-slogan">Your Partner to Quick Commerce Success!</p>
 </header>
 
 <nav>
@@ -135,15 +109,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </nav>
 
+<select id="languageSelector" onchange="changeLanguage()">
+  <option value="en">English</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="ml">മലയാളം</option>
+  <option value="hi">हिंदी</option>
+</select>
+
 <section id="home">
-  <h2>Welcome to EcoQuickSup</h2>
-  <p>We help sellers launch and grow their stores on Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto, and other quick commerce platforms — fast and hassle-free!</p>
+  <h2 id="home-title">Welcome to EcoQuickSup</h2>
+  <p id="home-description">We help sellers launch and grow their stores on Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto, and other quick commerce platforms — fast and hassle-free!</p>
   <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="Customer Support" width="100%">
 </section>
 
 <section id="about">
-  <h2>About Us</h2>
-  <p>At EcoQuickSup, we are passionate about empowering sellers. We know the challenges of starting out, and we make it easy with our end-to-end support for setting up accounts, listing products, and training on platform management.</p>
+  <h2 id="about-title">About Us</h2>
+  <p id="about-description">At EcoQuickSup, we are passionate about empowering sellers. We know the challenges of starting out, and we make it easy with our end-to-end support for setting up accounts, listing products, and training on platform management.</p>
   <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Customer Support" width="100%">
 </section>
 
@@ -169,152 +151,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </section>
 
-<section id="how">
-  <h2>How It Works</h2>
-  <ol>
-    <li>Contact Us with Your Details</li>
-    <li>Send Required Documents</li>
-    <li>Get Your Seller Account Approved</li>
-    <li>List Your Products</li>
-    <li>Start Receiving Orders and Scale Up!</li>
-  </ol>
-</section>
-
 <section id="contact">
-  <h2>Contact Us</h2>
-  <form id="contact-form" class="contact-form">
-    <input type="text" id="name" name="name" placeholder="Your Name" required><br>
-    <input type="email" id="email" name="email" placeholder="Your Email" required><br>
-    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br>
-    <select id="platform" name="platform" required>
-      <option value="" disabled selected>Choose Platform</option>
-      <option value="Amazon">Amazon</option>
-      <option value="Flipkart">Flipkart</option>
-      <option value="Meesho">Meesho</option>
-      <option value="Myntra">Myntra</option>
-      <option value="Instamart">Instamart</option>
-      <option value="Zepto">Zepto</option>
-      <option value="Other">Other</option>
-    </select><br>
-    <select id="issue-type" name="issue-type" required>
-      <option value="Service">Service</option>
-      <option value="Feedback">Feedback</option>
-      <option value="Complaint">Complaint</option>
-      <option value="Other">Other</option>
-    </select><br>
-    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea><br>
-    <button type="submit">Send</button>
+  <h2 id="contact-us-title">Contact Us</h2>
+  <p id="contact-us-description">Have questions? Reach out to us using the form below!</p>
+  <form class="contact-form" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <select name="service" required>
+      <option value="service">Service</option>
+      <option value="feedback">Feedback</option>
+      <option value="complaint">Complaint</option>
+      <option value="other">Other</option>
+    </select>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Submit</button>
   </form>
-
-  <div id="thank-you-message" class="hidden"></div>
-
-  <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
 </section>
 
-    <script>
-  function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("show");
-  }
-
-  document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    const formData = new FormData(form);
-
-    const issueType = formData.get("issue-type");
-    const message = formData.get("message").toLowerCase();
-
-    const abusiveWords = ["bad", "worst", "idiot", "stupid", "useless"];
-    let containsAbuse = abusiveWords.some(word => message.includes(word));
-
-    let thankMessage = "";
-    if (containsAbuse) {
-      thankMessage = `
-        <h3>⚠️ We’re sorry if you had a bad experience.</h3>
-        <p>Our team will look into this issue. Thank you for informing us.</p>`;
-    } else {
-      switch (issueType) {
-        case "Service":
-          thankMessage = `<h3>🎉 Thank you for choosing our services!</h3><p>We truly appreciate your trust in us. We’ll be in touch shortly.</p>`;
-          break;
-        case "Feedback":
-          thankMessage = `<h3>😊 Thank you for your feedback!</h3><p>We value your input and will use it to improve.</p>`;
-          break;
-        case "Complaint":
-          thankMessage = `<h3>🛠️ We’ve received your complaint.</h3><p>We’ll investigate and get back to you as soon as possible.</p>`;
-          break;
-        default:
-          thankMessage = `<h3>🙏 Thank you for contacting us!</h3><p>We’ll respond shortly. Have a great day!</p>`;
-      }
-    }
-
-    fetch("https://formspree.io/f/xqaqpyjv", {
-      method: "POST",
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        form.style.display = "none";
-        const thankYou = document.getElementById("thank-you-message");
-        thankYou.innerHTML = `
-          ${thankMessage}
-          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" alt="Thank You GIF" style="max-width: 100%; height: auto; margin-top: 15px;">
-        `;
-        thankYou.classList.remove("hidden");
-
-        setTimeout(() => window.location.reload(), 5000);
-      } else {
-        alert("Oops! There was a problem submitting your form.");
-      }
-    });
-  });
-</script>
-    <button data-i18n="submit"></button>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-    <!-- Job Portals Section -->
-<section id="job-portals">
-  <h2>Trusted Job Portals</h2>
-  <ul>
-    <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
-    <li><a href="https://www.indeed.com" target="_blank">Indeed.com</a></li>
-    <li><a href="https://www.linkedin.com/jobs" target="_blank">LinkedIn Jobs</a></li>
-    <!-- Add more trusted portals here -->
-  </ul>
-</section>
-<!-- Job Portals Section -->
-<section id="job-portals">
-  <h2>Trusted Job Portals</h2>
-  <ul>
-    <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
-    <li><a href="https://www.indeed.com" target="_blank">Indeed.com</a></li>
-    <li><a href="https://www.linkedin.com/jobs" target="_blank">LinkedIn Jobs</a></li>
-    <!-- Add more trusted portals here -->
-  </ul>
-</section>
-<!-- Fake Job Alert Section -->
-<section id="fake-job-alert" style="background-color: #fff3cd; border-left: 5px solid #ffa502; padding: 15px; margin-top: 20px; border-radius: 5px;">
-  <h2>⚠️ Warning: Fake Job Sites</h2>
-  <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Warning Icon" style="width: 40px; vertical-align: middle; margin-right: 10px;">
-  <p><strong>Be careful!</strong> If any job site asks you to pay money for applying or promises guaranteed job placement, it is likely a scam.</p>
-  <p>Do not proceed with such offers. Always use trusted job portals like the ones listed above.</p>
-</section>
-    <script src="js/lang.js" defer></script>
 <footer>
-  <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
+  <p>&copy; 2025 EcoQuickSup | All rights reserved.</p>
 </footer>
+
 </body>
 </html>
