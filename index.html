@@ -87,8 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <!-- Add the translations.js script here -->
   <script src="translations.js"></script>
-
-  <script>
+<select id="languageSelector">
+  <option value="en">English</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="ml">മലയാളം</option>
+  <option value="hi">हिंदी</option>
+</select>
+ <script>
     document.addEventListener("DOMContentLoaded", function() {
       const userLang = navigator.language || navigator.userLanguage; 
       const lang = userLang.split('-')[0]; // Extract the language code (e.g., en, ta)
@@ -265,7 +271,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
   });
 </script>
-
+    <button data-i18n="submit"></button>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -306,9 +312,9 @@ s0.parentNode.insertBefore(s1,s0);
   <p><strong>Be careful!</strong> If any job site asks you to pay money for applying or promises guaranteed job placement, it is likely a scam.</p>
   <p>Do not proceed with such offers. Always use trusted job portals like the ones listed above.</p>
 </section>
+    <script src="js/lang.js" defer></script>
 <footer>
   <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
 </footer>
-<!-- Close the body tag here -->
 </body>
 </html>
