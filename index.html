@@ -7,13 +7,135 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Seller Support</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@formspree/form@5.0.0"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header, section, footer {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header {
+            background-color: #005eb8;
+            color: white;
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        section img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1rem;
+            border-radius: 12px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea, select, button {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #005eb8;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004a94;
+        }
+
+        .menu-icon {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-line {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 200px;
+            height: 100%;
+            background: #333;
+            color: white;
+            padding-top: 60px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .menu.active {
+            left: 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            padding: 1rem;
+        }
+
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: #eee;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        #thank-you-message {
+            margin-top: 1rem;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-
-    <!-- Navigation Menu (Hamburger) -->
     <div class="menu-icon" id="menu-icon">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
@@ -28,40 +150,33 @@
         </ul>
     </div>
 
-    <!-- Header Section -->
     <header>
         <h1>Welcome to Seller Support</h1>
         <p>Your one-stop solution for support and services.</p>
-        <!-- Add header image -->
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/header-image.jpg" alt="Seller Support">
     </header>
 
-    <!-- About Us Section -->
     <section id="about">
         <h2>About Us</h2>
         <p>We are dedicated to providing support for sellers. Our services are designed to help you succeed in your business.</p>
-        <!-- Add About Us Image -->
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/about-image.jpg" alt="About Us">
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works">
         <h2>How It Works</h2>
         <p>We offer a step-by-step guide for sellers to access and utilize our services effectively.</p>
-        <!-- Add How It Works Image -->
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/how-it-works-image.jpg" alt="How It Works">
     </section>
 
-    <!-- Contact Us Section with Form -->
     <section id="contact">
         <h2>Contact Us</h2>
         <form id="contact-form" action="https://formspree.io/f/yourformid" method="POST">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
-            
+
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
-            
+
             <label for="platform">Platform</label>
             <select id="platform" name="platform" required>
                 <option value="service">Service</option>
@@ -72,7 +187,7 @@
                 <label for="other-platform">Please specify:</label>
                 <input type="text" id="other-platform" name="other-platform">
             </div>
-            
+
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
 
@@ -82,51 +197,19 @@
         <div id="thank-you-message" style="display:none;">
             <h3>Thank you for contacting us!</h3>
         </div>
-
-        <script>
-            $('#platform').change(function () {
-                if ($(this).val() == 'other') {
-                    $('#other-option').show();
-                } else {
-                    $('#other-option').hide();
-                }
-            });
-
-            $('#contact-form').submit(function (e) {
-                e.preventDefault();
-                var form = $(this);
-                $.ajax({
-                    url: form.attr('action'),
-                    method: form.attr('method'),
-                    data: form.serialize(),
-                    success: function () {
-                        $('#contact-form').hide();
-                        $('#thank-you-message').show();
-                        // Optionally, hide the thank-you message after a certain time
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 3000); // Hide after 3 seconds or change logic
-                    }
-                });
-            });
-        </script>
     </section>
 
-    <!-- Services Section -->
     <section id="services">
         <h2>Our Services</h2>
         <p>We offer a range of services tailored to the needs of online sellers.</p>
-        <!-- Add Services Image -->
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/services-image.jpg" alt="Services">
     </section>
 
-    <!-- Jobs Section with Scam Alert -->
     <section id="jobs">
         <h2>Job Opportunities</h2>
         <p>Explore job opportunities from trusted job portals. Please be aware of scam job offers that ask for money.</p>
         <ul>
             <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
-            <!-- Add other job portals as needed -->
         </ul>
 
         <div id="job-report-form">
@@ -134,24 +217,21 @@
             <form action="https://formspree.io/f/yourformid" method="POST">
                 <label for="job-title">Job Title</label>
                 <input type="text" id="job-title" name="job-title" required>
-                
+
                 <label for="company">Company</label>
                 <input type="text" id="company" name="company" required>
-                
+
                 <label for="job-link">Job Link</label>
                 <input type="url" id="job-link" name="job-link" required>
-                
+
                 <button type="submit">Report</button>
             </form>
         </div>
     </section>
 
-    <!-- Chat Widget (Tawk.to Integration) -->
     <div id="chat-widget">
         <h3>Chat with Us</h3>
-        <div id="chat-box">
-            <!-- This is where your Tawk.to chat widget will appear -->
-        </div>
+        <div id="chat-box"></div>
     </div>
 
     <footer>
@@ -159,28 +239,49 @@
     </footer>
 
     <!-- Tawk.to Chat Widget Code -->
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-   
-    <!-- End of Tawk.to Chat Widget Code -->
- <script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <script>
         // Hamburger Menu Toggle
         $('#menu-icon').click(function () {
             $('#menu').toggleClass('active');
         });
-    </script>
 
+        $('#platform').change(function () {
+            if ($(this).val() == 'other') {
+                $('#other-option').show();
+            } else {
+                $('#other-option').hide();
+            }
+        });
+
+        $('#contact-form').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: form.attr('action'),
+                method: form.attr('method'),
+                data: form.serialize(),
+                success: function () {
+                    $('#contact-form').hide();
+                    $('#thank-you-message').show();
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 3000);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
