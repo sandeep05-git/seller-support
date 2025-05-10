@@ -102,9 +102,10 @@
                     success: function () {
                         $('#contact-form').hide();
                         $('#thank-you-message').show();
+                        // Optionally, hide the thank-you message after a certain time
                         setTimeout(function () {
                             window.location.reload();
-                        }, 3000);
+                        }, 3000); // Hide after 3 seconds or change logic
                     }
                 });
             });
@@ -145,11 +146,20 @@
         </div>
     </section>
 
-    <!-- Chat Widget -->
+    <!-- Chat Widget (Tawk.to Integration) -->
     <div id="chat-widget">
         <h3>Chat with Us</h3>
         <div id="chat-box">
-          <!--Start of Tawk.to Script-->
+            <!-- This is where your Tawk.to chat widget will appear -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Seller Support. All rights reserved.</p>
+    </footer>
+
+    <!-- Tawk.to Chat Widget Code -->
+    <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -162,16 +172,9 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
-            <!-- This could be a third-party chat integration or a custom implementation -->
-            <p>Live Chat: <span>We're online!</span></p>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Seller Support. All rights reserved.</p>
-    </footer>
-
-    <script>
+   
+    <!-- End of Tawk.to Chat Widget Code -->
+ <script>
         // Hamburger Menu Toggle
         $('#menu-icon').click(function () {
             $('#menu').toggleClass('active');
