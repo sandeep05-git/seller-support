@@ -205,11 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p>Or email us at: <a href="mailto:ecoquicksupp@gmail.com">ecoquicksupp@gmail.com</a></p>
 </section>
 
-<footer>
-  <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
-</footer>
-
-<script>
+    <script>
   function toggleMenu() {
     const nav = document.getElementById("navLinks");
     nav.classList.toggle("show");
@@ -300,24 +296,26 @@ s0.parentNode.insertBefore(s1,s0);
   <p>Be careful! If any job site asks you to pay money for applying or promises guaranteed job placement, it is likely a scam.</p>
   <p>If you encounter such a job offer, please do not proceed with it. Always apply through legitimate job portals listed above.</p>
 </section>
-
-<!-- Report Fake Job Form Section -->
-<section id="report-fake-job">
-  <h2>Report a Fake Job Offer</h2>
-  <form action="https://formspree.io/f/maykrkzo" method="POST">
-    <label for="job-url">Job Website or Link</label>
-    <input type="url" id="job-url" name="job-url" placeholder="Enter the URL of the fake job site" required>
-
-    <label for="details">Details of the Scam</label>
-    <textarea id="details" name="details" placeholder="Describe the scam or suspicious activity" rows="4" required></textarea>
-
-    <label for="email">Your Email (Optional)</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email (optional)">
-
-    <button type="submit">Submit Report</button>
-  </form>
+<!-- Job Portals Section -->
+<section id="job-portals">
+  <h2>Trusted Job Portals</h2>
+  <ul>
+    <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
+    <li><a href="https://www.indeed.com" target="_blank">Indeed.com</a></li>
+    <li><a href="https://www.linkedin.com/jobs" target="_blank">LinkedIn Jobs</a></li>
+    <!-- Add more trusted portals here -->
+  </ul>
 </section>
-
+<!-- Fake Job Alert Section -->
+<section id="fake-job-alert" style="background-color: #fff3cd; border-left: 5px solid #ffa502; padding: 15px; margin-top: 20px; border-radius: 5px;">
+  <h2>⚠️ Warning: Fake Job Sites</h2>
+  <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Warning Icon" style="width: 40px; vertical-align: middle; margin-right: 10px;">
+  <p><strong>Be careful!</strong> If any job site asks you to pay money for applying or promises guaranteed job placement, it is likely a scam.</p>
+  <p>Do not proceed with such offers. Always use trusted job portals like the ones listed above.</p>
+</section>
+<footer>
+  <p>EcoQuickSup &copy; 2025. All Rights Reserved.</p>
+</footer>
 <!-- Close the body tag here -->
 </body>
 </html>
