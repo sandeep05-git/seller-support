@@ -167,10 +167,46 @@
     <button type="submit">Submit</button>
   </form>
 </section>
+  <script>
+  // Function to detect browser language and load respective JSON
+  function detectLanguage() {
+    const supportedLanguages = ['en', 'hi', 'ta', 'te', 'ml'];
+    const browserLang = navigator.language.slice(0, 2);
+    const userLang = supportedLanguages.includes(browserLang) ? browserLang : 'en';
+    loadTranslation(userLang);
+  }
 
+  function loadTranslation(lang) {
+    fetch(`js/transcript/${lang}.json`)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("title").textContent = data.title;
+        document.getElementById("welcome_msg").textContent = data.welcome_msg;
+        document.getElementById("contact_us").textContent = data.contact_us;
+        document.getElementById("select_language").textContent = data.select_language;
+      });
+  }
+
+  // Allow manual language change via dropdown (optional)
+  function setLanguage(lang) {
+    loadTranslation(lang);
+  }
+
+  window.onload = detectLanguage;
+</script>
+<h1 id="title">Seller Support</h1>
+<p id="welcome_msg">Welcome to our seller support platform. We are here to help you.</p>
+<a href="#contact" id="contact_us">Contact Us</a>
+<label for="lang-select" id="select_language">Select Language:</label>
+<select id="lang-select" onchange="setLanguage(this.value)">
+  <option value="en">English</option>
+  <option value="hi">Hindi</option>
+  <option value="ta">Tamil</option>
+  <option value="te">Telugu</option>
+  <option value="ml">Malayalam</option>
+</select>
 <footer>
   <p>&copy; 2025 EcoQuickSup | All rights reserved.</p>
 </footer>
-
 </body>
 </html>
