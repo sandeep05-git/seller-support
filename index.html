@@ -1,29 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EcoQuickSup - Quick Commerce Seller Services</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header { background-color: #00b894; color: white; padding: 10px; text-align: center; }
-    nav { background: #00695c; padding: 10px; position: relative; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; display: block; padding: 10px 0; }
-    .nav-links { display: none; flex-direction: column; background: #00695c; }
-    .nav-links.show { display: flex; }
-    .menu-toggle { display: block; cursor: pointer; color: white; font-size: 24px; }
-    section { padding: 25px 15px; }
-    h2 { color: #00b894; margin-bottom: 10px; }
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
-    .service { background: #f0f0f0; padding: 10px; border-radius: 6px; }
-    footer { background: #00695c; color: white; text-align: center; padding: 7px; }
-    .contact-form input, .contact-form textarea, .contact-form select {
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #00b894;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background: #00695c;
+      padding: 10px;
+      position: relative;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      padding: 10px 0;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #00695c;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+    }
+
+    section {
+      padding: 25px 15px;
+    }
+
+    h2 {
+      color: #00b894;
+      margin-bottom: 10px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+
+    .service {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    footer {
+      background: #00695c;
+      color: white;
+      text-align: center;
+      padding: 7px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
       width: 90%;
       padding: 7px;
       margin-bottom: 7px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
     .contact-form button {
       background-color: #00b894;
       color: white;
@@ -32,10 +97,15 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     .contact-form button:hover {
       background-color: #00695c;
     }
-    .hidden { display: none; }
+
+    .hidden {
+      display: none;
+    }
+
     #thank-you-message {
       background-color: #e0f7fa;
       padding: 20px;
@@ -44,51 +114,54 @@
       margin-top: 20px;
       animation: fadeIn 1s ease-in-out;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
+
     @media(min-width: 600px) {
-      nav a { display: inline; padding: 0; }
-      .menu-toggle { display: none; }
-      .nav-links { display: flex !important; flex-direction: row; }
+      nav a {
+        display: inline;
+        padding: 0;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .nav-links {
+        display: flex !important;
+        flex-direction: row;
+      }
     }
   </style>
+  <script src="translations.js"></script>
   <script>
-    // Translations object with all languages
-    const translations = {
-      en: {
-        header_slogan: "Your Partner to Quick Commerce Success!",
-        home_title: "Welcome to EcoQuickSup",
-        home_description: "We help sellers launch and grow their stores on Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto, and other quick commerce platforms — fast and hassle-free!",
-        about_title: "About Us",
-        about_description: "At EcoQuickSup, we are passionate about empowering sellers. We know the challenges of starting out, and we make it easy with our end-to-end support for setting up accounts, listing products, and training on platform management.",
-        contact_us_title: "Contact Us",
-        contact_us_description: "Have questions? Reach out to us using the form below!"
-      },
-      hi: {
-        header_slogan: "क्विक कॉमर्स सफलता के लिए आपका साथी!",
-        home_title: "EcoQuickSup में आपका स्वागत है",
-        home_description: "हम विक्रेताओं को Amazon, Flipkart, Meesho, Myntra, Instamart, Zepto और अन्य त्वरित वाणिज्य प्लेटफार्मों पर उनके स्टोर लॉन्च और बढ़ाने में मदद करते हैं — तेज़ और परेशानी-मुक्त!",
-        about_title: "हमारे बारे में",
-        about_description: "EcoQuickSup में, हम विक्रेताओं को सशक्त बनाने के लिए उत्साहित हैं। हम जानते हैं कि शुरुआत में कितनी चुनौतियाँ होती हैं, और हम इसे आसान बनाते हैं, खाता सेट अप, उत्पाद सूचीकरण, और मंच प्रबंधन पर प्रशिक्षण प्रदान करके।",
-        contact_us_title: "संपर्क करें",
-        contact_us_description: "क्या आपके पास सवाल हैं? नीचे दिए गए फ़ॉर्म का उपयोग करके हमसे संपर्क करें!"
-      },
-      // Add other languages like Tamil, Telugu, Malayalam similarly...
-    };
-
-    document.addEventListener("DOMContentLoaded", function() {
-      // Language detection based on browser language
+    document.addEventListener("DOMContentLoaded", function () {
       const userLang = navigator.language || navigator.userLanguage;
-      const lang = userLang.split('-')[0]; // Extract language code (e.g., en, hi, ta)
-      const selectedLang = translations[lang] || translations.en; // Default to English
+      const lang = userLang.split('-')[0]; // Extract the language code (e.g., en, ta)
+      const selectedLang = translations[lang] || translations.en; // Default to English if language is not found
 
-      // Update the page content based on selected language
-      loadTranslations(selectedLang);
+      // Update text content dynamically based on selected language
+      document.getElementById("header-slogan").textContent = selectedLang.header_slogan;
+      document.getElementById("home-title").textContent = selectedLang.home_title;
+      document.getElementById("home-description").textContent = selectedLang.home_description;
+      document.getElementById("about-title").textContent = selectedLang.about_title;
+      document.getElementById("about-description").textContent = selectedLang.about_description;
+      document.getElementById("contact-us-title").textContent = selectedLang.contact_us_title;
+      document.getElementById("contact-us-description").textContent = selectedLang.contact_us_description;
     });
 
-    function loadTranslations(translationsForLanguage) {
+    function changeLanguage() {
+      const selectedLang = document.getElementById("languageSelector").value;
+      const translationsForLanguage = translations[selectedLang] || translations.en;
+
       document.getElementById("header-slogan").textContent = translationsForLanguage.header_slogan;
       document.getElementById("home-title").textContent = translationsForLanguage.home_title;
       document.getElementById("home-description").textContent = translationsForLanguage.home_description;
@@ -98,35 +171,24 @@
       document.getElementById("contact-us-description").textContent = translationsForLanguage.contact_us_description;
     }
 
-    function changeLanguage() {
-      const selectedLang = document.getElementById("languageSelector").value;
-      const translationsForLanguage = translations[selectedLang] || translations.en;
-      loadTranslations(translationsForLanguage);
-    }
-
     function toggleMenu() {
       const menu = document.getElementById('navLinks');
       menu.classList.toggle('show');
     }
 
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent form from submitting immediately
-
-      // Display thank you message
-      const thankYouMessage = document.createElement('div');
-      thankYouMessage.id = 'thank-you-message';
-      thankYouMessage.textContent = "Thank you for your submission! We’ll get back to you soon.";
-      document.body.appendChild(thankYouMessage);
-
-      // Simulate page refresh after 3 seconds
-      setTimeout(function() {
-        window.location.reload();
-      }, 3000);
-    });
+    function handleFormSubmission(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById("thank-you-message").classList.remove("hidden");
+      setTimeout(function () {
+        document.getElementById("thank-you-message").classList.add("hidden");
+        document.querySelector(".contact-form").reset();
+      }, 3000); // Hide thank-you message after 3 seconds
+    }
   </script>
 </head>
 
 <body>
+
   <header>
     <div class="logo"></div>
     <p id="header-slogan">Your Partner to Quick Commerce Success!</p>
@@ -145,10 +207,10 @@
 
   <select id="languageSelector" onchange="changeLanguage()">
     <option value="en">English</option>
-    <option value="hi">Hindi</option>
     <option value="ta">தமிழ்</option>
     <option value="te">తెలుగు</option>
     <option value="ml">മലയാളം</option>
+    <option value="hi">हिंदी</option>
   </select>
 
   <section id="home">
@@ -163,20 +225,50 @@
     <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Customer Support" width="100%">
   </section>
 
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service">
+        <p>Account Creation Assistance</p>
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Support Image" width="100%">
+      </div>
+      <div class="service">
+        <p>Product Listing and Catalog Support</p>
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/patrick-tomasso-fMntI8HAAB8-unsplash.jpg" alt="Support Image" width="100%">
+      </div>
+      <div class="service">
+        <p>Training on Order and Inventory Management</p>
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="100%">
+      </div>
+      <div class="service">
+        <p>Ongoing Seller Support and Growth Tips</p>
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Support Team" width="100%">
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <h2 id="contact-us-title">Contact Us</h2>
     <p id="contact-us-description">Have questions? Reach out to us using the form below!</p>
-   
-    <form class="contact-form"> 
+    <form class="contact-form" method="POST" onsubmit="handleFormSubmission(event)">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <select name="service" required> <option value="service">Service</option>
-        <option value="feedback">Feedback</option> <option value="complaint">Complaint</option> 
-        <option value="other">Other</option> </select> <textarea name="message" placeholder="Your Message" required></textarea> 
-      <button type="submit">Submit</button> </form> </section> <footer> <p>&copy; 2025 EcoQuickSup | All rights reserved.</p>
-      </footer> <!-- Add chat widget (Tawk.to example) --> <script type="text/javascript"> var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); 
-        (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0]; s1.async=true; s1.src='https://embed.tawk.to/your_tawkto_code/your_widget_id';
-                    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0); })(); 
-      </script>
+      <select name="service" required>
+        <option value="service">Service</option>
+        <option value="feedback">Feedback</option>
+        <option value="complaint">Complaint</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="thank-you-message" class="hidden">Thank you for reaching out! We will get back to you soon.</div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EcoQuickSup | All rights reserved.</p>
+  </footer>
+
 </body>
+
 </html>
