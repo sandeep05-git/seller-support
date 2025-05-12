@@ -272,12 +272,7 @@
       <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
     </ul>
   </section>
-  <section id="news-trends">
-  <h2>📰 News & Trends</h2>
-  <ul id="news-list">
-    <li>Loading latest news from trusted sources...</li>
-  </ul>
-</section>
+
 <footer>
     <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
   </footer>
@@ -328,42 +323,5 @@
     });
   </script>
   
- <script>
-  async function loadMultipleNews() {
-    const proxy = "https://api.rss2json.com/v1/api.json?rss_url=";
-    const feeds = [
-      { name: "Amazon", url: "https://www.aboutamazon.com/news/retail/rss" },
-      { name: "Shopify", url: "https://www.shopify.com/blog/rss" },
-      { name: "Economic Times", url: "https://economictimes.indiatimes.com/small-biz/sme-sector/rssfeeds/5575604.cms" }
-    ];
-
-    const newsList = document.getElementById("news-list");
-    newsList.innerHTML = "";
-
-    for (const feed of feeds) {
-      try {
-        const response = await fetch(proxy + encodeURIComponent(feed.url));
-        const data = await response.json();
-
-        data.items.slice(0, 2).forEach(item => {
-          const li = document.createElement("li");
-          li.innerHTML = `
-            <strong>[${feed.name}] ${item.title}</strong><br>
-            <a href="${item.link}" target="_blank">Read more</a>
-          `;
-          newsList.appendChild(li);
-        });
-      } catch (error) {
-        console.error(`Failed to load ${feed.name} news`, error);
-        const li = document.createElement("li");
-        li.textContent = `Couldn't load ${feed.name} news.`;
-        newsList.appendChild(li);
-      }
-    }
-  }
-
-  loadMultipleNews();
-</script>
-
 </body>
 </html>
