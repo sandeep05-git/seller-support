@@ -9,131 +9,110 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    /* Hamburger Icon Style */
+    .menu-icon {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        cursor: pointer;
+        z-index: 1001;
+        display: none; /* Hide by default on desktop */
+    }
+
+    .menu-line {
+        width: 30px;
+        height: 4px;
+        background-color: #333;
+        margin: 6px 0;
+        border-radius: 2px;
+    }
+
+    /* Sidebar Menu (hidden by default on mobile) */
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 200px;
+        height: 100%;
+        background: #333;
+        color: white;
+        padding-top: 60px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .menu.active {
+        left: 0;
+    }
+
+    .menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu ul li {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .menu ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+
+    /* Mobile-First: Hide Sidebar and Show Hamburger */
+    @media (max-width: 768px) {
+        .menu-icon {
+            display: block; /* Show hamburger icon on mobile */
         }
 
-        header, section, footer {
-            padding: 2rem;
+        .menu ul li {
+            border-bottom: 1px solid #444;
             text-align: center;
         }
 
-        header {
-            background-color: #005eb8;
-            color: white;
+        .menu ul li a {
+            display: block;
+            padding: 1rem;
+            font-size: 1.2rem;
         }
+    }
 
-        header img {
-            max-width: 500px;
-            height: auto;
-            margin-top: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        section img {
-            max-width: 500px;
-            height: auto;
-            margin-top: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            max-width: 600px;
-            margin: 2rem auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        input, textarea, select, button {
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        button {
-            background-color: #005eb8;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #004a94;
-        }
-
-        .menu-icon {
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-line {
-            width: 30px;
-            height: 4px;
-            background-color: #333;
-            margin: 6px 0;
-            border-radius: 2px;
-        }
-
+    /* Desktop Layout: Sidebar always visible */
+    @media (min-width: 768px) {
         .menu {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 200px;
-            height: 100%;
-            background: #333;
-            color: white;
-            padding-top: 60px;
-            transition: left 0.3s ease;
-            z-index: 1000;
-        }
-
-        .menu.active {
-            left: 0;
+            position: static;
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 0;
+            background: transparent;
+            color: inherit;
         }
 
         .menu ul {
-            list-style: none;
+            display: flex;
+            justify-content: flex-end;
             padding: 0;
         }
 
         .menu ul li {
-            padding: 1rem;
+            padding: 0 1rem;
         }
 
-        .menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
+        .menu-icon {
+            display: none; /* Hide hamburger on desktop */
         }
-
-        footer {
-            background-color: #eee;
-            padding: 1rem;
-            font-size: 0.9rem;
-        }
-
-        #thank-you-message {
-            margin-top: 1rem;
-            color: green;
-            font-weight: bold;
-        }
-    </style>
+    }
+</style>
 </head>
-
 <body>
     <div class="menu-icon" id="menu-icon">
         <span class="menu-line"></span>
@@ -263,15 +242,15 @@
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
-    <body>
-    <!-- Hamburger Menu Icon -->
+   <body>
+    <!-- Hamburger Icon (Visible only on mobile) -->
     <div class="menu-icon" id="menu-icon">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
     </div>
 
-    <!-- Sliding Menu -->
+    <!-- Sidebar Menu (Hidden on mobile by default) -->
     <div id="menu" class="menu">
         <ul>
             <li><a href="#about">About Us</a></li>
@@ -282,6 +261,10 @@
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
-<!-- Rest of your content (header, sections, footer) -->
+
+    <!-- Header and other content follow -->
+    <header>
+        <!-- Content of header -->
+    </header>
 </body>
 </html>
