@@ -243,6 +243,12 @@
       <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
     </ul>
   </section>
+  <section id="news-trends">
+  <h2>📰 News & Trends</h2>
+  <ul id="news-list">
+    <li>Loading latest updates...</li>
+  </ul>
+</section>
 
   <footer>
     <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
@@ -293,5 +299,34 @@
       });
     });
   </script>
+  
+  <script>
+  async function loadNews() {
+    const proxy = "https://api.rss2json.com/v1/api.json?rss_url=";
+    const feedUrl = "https://www.aboutamazon.com/news/retail/rss"; // You can change this to other trusted sources
+
+    try {
+      const response = await fetch(proxy + encodeURIComponent(feedUrl));
+      const data = await response.json();
+
+      const newsList = document.getElementById("news-list");
+      newsList.innerHTML = "";
+
+      data.items.slice(0, 3).forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>${item.title}</strong><br>
+          <a href="${item.link}" target="_blank">Read more</a>
+        `;
+        newsList.appendChild(li);
+      });
+    } catch (err) {
+      document.getElementById("news-list").innerHTML = "<li>Unable to load news at the moment.</li>";
+      console.error("News loading error:", err);
+    }
+  }
+loadNews();
+</script>
+
 </body>
 </html>
