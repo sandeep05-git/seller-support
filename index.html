@@ -151,73 +151,7 @@
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
-    /* Mobile responsiveness */
-@media (max-width: 768px) {
-    .menu {
-        width: 100%;
-        left: -100%;
-    }
-
-    .menu.active {
-        left: 0;
-    }
-
-    .menu ul li {
-        border-bottom: 1px solid #444;
-        text-align: center;
-    }
-
-    .menu ul li a {
-        display: block;
-        padding: 1rem;
-        font-size: 1.2rem;
-    }
-
-    .menu-icon {
-        display: block;
-        background: white;
-        padding: 0.5rem;
-        border-radius: 6px;
-    }
-
-    header, section {
-        padding: 1.5rem;
-    }
-
-    header img, section img {
-        max-width: 100%;
-    }
-}
-<script>
-    // Hamburger Toggle
-    $('#menu-icon').click(function () {
-        $('#menu').toggleClass('active');
-    });
-
-    // Close menu on link click (mobile UX)
-    $('#menu a').click(function () {
-        $('#menu').removeClass('active');
-    });
-
-    // Form Submission
-    $('#contact-form').submit(function (e) {
-        e.preventDefault();
-        var form = $(this);
-        $.ajax({
-            url: form.attr('action'),
-            method: form.attr('method'),
-            data: form.serialize(),
-            success: function () {
-                $('#contact-form').hide();
-                $('#thank-you-message').show();
-                setTimeout(function () {
-                    window.location.reload();
-                }, 3000);
-            }
-        });
-    });
-</script>
- <header>
+   <header>
         <h1>Welcome to Ecoquicksupp</h1>
         <p>Your one-stop solution for support and services.</p>
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Accounting Image">
