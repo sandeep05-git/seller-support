@@ -9,117 +9,130 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-    body {
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background-color: #f9f9f9;
-        color: #333;
-    }
+        /* Global Body Styles */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
-    /* Hamburger Icon Style */
-    .menu-icon {
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        cursor: pointer;
-        z-index: 1001;
-        display: none; /* Hide by default on desktop */
-    }
+        /* Image Styling */
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+        }
 
-    .menu-line {
-        width: 30px;
-        height: 4px;
-        background-color: #333;
-        margin: 6px 0;
-        border-radius: 2px;
-    }
-
-    /* Sidebar Menu (hidden by default on mobile) */
-    .menu {
-        position: fixed;
-        top: 0;
-        left: -250px;
-        width: 200px;
-        height: 100%;
-        background: #333;
-        color: white;
-        padding-top: 60px;
-        transition: left 0.3s ease;
-        z-index: 1000;
-    }
-
-    .menu.active {
-        left: 0;
-    }
-
-    .menu ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .menu ul li {
-        padding: 1rem;
-        text-align: center;
-    }
-
-    .menu ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.1rem;
-    }
-
-    /* Mobile-First: Hide Sidebar and Show Hamburger */
-    @media (max-width: 768px) {
+        /* Hamburger Icon Style */
         .menu-icon {
-            display: block; /* Show hamburger icon on mobile */
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: none; /* Hide by default on desktop */
         }
 
-        .menu ul li {
-            border-bottom: 1px solid #444;
-            text-align: center;
+        .menu-line {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            margin: 6px 0;
+            border-radius: 2px;
         }
 
-        .menu ul li a {
-            display: block;
-            padding: 1rem;
-            font-size: 1.2rem;
-        }
-    }
-
-    /* Desktop Layout: Sidebar always visible */
-    @media (min-width: 768px) {
+        /* Sidebar Menu */
         .menu {
-            position: static;
-            display: flex;
-            justify-content: flex-end;
-            padding-top: 0;
-            background: transparent;
-            color: inherit;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 200px;
+            height: 100%;
+            background: #333;
+            color: white;
+            padding-top: 60px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .menu.active {
+            left: 0;
         }
 
         .menu ul {
-            display: flex;
-            justify-content: flex-end;
+            list-style: none;
             padding: 0;
         }
 
         .menu ul li {
-            padding: 0 1rem;
+            padding: 1rem;
+            text-align: center;
         }
 
-        .menu-icon {
-            display: none; /* Hide hamburger on desktop */
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
         }
-    }
-</style>
+
+        /* Mobile-First: Hide Sidebar and Show Hamburger */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block; /* Show hamburger icon on mobile */
+            }
+
+            .menu ul li {
+                text-align: center;
+                border-bottom: 1px solid #444;
+            }
+
+            /* Mobile Images */
+            section img {
+                margin: 10px 0;
+                width: 100%;
+            }
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 768px) {
+            .menu {
+                position: static;
+                display: flex;
+                justify-content: flex-end;
+                padding-top: 0;
+                background: transparent;
+                color: inherit;
+            }
+
+            .menu ul {
+                display: flex;
+                justify-content: flex-end;
+                padding: 0;
+            }
+
+            .menu ul li {
+                padding: 0 1rem;
+            }
+
+            .menu-icon {
+                display: none; /* Hide hamburger on desktop */
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Hamburger Menu Icon -->
     <div class="menu-icon" id="menu-icon">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
     </div>
 
+    <!-- Sidebar Menu -->
     <div id="menu" class="menu">
         <ul>
             <li><a href="#about">About Us</a></li>
@@ -130,141 +143,40 @@
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
-   <header>
+
+    <!-- Header -->
+    <header>
         <h1>Welcome to Ecoquicksupp</h1>
         <p>Your one-stop solution for support and services.</p>
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Accounting Image">
     </header>
 
+    <!-- About Section -->
     <section id="about">
         <h2>About Us</h2>
-        <p>Ecoquicksupp is a dedicated team of professionals who aim to empower online sellers. 
-        With years of experience in the e-commerce and logistics domain, we offer streamlined 
-        support systems that help sellers focus on growing their business.</p>
-        <p>Our mission is to simplify the seller journey by offering reliable guidance, 
-        technical support, and transparent job assistance.</p>
+        <p>Ecoquicksupp is a dedicated team of professionals...</p>
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Us Image">
     </section>
 
+    <!-- How It Works Section -->
     <section id="how-it-works">
         <h2>How It Works</h2>
-        <p>We offer a step-by-step guide for sellers to access and utilize our services effectively.</p>
+        <p>We offer a step-by-step guide for sellers...</p>
         <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="How It Works Image">
     </section>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>We offer tailored services for every stage of your selling journey:</p>
-        <ul>
-            <li><strong>Account Setup:</strong> Help registering on Amazon, Flipkart, etc.</li>
-            <li><strong>Cataloging:</strong> Professional product listings with SEO.</li>
-            <li><strong>Support & Training:</strong> Dedicated support via chat and webinars.</li>
-            <li><strong>Job Alerts:</strong> Legit job postings and scam reporting.</li>
-        </ul>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Services Image">
-    </section>
-
-    <section id="offers">
-        <h2>Special Offers</h2>
-        <p>Explore our seasonal and limited-time offers to enhance your experience:</p>
-        <ul>
-            <li>🎁 Free consultation for new sellers (valid till June 30, 2025)</li>
-            <li>📦 20% off on first-time service sign-ups</li>
-            <li>💬 Free chatbot setup for websites</li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form" action="https://formspree.io/f/yourformid" method="POST">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <div id="thank-you-message" style="display:none;">
-            <h3>Thank you for contacting us!</h3>
-        </div>
-    </section>
-
-    <section id="jobs">
-        <h2>Job Opportunities</h2>
-        <p>Explore job opportunities from trusted job portals. Be cautious of fake job offers that ask for money.</p>
-        <ul>
-            <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
-        </ul>
-
-        <div id="job-report-form">
-            <h3>Report Fake Jobs</h3>
-            <form action="https://formspree.io/f/yourformid" method="POST">
-                <label for="job-title">Job Title</label>
-                <input type="text" id="job-title" name="job-title" required>
-
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" required>
-
-                <label for="job-link">Job Link</label>
-                <input type="url" id="job-link" name="job-link" required>
-
-                <button type="submit">Report</button>
-            </form>
-        </div>
-    </section>
-
-    <div id="chat-widget">
-        <h3>Chat with Us</h3>
-        <div id="chat-box"></div>
-    </div>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Seller Support. All rights reserved.</p>
     </footer>
 
-    <!-- Tawk.to Chat Widget -->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        // Hamburger Menu Toggle
+        $('#menu-icon').click(function () {
+            $('#menu').toggleClass('active');
+        });
     </script>
-   <body>
-    <!-- Hamburger Icon (Visible only on mobile) -->
-    <div class="menu-icon" id="menu-icon">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-    </div>
-
-    <!-- Sidebar Menu (Hidden on mobile by default) -->
-    <div id="menu" class="menu">
-        <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#offers">Offers</a></li>
-            <li><a href="#jobs">Jobs</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-    </div>
-
-    <!-- Header and other content follow -->
-    <header>
-        <!-- Content of header -->
-    </header>
 </body>
+
 </html>
