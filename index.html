@@ -211,23 +211,28 @@
       <li>💬 Free chatbot setup</li>
     </ul>
   </section>
-<section id="contact">
+
+  <section id="contact">
     <h2>Contact Us</h2>
-    <form
-  action="https://formspree.io/f/xqaqpyjv"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+    <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
+      <label>
+        Your Name:
+        <input type="text" name="name" required placeholder="Enter your name">
+      </label>
+      <label>
+        Mobile Number:
+        <input type="tel" name="mobile" required placeholder="Enter your mobile number">
+      </label>
+      <label>
+        Your Email:
+        <input type="email" name="email" required placeholder="Enter your email">
+      </label>
+      <label>
+        Your Message:
+        <textarea name="message" required placeholder="Enter your message"></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
     <div id="thank-you-message" style="display:none;">Thanks for contacting us!</div>
   </section>
 
@@ -237,31 +242,40 @@
     <ul>
       <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
     </ul>
-</section>
+  </section>
 
   <footer>
     <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
   </footer>
 
-  <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+  <!-- Tawk.to Script -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
 
+  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Custom Script -->
   <script>
     // Hamburger toggle
     $('#menu-icon').click(function () {
       $('#menu').toggleClass('active');
+    });
+
+    // Close menu on link click (mobile)
+    $('.menu a').click(function () {
+      if ($(window).width() < 768) {
+        $('#menu').removeClass('active');
+      }
     });
 
     // Contact form handler
