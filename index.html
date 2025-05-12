@@ -152,7 +152,36 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
-  </style>
+    #news-trends {
+  background-color: #f0f8ff;
+  border-left: 5px solid #005eb8;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#news-trends h2 {
+  color: #005eb8;
+  margin-bottom: 1rem;
+}
+
+#news-trends ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#news-trends li {
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+#news-trends a {
+  color: #005eb8;
+  text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
@@ -237,7 +266,7 @@
 
   <section id="jobs">
     <h2>Job Opportunities</h2>
-    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert</p>
+    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert!</p>
     <p>Explore opportunities from trusted portals.</p>
     <ul>
       <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
@@ -246,11 +275,10 @@
   <section id="news-trends">
   <h2>📰 News & Trends</h2>
   <ul id="news-list">
-    <li>Loading latest updates...</li>
+    <li>Loading latest news from trusted sources...</li>
   </ul>
 </section>
-
-  <footer>
+<footer>
     <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
   </footer>
 
@@ -300,32 +328,41 @@
     });
   </script>
   
-  <script>
-  async function loadNews() {
+ <script>
+  async function loadMultipleNews() {
     const proxy = "https://api.rss2json.com/v1/api.json?rss_url=";
-    const feedUrl = "https://www.aboutamazon.com/news/retail/rss"; // You can change this to other trusted sources
+    const feeds = [
+      { name: "Amazon", url: "https://www.aboutamazon.com/news/retail/rss" },
+      { name: "Shopify", url: "https://www.shopify.com/blog/rss" },
+      { name: "Economic Times", url: "https://economictimes.indiatimes.com/small-biz/sme-sector/rssfeeds/5575604.cms" }
+    ];
 
-    try {
-      const response = await fetch(proxy + encodeURIComponent(feedUrl));
-      const data = await response.json();
+    const newsList = document.getElementById("news-list");
+    newsList.innerHTML = "";
 
-      const newsList = document.getElementById("news-list");
-      newsList.innerHTML = "";
+    for (const feed of feeds) {
+      try {
+        const response = await fetch(proxy + encodeURIComponent(feed.url));
+        const data = await response.json();
 
-      data.items.slice(0, 3).forEach(item => {
+        data.items.slice(0, 2).forEach(item => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <strong>[${feed.name}] ${item.title}</strong><br>
+            <a href="${item.link}" target="_blank">Read more</a>
+          `;
+          newsList.appendChild(li);
+        });
+      } catch (error) {
+        console.error(`Failed to load ${feed.name} news`, error);
         const li = document.createElement("li");
-        li.innerHTML = `
-          <strong>${item.title}</strong><br>
-          <a href="${item.link}" target="_blank">Read more</a>
-        `;
+        li.textContent = `Couldn't load ${feed.name} news.`;
         newsList.appendChild(li);
-      });
-    } catch (err) {
-      document.getElementById("news-list").innerHTML = "<li>Unable to load news at the moment.</li>";
-      console.error("News loading error:", err);
+      }
     }
   }
-loadNews();
+
+  loadMultipleNews();
 </script>
 
 </body>
