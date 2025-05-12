@@ -263,31 +263,25 @@
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
+    <body>
+    <!-- Hamburger Menu Icon -->
+    <div class="menu-icon" id="menu-icon">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+    </div>
 
-    <script>
-        // Hamburger Toggle
-        $('#menu-icon').click(function () {
-            $('#menu').toggleClass('active');
-        });
-
-        // Form Submission
-        $('#contact-form').submit(function (e) {
-            e.preventDefault();
-            var form = $(this);
-            $.ajax({
-                url: form.attr('action'),
-                method: form.attr('method'),
-                data: form.serialize(),
-                success: function () {
-                    $('#contact-form').hide();
-                    $('#thank-you-message').show();
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 3000);
-                }
-            });
-        });
-    </script>
+    <!-- Sliding Menu -->
+    <div id="menu" class="menu">
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#offers">Offers</a></li>
+            <li><a href="#jobs">Jobs</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </div>
+<!-- Rest of your content (header, sections, footer) -->
 </body>
-
 </html>
