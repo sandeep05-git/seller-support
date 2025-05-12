@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Seller Support</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@formspree/form@5.0.0"></script>
     <style>
         body {
             margin: 0;
@@ -29,7 +27,7 @@
         }
 
         header img {
-            max-width: 100%;
+            max-width: 500px;
             height: auto;
             margin-top: 1rem;
             border-radius: 12px;
@@ -37,10 +35,11 @@
         }
 
         section img {
-            max-width: 100%;
+            max-width: 500px;
             height: auto;
             margin-top: 1rem;
             border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         form {
@@ -144,9 +143,12 @@
 
     <div id="menu" class="menu">
         <ul>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#offers">Offers</a></li>
             <li><a href="#jobs">Jobs</a></li>
+            <li><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
 
@@ -158,14 +160,40 @@
 
     <section id="about">
         <h2>About Us</h2>
-        <p>We are dedicated to providing support for sellers. Our services are designed to help you succeed in your business.</p>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="Brooke Cagle Image">
+        <p>Ecoquicksupp is a dedicated team of professionals who aim to empower online sellers. 
+        With years of experience in the e-commerce and logistics domain, we offer streamlined 
+        support systems that help sellers focus on growing their business.</p>
+        <p>Our mission is to simplify the seller journey by offering reliable guidance, 
+        technical support, and transparent job assistance.</p>
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Us Image">
     </section>
 
     <section id="how-it-works">
         <h2>How It Works</h2>
         <p>We offer a step-by-step guide for sellers to access and utilize our services effectively.</p>
-       <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Jonas Jacobsson Image">
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="How It Works Image">
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>We offer tailored services for every stage of your selling journey:</p>
+        <ul>
+            <li><strong>Account Setup:</strong> Help registering on Amazon, Flipkart, etc.</li>
+            <li><strong>Cataloging:</strong> Professional product listings with SEO.</li>
+            <li><strong>Support & Training:</strong> Dedicated support via chat and webinars.</li>
+            <li><strong>Job Alerts:</strong> Legit job postings and scam reporting.</li>
+        </ul>
+        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Services Image">
+    </section>
+
+    <section id="offers">
+        <h2>Special Offers</h2>
+        <p>Explore our seasonal and limited-time offers to enhance your experience:</p>
+        <ul>
+            <li>🎁 Free consultation for new sellers (valid till June 30, 2025)</li>
+            <li>📦 20% off on first-time service sign-ups</li>
+            <li>💬 Free chatbot setup for websites</li>
+        </ul>
     </section>
 
     <section id="contact">
@@ -178,10 +206,9 @@
             <input type="email" id="email" name="email" required>
 
             <label for="phone">Phone Number</label>
-<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
 
-                <option value="service">Service</option>
-<label for="message">Message</label>
+            <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
 
             <button type="submit">Submit</button>
@@ -192,15 +219,9 @@
         </div>
     </section>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>We offer a range of services tailored to the needs of online sellers.</p>
-        <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Myriam Jessier Image">
-    </section>
-
     <section id="jobs">
         <h2>Job Opportunities</h2>
-        <p>Explore job opportunities from trusted job portals. Please be aware of scam job offers that ask for money.</p>
+        <p>Explore job opportunities from trusted job portals. Be cautious of fake job offers that ask for money.</p>
         <ul>
             <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
         </ul>
@@ -231,7 +252,7 @@
         <p>&copy; 2025 Seller Support. All rights reserved.</p>
     </footer>
 
-    <!-- Tawk.to Chat Widget Code -->
+    <!-- Tawk.to Chat Widget -->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
         (function () {
@@ -245,19 +266,12 @@
     </script>
 
     <script>
-        // Hamburger Menu Toggle
+        // Hamburger Toggle
         $('#menu-icon').click(function () {
             $('#menu').toggleClass('active');
         });
 
-        $('#platform').change(function () {
-            if ($(this).val() == 'other') {
-                $('#other-option').show();
-            } else {
-                $('#other-option').hide();
-            }
-        });
-
+        // Form Submission
         $('#contact-form').submit(function (e) {
             e.preventDefault();
             var form = $(this);
