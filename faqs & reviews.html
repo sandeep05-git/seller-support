@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FAQs & Visitor Reviews</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    .question {
+      font-weight: bold;
+      cursor: pointer;
+      background: #3498db;
+      color: white;
+      padding: 10px;
+      border-radius: 4px;
+      user-select: none;
+    }
+    .answer {
+      padding: 10px 15px;
+      background: #eaf2f8;
+      border-radius: 0 0 4px 4px;
+      display: none;
+      margin-bottom: 10px;
+    }
+    /* Review Form */
+    form {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 6px #ccc;
+    }
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    form button:hover {
+      background: #2980b9;
+    }
+    .thankyou-msg {
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Frequently Asked Questions (FAQs)</h2>
+
+  <div class="faq-item">
+    <div class="question">Q1: How do I create a product listing?</div>
+    <div class="answer">To create a product listing, log in to your seller dashboard, click on "Add Product," fill in the details like title, description, price, and images, then submit for approval.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="question">Q2: How do I manage returns?</div>
+    <div class="answer">Returns can be managed from the "Orders" section. Select the returned order and follow the instructions to approve or reject the return request.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="question">Q3: How long does it take to get paid?</div>
+    <div class="answer">Payments are usually processed within 7-10 business days after the order is completed and confirmed.</div>
+  </div>
+
+  <h2>Leave Your Review</h2>
+
+  <form id="reviewForm">
+    <label for="name">Your Name *</label>
+    <input type="text" id="name" name="name" required placeholder="Enter your name" />
+
+    <label for="email">Your Email *</label>
+    <input type="email" id="email" name="email" required placeholder="Enter your email" />
+
+    <label for="review">Your Review *</label>
+    <textarea id="review" name="review" rows="4" required placeholder="Write your review"></textarea>
+
+    <button type="submit">Submit Review</button>
+    <div id="thankyouMessage" class="thankyou-msg" style="display:none;">
+      Thanks for your review! We appreciate your feedback.
+    </div>
+  </form>
+
+  <script>
+    // Toggle FAQ answers on question click
+    document.querySelectorAll('.question').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+
+    // Simple form submit handler (no backend, just front-end thank you)
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Normally here you would send the data to a server or email service
+      // For now just show thank you message and reset form
+      this.reset();
+      document.getElementById('thankyouMessage').style.display = 'block';
+
+      setTimeout(() => {
+        document.getElementById('thankyouMessage').style.display = 'none';
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>
