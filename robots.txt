@@ -1,0 +1,13 @@
+# robots.txt for ecoquicksupp.com
+
+User-agent: *
+Disallow: /admin/
+Disallow: /config/
+Disallow: /private/
+Disallow: /scripts/
+
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+Sitemap: https://ecoquicksupp.com/sitemap.xml
