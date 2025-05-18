@@ -1,70 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ecoquicksupp - Seller Assistance</title>
-  <meta name="description" content="Expert support for online sellers: Instamart, Blinkit, Amazon, Flipkart, and more. Get setup, cataloging, SEO listings & job guidance."/>
-  <meta name="keywords" content="Seller support, Instamart help, Blinkit seller, Amazon listing, Flipkart support, online seller help"/>
-  <meta name="author" content="Ecoquicksupp"/>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ecoquicksupp - Expert Online Seller Assistance">
-  <meta property="og:description" content="From account setup to cataloging, we help sellers grow on Amazon, Flipkart, Meesho & more.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg">
-  <meta property="og:url" content="https://yourdomain.com">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ecoquicksupp - Online Seller Help">
-  <meta name="twitter:description" content="Seller support services for all major platforms. Get started today!">
-
-  <!-- Fonts & GSAP -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-light: #f9f9f9;
-      --bg-dark: #121212;
-      --text-light: #333;
-      --text-dark: #eee;
-      --primary: #005eb8;
-    }
-
+    /* Reset & Base */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      transition: background 0.3s, color 0.3s;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
     }
 
-    body.dark-mode {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    header, section, footer {
-      padding: 2rem;
+    header,
+    section,
+    footer {
+      padding: 2rem 1rem;
       text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
+    /* Header */
     header {
-      background-color: var(--primary);
+      background-color: #005eb8;
       color: white;
+      border-radius: 0 0 10px 10px;
     }
 
-    .dark-mode header {
-      background-color: #003f7a;
-    }
-
-    img {
+    header img {
       max-width: 100%;
+      height: auto;
       border-radius: 10px;
+      margin-top: 1rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
+    /* Navigation Menu */
     .menu-icon {
       position: fixed;
       top: 1rem;
@@ -82,7 +61,12 @@
       border-radius: 2px;
     }
 
-    .menu {
+    .menu-icon:focus {
+      outline: 2px solid #005eb8;
+      outline-offset: 2px;
+    }
+
+    nav.menu {
       position: fixed;
       top: 0;
       left: -250px;
@@ -95,146 +79,213 @@
       z-index: 1000;
     }
 
-    .menu.active {
+    nav.menu.active {
       left: 0;
     }
 
-    .menu ul {
+    nav.menu ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
-    .menu ul li {
+    nav.menu ul li {
       padding: 1rem;
       text-align: center;
       border-bottom: 1px solid #444;
     }
 
-    .menu ul li a {
+    nav.menu ul li a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
+      display: block;
     }
 
+    nav.menu ul li a:hover,
+    nav.menu ul li a:focus {
+      color: #3498db;
+      outline: none;
+    }
+
+    /* Desktop Navigation */
+    @media (min-width: 769px) {
+      .menu-icon {
+        display: none;
+      }
+
+      nav.menu {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      nav.menu ul {
+        display: flex;
+        gap: 1rem;
+      }
+
+      nav.menu ul li {
+        border: none;
+        padding: 0;
+      }
+    }
+
+    /* Mobile Navigation */
     @media (max-width: 768px) {
       .menu-icon {
         display: block;
       }
     }
 
-    @media (min-width: 769px) {
-      .menu {
-        display: flex;
-        justify-content: flex-end;
-        position: static;
-        background: transparent;
-        color: inherit;
-        padding: 0;
-      }
-
-      .menu ul {
-        display: flex;
-      }
-
-      .menu ul li {
-        border: none;
-        padding: 0 1rem;
-      }
-
-      .menu-icon {
-        display: none;
-      }
+    /* Sections */
+    section h2 {
+      margin-bottom: 1rem;
+      color: #005eb8;
     }
 
+    section ul {
+      list-style: none;
+      padding-left: 0;
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    section ul li {
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    section ul li strong {
+      color: #005eb8;
+    }
+
+    section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 1rem;
+    }
+
+    /* Contact Form */
     form {
       max-width: 600px;
       margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       background: #fff;
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .dark-mode form {
-      background-color: #1f1f1f;
+    label {
+      font-weight: 600;
+      text-align: left;
     }
 
-    input, textarea, button {
+    input,
+    textarea,
+    button {
       padding: 0.75rem;
-      border-radius: 8px;
       border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
       width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
     }
 
     button {
-      background-color: var(--primary);
+      background-color: #005eb8;
       color: white;
-      border: none;
       cursor: pointer;
+      border: none;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
     }
 
-    button:hover {
+    button:hover,
+    button:focus {
       background-color: #004a94;
+      outline: none;
     }
 
     #thank-you-message {
+      margin-top: 1rem;
       color: green;
       font-weight: bold;
-      margin-top: 1rem;
+      text-align: center;
     }
 
+    /* Footer */
     footer {
       background-color: #eee;
       padding: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 3rem;
+      border-top: 1px solid #ccc;
     }
 
-    .dark-mode footer {
-      background-color: #1a1a1a;
-    }
-
+    /* News & Trends */
     #news-trends {
       background-color: #f0f8ff;
-      border-left: 5px solid var(--primary);
+      border-left: 5px solid #005eb8;
       padding: 1.5rem;
       margin: 2rem auto;
       max-width: 800px;
       border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: left;
     }
 
     #news-trends h2 {
-      color: var(--primary);
+      color: #005eb8;
+      margin-bottom: 1rem;
     }
 
-    #darkToggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1002;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
+    #news-trends ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
     }
 
-    .dark-mode #darkToggle {
-      background: #333;
-      color: #eee;
-      border: 1px solid #666;
+    #news-trends li {
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+
+    #news-trends a {
+      color: #005eb8;
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <button id="darkToggle">Toggle Theme</button>
-
-  <!-- Navigation -->
-  <div class="menu-icon" id="menu-icon">
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" role="button" tabindex="0">
     <div class="menu-line"></div>
     <div class="menu-line"></div>
     <div class="menu-line"></div>
   </div>
-  <nav class="menu" id="menu">
+
+  <!-- Navigation -->
+  <nav class="menu" id="menu" aria-label="Main navigation">
     <ul>
       <li><a href="blogpages/index.html">Blog</a></li>
       <li><a href="#about">About Us</a></li>
@@ -242,17 +293,110 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#offers">Offers</a></li>
       <li><a href="#contact">Contact Us</a></li>
-      <li><a href="faqs%20%26%20reviews.html">FAQs & Reviews</a></li>
-      <li><a href="news.html">📢 E-commerce News</a></li>
+      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
+      <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
     </ul>
   </nav>
 
-  <!-- Main Sections (cut for brevity – keep your existing content here) -->
-  <!-- Use <section class="fade-in"> on each section for GSAP to animate -->
+  <!-- Header Section -->
+  <header>
+    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
+    <p>
+      At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed.
+      Whether you're just starting out or looking to scale, our team provides end-to-end support—from
+      account creation to professional cataloging and SEO-friendly product listings.
+    </p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg"
+      alt="Seller working on laptop" width="400" />
+  </header>
 
-  <!-- Contact Form, Footer, etc. remain unchanged -->
+  <!-- About Section -->
+  <section id="about">
+    <h2>🚀 What We Offer</h2>
+    <p>We are a professional team offering services to empower online sellers.</p>
+    <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg"
+      alt="Team working together" width="400" />
+  </section>
 
-  <!-- Chat Support (Tawk.to) -->
+  <!-- How It Works Section -->
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <p>We guide sellers step-by-step in leveraging our services efficiently.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg"
+      alt="Workflow diagram" width="400" />
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li><strong>Account Setup</strong> - We assist with seller registration and account verification on platforms like Amazon, Flipkart, Meesho & More</li>
+      <li><strong>Cataloging</strong> - Creates detailed, optimized product listings that boost visibility and sales</li>
+      <li><strong>Image Editing & Enhancement</strong> - High-quality visuals tailored to platform standards.</li>
+      <li><strong>Inventory Management Support</strong> - Keep your listings accurate and updated to avoid stock issues and penalties.</li>
+      <li><strong>Listing Optimization</strong> - Improve product rankings using keyword-rich titles, bullet points, and descriptions.</li>
+      <li><strong>Support</strong> - Chat, email & training</li>
+    </ul>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg"
+      alt="Service examples" width="400" />
+  </section>
+
+  <!-- Offers Section -->
+  <section id="offers">
+    <h2>Special Offers</h2>
+    <ul>
+      <li>✅ Fast and reliable support for sellers</li>
+      <li>✅ Affordable pricing for startups and growing businesses</li>
+      <li>✅ Experienced in handling multiple e-commerce platforms</li>
+      <li>🎁 Free consultation</li>
+      <li>💬 Free chat</li>
+    </ul>
+
+    <h2>📞 Get Started Today</h2>
+    <p>
+      Let us handle the technical work so you can focus on growing your business.
+      <strong>Contact Ecoquicksupp</strong> now for a free consultation or to learn more about our services.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST" aria-label="Contact form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name" />
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" name="mobile" required placeholder="Enter your mobile number" />
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email" />
+
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+    <div id="thank-you-message" role="alert" style="display:none;">Thanks for contacting us!</div>
+  </section>
+
+  <!-- Jobs Section -->
+  <section id="jobs">
+    <h2>Job Opportunities</h2>
+    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert!</p>
+    <p>Explore opportunities from trusted portals.</p>
+    <ul>
+      <li><a href="https://www.naukri.com" target="_blank" rel="noopener noreferrer">Naukri.com</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
+  </footer>
+
+  <!-- Tawk.to Live Chat Widget -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
@@ -265,44 +409,48 @@
     })();
   </script>
 
-  <!-- jQuery and Custom Scripts -->
+  <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // Hamburger toggle
-    $('#menu-icon').click(() => $('#menu').toggleClass('active'));
-    $('.menu a').click(() => $(window).width() < 768 && $('#menu').removeClass('active'));
 
-    // Contact form
-    $('#contact-form').submit(function (e) {
-      e.preventDefault();
-      $.ajax({
-        url: $(this).attr('action'),
-        method: $(this).attr('method'),
-        data: $(this).serialize(),
-        success: function () {
-          $('#contact-form').hide();
-          $('#thank-you-message').show();
-          setTimeout(() => window.location.reload(), 4000);
+  <!-- Custom JavaScript -->
+  <script>
+    // Hamburger menu toggle
+    $(document).ready(function () {
+      $('#menu-icon').click(function () {
+        $('#menu').toggleClass('active');
+      });
+
+      // Also toggle menu on keyboard enter or space for accessibility
+      $('#menu-icon').keypress(function (e) {
+        if (e.which === 13 || e.which === 32) {
+          $('#menu').toggleClass('active');
+          e.preventDefault();
         }
       });
-    });
 
-    // Dark mode toggle
-    const toggleBtn = document.getElementById('darkToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('dark', document.body.classList.contains('dark-mode'));
-    });
-    if (localStorage.getItem('dark') === 'true') document.body.classList.add('dark-mode');
-
-    // GSAP animation
-    gsap.from("section", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.3,
-      ease: "power2.out"
+      // Contact form AJAX submission
+      $('#contact-form').submit(function (e) {
+        e.preventDefault();
+        var $form = $(this);
+        $.ajax({
+          url: $form.attr('action'),
+          method: $form.attr('method'),
+          data: $form.serialize(),
+          dataType: 'json',
+          success: function () {
+            $('#thank-you-message').show();
+            $form.trigger('reset');
+            setTimeout(function () {
+              $('#thank-you-message').fadeOut();
+            }, 4000);
+          },
+          error: function () {
+            alert('Oops! Something went wrong. Please try again.');
+          }
+        });
+      });
     });
   </script>
 </body>
+
 </html>
