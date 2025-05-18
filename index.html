@@ -22,7 +22,7 @@
     header,
     section,
     footer {
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1rem 1rem; /* Reduced bottom padding */
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
@@ -153,11 +153,11 @@
       list-style: none;
       padding-left: 0;
       max-width: 600px;
-      margin: 0 auto 1.5rem auto;
+      margin: 0 auto 1rem auto; /* less bottom margin */
     }
 
     section ul li {
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem; /* reduced spacing */
       line-height: 1.4;
       text-align: left;
     }
@@ -233,170 +233,134 @@
 
     /* Footer */
     footer {
-      background-color: #eee;
       padding: 1rem;
-      font-size: 0.9rem;
       text-align: center;
-      margin-top: 3rem;
-      border-top: 1px solid #ccc;
-    }
-
-    /* News & Trends */
-    #news-trends {
-      background-color: #f0f8ff;
-      border-left: 5px solid #005eb8;
-      padding: 1.5rem;
-      margin: 2rem auto;
-      max-width: 800px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      text-align: left;
-    }
-
-    #news-trends h2 {
-      color: #005eb8;
-      margin-bottom: 1rem;
-    }
-
-    #news-trends ul {
-      list-style-type: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    #news-trends li {
-      margin-bottom: 1.2rem;
-      line-height: 1.4;
-    }
-
-    #news-trends a {
-      color: #005eb8;
-      text-decoration: underline;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 2rem;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
 
 <body>
-  <!-- Hamburger Menu Icon -->
-  <div class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" role="button" tabindex="0">
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
-  </div>
+  <header>
+    <h1>Ecoquicksupp - Seller Assistance</h1>
+    <p>Your support for quick, effective e-commerce growth</p>
+    <img src="https://ecoquicksupp.com/images/header-hero.jpg" alt="Ecoquicksupp Hero Image" />
+  </header>
 
-  <!-- Navigation -->
-  <nav class="menu" id="menu" aria-label="Main navigation">
+  <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu" tabindex="0">
+    <span class="menu-line"></span>
+    <span class="menu-line"></span>
+    <span class="menu-line"></span>
+  </button>
+
+  <nav class="menu" id="menu" aria-label="Primary navigation">
     <ul>
-      <li><a href="blogpages/index.html">Blog</a></li>
-      <li><a href="#about">About Us</a></li>
+      <li><a href="blog2.post">Blog</a></li>
+      <li><a href="#about-us">About Us</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#offers">Offers</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
-      <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
+      <li><a href="#contact-us">Contact Us</a></li>
+      <li><a href="#faqs-reviews">FAQs & Reviews</a></li>
+      <li><a href="#news">News</a></li>
     </ul>
   </nav>
 
-  <!-- Header Section -->
-  <header>
-    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
-    <p>
-      At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed.
-      Whether you're just starting out or looking to scale, our team provides end-to-end support—from
-      account creation to professional cataloging and SEO-friendly product listings.
-    </p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg"
-      alt="Seller working on laptop" width="400" />
-  </header>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>🚀 What We Offer</h2>
-    <p>We are a professional team offering services to empower online sellers.</p>
-    <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg"
-      alt="Team working together" width="400" />
+  <section id="about-us">
+    <h2>About Us</h2>
+    <p>We help new sellers onboard and grow their online business...</p>
+    <img src="https://ecoquicksupp.com/images/about-us.jpg" alt="About Us Image" />
   </section>
 
-  <!-- How It Works Section -->
   <section id="how-it-works">
     <h2>How It Works</h2>
-    <p>We guide sellers step-by-step in leveraging our services efficiently.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg"
-      alt="Workflow diagram" width="400" />
+    <ul>
+      <li>Step 1: Registration</li>
+      <li>Step 2: Listing Assistance</li>
+      <li>Step 3: Marketing Support</li>
+    </ul>
+    <img src="https://ecoquicksupp.com/images/how-it-works.jpg" alt="How It Works Image" />
   </section>
 
-  <!-- Services Section -->
   <section id="services">
-    <h2>Our Services</h2>
+    <h2>Services</h2>
     <ul>
-      <li><strong>Account Setup</strong> - We assist with seller registration and account verification on platforms like Amazon, Flipkart, Meesho & More</li>
-      <li><strong>Cataloging</strong> - Creates detailed, optimized product listings that boost visibility and sales</li>
-      <li><strong>Image Editing & Enhancement</strong> - High-quality visuals tailored to platform standards.</li>
-      <li><strong>Inventory Management Support</strong> - Keep your listings accurate and updated to avoid stock issues and penalties.</li>
-      <li><strong>Listing Optimization</strong> - Improve product rankings using keyword-rich titles, bullet points, and descriptions.</li>
-      <li><strong>Support</strong> - Chat, email & training</li>
+      <li><strong>Product Listing:</strong> We help list your products professionally.</li>
+      <li><strong>Marketing:</strong> Promote your store to reach more customers.</li>
+      <li><strong>Support:</strong> Dedicated team to assist your queries.</li>
     </ul>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg"
-      alt="Service examples" width="400" />
+    <img src="https://ecoquicksupp.com/images/services.jpg" alt="Services Image" />
   </section>
 
-  <!-- Offers Section -->
   <section id="offers">
-    <h2>Special Offers</h2>
-    <ul>
-      <li>✅ Fast and reliable support for sellers</li>
-      <li>✅ Affordable pricing for startups and growing businesses</li>
-      <li>✅ Experienced in handling multiple e-commerce platforms</li>
-      <li>🎁 Free consultation</li>
-      <li>💬 Free chat</li>
-    </ul>
-
-    <h2>📞 Get Started Today</h2>
-    <p>
-      Let us handle the technical work so you can focus on growing your business.
-      <strong>Contact Ecoquicksupp</strong> now for a free consultation or to learn more about our services.
-    </p>
+    <h2>Offers</h2>
+    <p>Special offers for new sellers this season!</p>
+    <img src="https://ecoquicksupp.com/images/offers.jpg" alt="Offers Image" />
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
+  <section id="contact-us">
     <h2>Contact Us</h2>
-    <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST" aria-label="Contact form">
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required placeholder="Enter your name" />
+    <form id="contact-form" action="https://formspree.io/f/mzbkwdzo" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
 
-      <label for="mobile">Mobile Number:</label>
-      <input type="tel" id="mobile" name="mobile" required placeholder="Enter your mobile number" />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="_replyto" required />
 
-      <label for="email">Your Email:</label>
-      <input type="email" id="email" name="email" required placeholder="Enter your email" />
-
-      <label for="message">Your Message:</label>
-      <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
 
       <button type="submit">Send</button>
+      <p id="thank-you-message" style="display:none;">Thank you for contacting us!</p>
     </form>
-    <div id="thank-you-message" role="alert" style="display:none;">Thanks for contacting us!</div>
   </section>
 
-  <!-- Jobs Section -->
-  <section id="jobs">
-    <h2>Job Opportunities</h2>
-    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert!</p>
-    <p>Explore opportunities from trusted portals.</p>
-    <ul>
-      <li><a href="https://www.naukri.com" target="_blank" rel="noopener noreferrer">Naukri.com</a></li>
-    </ul>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
+    <p>© 2025 Ecoquicksupp. All rights reserved.</p>
   </footer>
 
-  <!-- Tawk.to Live Chat Widget -->
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // Toggle menu on menu icon click
+    $('.menu-icon').click(function () {
+      $('#menu').toggleClass('active');
+      // Toggle aria-expanded for accessibility
+      const expanded = $(this).attr('aria-expanded') === 'true' ? 'false' : 'true';
+      $(this).attr('aria-expanded', expanded);
+    });
+
+    // Close menu when a navigation link is clicked
+    $('#menu ul li a').click(function () {
+      $('#menu').removeClass('active');
+      $('.menu-icon').attr('aria-expanded', 'false');
+    });
+
+    // Form submission with AJAX to Formspree
+    $('#contact-form').submit(function (event) {
+      event.preventDefault();
+      const form = $(this);
+      $.ajax({
+        url: form.attr('action'),
+        method: 'POST',
+        data: form.serialize(),
+        dataType: 'json',
+        success: function () {
+          $('#thank-you-message').show();
+          form[0].reset();
+        },
+        error: function () {
+          alert('Oops! There was a problem submitting your form.');
+        }
+      });
+    });
+  </script>
+
+  <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
@@ -409,57 +373,6 @@
     })();
   </script>
 
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Custom JavaScript -->
-  <script>
-    // Hamburger menu toggle
-    $(document).ready(function () {
-      $('#menu-icon').click(function () {
-        $('#menu').toggleClass('active');
-      });
-
-      // Also toggle menu on keyboard enter or space for accessibility
-      $('#menu-icon').keypress(function (e) {
-        if (e.which === 13 || e.which === 32) {
-          $('#menu').toggleClass('active');
-          e.preventDefault();
-        }
-      });
-
-      // Contact form AJAX submission
-      $('#contact-form').submit(function (e) {
-        e.preventDefault();
-        var $form = $(this);
-        $.ajax({
-          url: $form.attr('action'),
-          method: $form.attr('method'),
-          data: $form.serialize(),
-          dataType: 'json',
-          success: function () {
-            $('#thank-you-message').show();
-            $form.trigger('reset');
-            setTimeout(function () {
-              $('#thank-you-message').fadeOut();
-            }, 4000);
-          },
-          error: function () {
-            alert('Oops! Something went wrong. Please try again.');
-          }
-        });
-      });
-    });
-  </script>
-  
-  <script>
-  // Close navbar when a nav link is clicked
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-toggle').checked = false;
-    });
-  });
-</script>
-  
 </body>
+
 </html>
