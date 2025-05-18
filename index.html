@@ -451,6 +451,15 @@
       });
     });
   </script>
+  
+  <script>
+  // Close navbar when a nav link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav-toggle').checked = false;
+    });
+  });
+</script>
+  
 </body>
-
 </html>
