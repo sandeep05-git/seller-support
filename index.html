@@ -22,7 +22,7 @@
     header,
     section,
     footer {
-      padding: 2rem 1rem 1rem 1rem; /* Reduced bottom padding */
+      padding: 1.5rem 1rem; /* reduced padding for less space */
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
@@ -33,6 +33,8 @@
       background-color: #005eb8;
       color: white;
       border-radius: 0 0 10px 10px;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
 
     header img {
@@ -77,6 +79,7 @@
       padding-top: 60px;
       transition: left 0.3s ease;
       z-index: 1000;
+      overflow-y: auto;
     }
 
     nav.menu.active {
@@ -153,11 +156,11 @@
       list-style: none;
       padding-left: 0;
       max-width: 600px;
-      margin: 0 auto 1rem auto; /* less bottom margin */
+      margin: 0 auto 1rem auto;
     }
 
     section ul li {
-      margin-bottom: 0.6rem; /* reduced spacing */
+      margin-bottom: 0.8rem;
       line-height: 1.4;
       text-align: left;
     }
@@ -233,146 +236,212 @@
 
     /* Footer */
     footer {
+      background-color: #eee;
       padding: 1rem;
-      text-align: center;
       font-size: 0.9rem;
-      color: #666;
+      text-align: center;
       margin-top: 2rem;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #ccc;
+    }
+
+    /* News & Trends */
+    #news-trends {
+      background-color: #f0f8ff;
+      border-left: 5px solid #005eb8;
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    #news-trends h2 {
+      color: #005eb8;
+      margin-bottom: 1rem;
+    }
+
+    #news-trends ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    #news-trends li {
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+
+    #news-trends a {
+      color: #005eb8;
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Ecoquicksupp - Seller Assistance</h1>
-    <p>Your support for quick, effective e-commerce growth</p>
-    <img src="https://ecoquicksupp.com/images/header-hero.jpg" alt="Ecoquicksupp Hero Image" />
-  </header>
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" role="button" tabindex="0">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+  </div>
 
-  <button class="menu-icon" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu" tabindex="0">
-    <span class="menu-line"></span>
-    <span class="menu-line"></span>
-    <span class="menu-line"></span>
-  </button>
-
-  <nav class="menu" id="menu" aria-label="Primary navigation">
+  <!-- Navigation -->
+  <nav class="menu" id="menu" aria-label="Main navigation">
     <ul>
-      <li><a href="blog2.post">Blog</a></li>
-      <li><a href="#about-us">About Us</a></li>
+      <li><a href="blogpages/index.html">Blog</a></li>
+      <li><a href="#about">About Us</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#offers">Offers</a></li>
-      <li><a href="#contact-us">Contact Us</a></li>
-      <li><a href="#faqs-reviews">FAQs & Reviews</a></li>
-      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
+      <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
     </ul>
   </nav>
 
-  <section id="about-us">
-    <h2>About Us</h2>
-    <p>We help new sellers onboard and grow their online business...</p>
-    <img src="https://ecoquicksupp.com/images/about-us.jpg" alt="About Us Image" />
+  <!-- Header Section -->
+  <header>
+    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
+    <p>
+      At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed.
+      Whether you're just starting out or looking to scale, our team provides end-to-end support—from
+      account creation to professional cataloging and SEO-friendly product listings.
+    </p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg"
+      alt="Seller working on laptop" width="400" />
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>🚀 What We Offer</h2>
+    <p>We are a professional team offering services to empower online sellers.</p>
+    <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg"
+      alt="Team working together" width="400" />
   </section>
 
+  <!-- How It Works Section -->
   <section id="how-it-works">
     <h2>How It Works</h2>
-    <ul>
-      <li>Step 1: Registration</li>
-      <li>Step 2: Listing Assistance</li>
-      <li>Step 3: Marketing Support</li>
-    </ul>
-    <img src="https://ecoquicksupp.com/images/how-it-works.jpg" alt="How It Works Image" />
+    <p>We guide sellers step-by-step in leveraging our services efficiently.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg"
+      alt="Workflow diagram" width="400" />
   </section>
 
+  <!-- Services Section -->
   <section id="services">
-    <h2>Services</h2>
+    <h2>Our Services</h2>
     <ul>
-      <li><strong>Product Listing:</strong> We help list your products professionally.</li>
-      <li><strong>Marketing:</strong> Promote your store to reach more customers.</li>
-      <li><strong>Support:</strong> Dedicated team to assist your queries.</li>
+      <li><strong>Account Setup</strong> - We assist with seller registration and account verification on platforms like Amazon, Flipkart, Meesho & More</li>
+      <li><strong>Cataloging</strong> - Creates detailed, optimized product listings that boost visibility and sales</li>
+      <li><strong>Image Editing & Enhancement</strong> - Professional photo editing services for products</li>
+      <li><strong>SEO & Keyword Research</strong> - Ensure your listings get found with expert SEO strategies</li>
+      <li><strong>Order Management</strong> - Help you manage orders efficiently with backend support</li>
+      <li><strong>Customer Support</strong> - Dedicated assistance to handle queries and feedback professionally</li>
     </ul>
-    <img src="https://ecoquicksupp.com/images/services.jpg" alt="Services Image" />
   </section>
 
+  <!-- Offers Section -->
   <section id="offers">
-    <h2>Offers</h2>
-    <p>Special offers for new sellers this season!</p>
-    <img src="https://ecoquicksupp.com/images/offers.jpg" alt="Offers Image" />
+    <h2>Special Offers & Pricing</h2>
+    <p>Contact us to learn about our latest discounts and package deals.</p>
   </section>
 
-  <section id="contact-us">
+  <!-- News & Trends -->
+  <section id="news-trends">
+    <h2>📢 Quick Com & E-commerce News</h2>
+    <ul>
+      <li><a href="news.html#flipkart">Flipkart announces new seller-friendly policies</a></li>
+      <li><a href="news.html#amazon">Amazon expands support for small businesses</a></li>
+      <li><a href="news.html#myntra">Myntra launches new marketing tools for sellers</a></li>
+      <li><a href="news.html#instamart">Instamart partners with local vendors</a></li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
     <h2>Contact Us</h2>
-    <form id="contact-form" action="https://formspree.io/f/mzbkwdzo" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+    <form id="contact-form" aria-label="Contact form">
+      <label for="name">Name *</label>
+      <input id="name" name="name" type="text" required />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="_replyto" required />
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required />
 
-      <label for="message">Message:</label>
+      <label for="message">Message *</label>
       <textarea id="message" name="message" required></textarea>
 
-      <button type="submit">Send</button>
-      <p id="thank-you-message" style="display:none;">Thank you for contacting us!</p>
+      <button type="submit">Send Message</button>
     </form>
+    <div id="thank-you-message" role="alert" aria-live="polite" style="display:none;"></div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Ecoquicksupp. All rights reserved.</p>
+    &copy; 2025 Ecoquicksupp. All rights reserved.
   </footer>
 
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script>
-    // Toggle menu on menu icon click
-    $('.menu-icon').click(function () {
-      $('#menu').toggleClass('active');
-      // Toggle aria-expanded for accessibility
-      const expanded = $(this).attr('aria-expanded') === 'true' ? 'false' : 'true';
-      $(this).attr('aria-expanded', expanded);
-    });
-
-    // Close menu when a navigation link is clicked
-    $('#menu ul li a').click(function () {
-      $('#menu').removeClass('active');
-      $('.menu-icon').attr('aria-expanded', 'false');
-    });
-
-    // Form submission with AJAX to Formspree
-    $('#contact-form').submit(function (event) {
-      event.preventDefault();
-      const form = $(this);
-      $.ajax({
-        url: form.attr('action'),
-        method: 'POST',
-        data: form.serialize(),
-        dataType: 'json',
-        success: function () {
-          $('#thank-you-message').show();
-          form[0].reset();
-        },
-        error: function () {
-          alert('Oops! There was a problem submitting your form.');
-        }
-      });
-    });
-  </script>
-
-  <!-- Tawk.to Live Chat -->
+  <!-- Tawk.to Chat Widget -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = 'https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+      s1.src = 'https://embed.tawk.to/your_tawk_property_id/default';
       s1.charset = 'UTF-8';
       s1.setAttribute('crossorigin', '*');
       s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
 
+  <!-- JavaScript for Menu & Form -->
+  <script>
+    // Mobile Menu Toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const menu = document.getElementById('menu');
+
+    menuIcon.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+
+    // Close menu when a nav link is clicked (mobile)
+    document.querySelectorAll('nav.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+      });
+    });
+
+    // Accessibility: Allow keyboard toggle
+    menuIcon.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menu.classList.toggle('active');
+      }
+    });
+
+    // Contact form submission with validation and thank you message
+    const form = document.getElementById('contact-form');
+    const thankYou = document.getElementById('thank-you-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Simple validation check
+      if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // Here you can add AJAX or backend integration for sending message
+      // For demo, we just show thank you message
+      thankYou.style.display = 'block';
+      thankYou.textContent = 'Thank you for contacting us! We will get back to you soon.';
+      form.reset();
+    });
+  </script>
 </body>
 
 </html>
