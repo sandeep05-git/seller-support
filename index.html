@@ -2,15 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ecoquicksupp - Seller Assistance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -19,22 +14,24 @@
     }
 
     header, section, footer {
-      padding: 3rem 1rem;
-      text-align: center;
+      padding: 1rem 1rem;  /* reduced padding for less space */
+      margin: 0 auto 1.5rem auto;  /* smaller bottom margin */
       max-width: 900px;
-      margin: auto;
+      text-align: center;
     }
 
     header {
       background-color: #005eb8;
       color: white;
+      padding: 1.5rem 1rem;
+      margin-bottom: 1.5rem;
     }
 
     img {
       max-width: 100%;
       height: auto;
       border-radius: 10px;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
@@ -56,82 +53,80 @@
     }
 
     .menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 200px;
-      height: 100%;
       background: #333;
       color: white;
       padding-top: 60px;
-      transition: left 0.3s ease;
       z-index: 1000;
-    }
-
-    .menu.active {
-      left: 0;
     }
 
     .menu ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .menu ul li {
-      padding: 1rem;
-      border-bottom: 1px solid #444;
+      border: none;
+      padding: 0.5rem 1rem;
+      text-align: center;
     }
 
     .menu ul li a {
       color: white;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: block;
+    }
+
+    .menu ul li a:hover,
+    .menu ul li a.active {
+      text-decoration: underline;
+      font-weight: 700;
+      color: #3498db;
     }
 
     @media (max-width: 768px) {
       .menu-icon {
         display: block;
       }
-    }
 
-    @media (min-width: 769px) {
       .menu {
-        display: flex;
-        justify-content: flex-end;
-        position: static;
-        background: transparent;
-        color: inherit;
-        padding: 0;
-        height: auto;
-        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 200px;
+        height: 100%;
+        padding-top: 60px;
+        transition: left 0.3s ease;
+      }
+
+      .menu.active {
+        left: 0;
       }
 
       .menu ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        gap: 0;
       }
 
       .menu ul li {
-        border: none;
-        padding: 0 1rem;
-      }
-
-      .menu-icon {
-        display: none;
+        padding: 1rem;
+        border-bottom: 1px solid #444;
       }
     }
 
     form {
       max-width: 600px;
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.8rem;
       background: #fff;
-      padding: 1.5rem;
+      padding: 1rem 1.5rem;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       text-align: left;
@@ -142,11 +137,13 @@
     }
 
     input, textarea, button {
-      padding: 0.75rem;
+      padding: 0.6rem;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 1rem;
       width: 100%;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
     }
 
     button {
@@ -155,6 +152,7 @@
       cursor: pointer;
       font-weight: 700;
       transition: background-color 0.3s ease;
+      margin-top: 0.5rem;
     }
 
     button:hover {
@@ -172,13 +170,16 @@
       background-color: #eee;
       padding: 1rem;
       font-size: 0.9rem;
+      text-align: center;
+      margin-top: 1.5rem;
     }
 
     #news-trends {
       background-color: #f0f8ff;
       border-left: 5px solid #005eb8;
-      padding: 1.5rem;
-      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 800px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
@@ -195,6 +196,7 @@
 
     #news-trends li {
       margin-bottom: 1rem;
+      line-height: 1.4;
     }
 
     #news-trends a {
@@ -211,7 +213,7 @@
     <div class="menu-line"></div>
   </div>
 
-  <nav class="menu" id="menu" role="navigation">
+  <nav class="menu" id="menu" role="navigation" aria-label="Main menu">
     <ul>
       <li><a href="blogpages/index.html">Blog</a></li>
       <li><a href="#about">About Us</a></li>
@@ -219,82 +221,108 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#offers">Offers</a></li>
       <li><a href="#contact">Contact Us</a></li>
-      <li><a href="faqs%20%26%20reviews.html">FAQs & Reviews</a></li>
+      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
       <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
     </ul>
   </nav>
 
   <header>
-    <h1>Expert Online Seller Services for Instamart, Blinket, Amazon, Flipkart & More</h1>
-    <p><strong>Ecoquicksupp</strong> helps new and existing sellers with account setup, cataloging, and SEO-optimized listings.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero Image" width="400"/>
+    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
+    <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed. Whether you're just starting out or looking to scale, our team provides end-to-end support—from account creation to professional cataloging and SEO-friendly product listings.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero Image" width="400" />
   </header>
 
   <section id="about">
     <h2>🚀 What We Offer</h2>
-    <p>We empower online sellers with expert support and guidance.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About" width="400"/>
+    <p>We are a professional team offering services to empower online sellers.</p>
+    <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Image" width="400" />
   </section>
 
   <section id="how-it-works">
     <h2>How It Works</h2>
-    <p>Step-by-step seller support to help you succeed.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Workflow" width="400"/>
+    <p>We guide sellers step-by-step in leveraging our services efficiently.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Workflow" width="400" />
   </section>
 
   <section id="services">
     <h2>Our Services</h2>
     <ul>
-      <li><strong>Account Setup:</strong> Registration help for platforms like Amazon, Flipkart, Meesho & more.</li>
-      <li><strong>Cataloging:</strong> SEO-friendly product listing creation.</li>
-      <li><strong>Image Editing:</strong> Platform-specific, high-quality images.</li>
-      <li><strong>Inventory Support:</strong> Accurate stock & penalty avoidance.</li>
-      <li><strong>Listing Optimization:</strong> Boost visibility with keywords.</li>
-      <li><strong>Support:</strong> Chat, email, and personal training.</li>
+      <li><strong>Account Setup</strong> - We assist with seller registration and account verification on platforms like Amazon, Flipkart, Meesho & More</li>
+      <li><strong>Cataloging</strong> - creates detailed, optimized product listings that boost visibility and sales</li>
+      <li><strong>Image Editing & Enhancement:</strong> High-quality visuals tailored to platform standards.</li>
+      <li><strong>Inventory Management Support:</strong> Keep your listings accurate and updated to avoid stock issues and penalties.</li>
+      <li><strong>Listing Optimization:</strong> Improve product rankings using keyword-rich titles, bullet points, and descriptions.</li>
+      <li><strong>Support</strong> - Chat, email & training</li>
     </ul>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Services" width="400"/>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Services Image" width="400" />
   </section>
 
   <section id="offers">
-    <h2>💡 Why Choose Ecoquicksupp?</h2>
+    <h2>Special Offers</h2>
     <ul>
-      <li>✅ Fast and reliable support</li>
-      <li>✅ Affordable for startups</li>
-      <li>✅ Multi-platform experience</li>
-      <li>🎁 Free consultation</li>
+      <h3>💡 Why Choose Ecoquicksupp?</h3>
+      <li>✅ Fast and reliable support for sellers</li>
+      <li>✅ Affordable pricing for startups and growing businesses</li>
+      <li>✅ Experienced in handling multiple e-commerce platforms</li>
+      <li>🎁 Free consultation </li>
       <li>💬 Free chat</li>
     </ul>
-    <p><strong>Contact us now</strong> and focus on growing your business while we handle the tech!</p>
+    <h3>📞 Get Started Today</h3>
+    <p>Let us handle the technical work so you can focus on growing your business. <strong>Contact Ecoquicksupp</strong> now for a free consultation or to learn more about our services.</p>
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
     <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
-      <label>Your Name: <input type="text" name="name" required></label>
-      <label>Mobile Number: <input type="tel" name="mobile" required></label>
-      <label>Email: <input type="email" name="email" required></label>
-      <label>Message: <textarea name="message" required></textarea></label>
-      <button type="submit">Send</button>
+      <label for="name">Name *</label>
+      <input id="name" name="name" type="text" required />
+
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Submit</button>
+      <div id="thank-you-message" role="alert" aria-live="polite"></div>
     </form>
-    <div id="thank-you-message" style="display:none;">Thanks for contacting us!</div>
   </section>
 
-  <section id="jobs">
-    <h2>Job Opportunities</h2>
-    <p>🚫 Don’t pay for jobs! Stay safe.</p>
-    <ul><li><a href="https://www.naukri.com" target="_blank" rel="noopener">Naukri.com</a></li></ul>
+  <section id="news-trends">
+    <h2>Quick Com & E-commerce News</h2>
+    <ul>
+      <li>
+        <a href="https://ecomhunt.com/blog/whats-new-on-instagram-shopping-in-2024" target="_blank" rel="noopener noreferrer">
+          📈 Instagram Shopping Updates 2024 — New features and tips.
+        </a>
+      </li>
+      <li>
+        <a href="https://sellercentral.amazon.in/gp/help/external/201074120" target="_blank" rel="noopener noreferrer">
+          🛒 Amazon Seller Central - New product listing policies effective now.
+        </a>
+      </li>
+      <li>
+        <a href="https://www.flipkart.com/sellers/blog" target="_blank" rel="noopener noreferrer">
+          🛍️ Flipkart Seller Tips - Boost your sales with these strategies.
+        </a>
+      </li>
+    </ul>
   </section>
 
   <footer>
-    <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
+    <p>© 2024 Ecoquicksupp. All rights reserved.</p>
+    <p>Contact us: +91 9876543210 | <a href="mailto:support@ecoquicksupp.com">support@ecoquicksupp.com</a></p>
   </footer>
 
-  <!-- Tawk.to Live Chat -->
+  <!-- Tawk.to chat widget - add only once -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
-      var s1 = document.createElement("script"),
-          s0 = document.getElementsByTagName("script")[0];
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
       s1.src = 'https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7fag';
       s1.charset = 'UTF-8';
@@ -303,48 +331,50 @@
     })();
   </script>
 
-  <!-- Menu Toggle + Smooth Scroll -->
   <script>
+    // Toggle mobile menu
     const menuIcon = document.getElementById('menu-icon');
     const menu = document.getElementById('menu');
-
     menuIcon.addEventListener('click', () => {
       menu.classList.toggle('active');
     });
 
-    // Close mobile menu and scroll to section
-    menu.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const section = document.getElementById(targetId);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
+    // Close menu on link click and page reload (no smooth scroll)
+    document.querySelectorAll('.menu ul li a').forEach(link => {
+      link.addEventListener('click', () => {
         menu.classList.remove('active');
+        // links reload page by default, no smooth scroll code needed
       });
     });
 
-    // Contact form submission
+    // Contact form submit handler with thank you message
     const form = document.getElementById('contact-form');
     const thankYouMsg = document.getElementById('thank-you-message');
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      thankYouMsg.textContent = ''; // Clear previous message
+
       const formData = new FormData(form);
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          },
+        });
+
         if (response.ok) {
+          thankYouMsg.textContent = 'Thank you for contacting us! We will get back to you shortly.';
           form.reset();
-          thankYouMsg.style.display = 'block';
-          setTimeout(() => { thankYouMsg.style.display = 'none'; }, 5000);
         } else {
-          alert("Submission error. Try again.");
+          thankYouMsg.textContent = 'Oops! Something went wrong. Please try again.';
         }
-      }).catch(() => alert("Network error."));
+      } catch (error) {
+        thankYouMsg.textContent = 'Network error. Please try again later.';
+      }
     });
   </script>
 </body>
