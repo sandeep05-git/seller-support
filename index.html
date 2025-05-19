@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ecoquicksupp - Seller Assistance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Professional online seller services including account setup, cataloging, image editing, inventory management, and job assistance for platforms like Amazon, Flipkart, and more." />
+  <meta name="keywords" content="Seller Support, Online Seller Services, Amazon Seller Help, Flipkart Seller Assistance, Job Opportunities, E-commerce Support" />
+  <meta name="author" content="Ecoquicksupp" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -265,7 +268,7 @@
       <li>✅ Fast and reliable support for sellers</li>
       <li>✅ Affordable pricing for startups and growing businesses</li>
       <li>✅ Experienced in handling multiple e-commerce platforms</li>
-      <li>🎁 Free consultation </li>
+      <li>🎁 Free consultation</li>
       <li>💬 Free chat</li>
     </ul>
     <h2>📞 Get Started Today</h2>
@@ -277,15 +280,15 @@
     <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
       <label>
         Your Name:
-        <input type="text" name="name" required placeholder="Enter your name">
+        <input type="text" name="name" required placeholder="Enter your name" />
       </label>
       <label>
         Mobile Number:
-        <input type="tel" name="mobile" required placeholder="Enter your mobile number">
+        <input type="tel" name="mobile" required placeholder="Enter your mobile number" />
       </label>
       <label>
         Your Email:
-        <input type="email" name="email" required placeholder="Enter your email">
+        <input type="email" name="email" required placeholder="Enter your email" />
       </label>
       <label>
         Your Message:
@@ -298,7 +301,7 @@
 
   <section id="jobs">
     <h2>Job Opportunities</h2>
-    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert!</p>
+    <p>Avoid paying money for any jobs if asked, it is a scam — stay alert!</p>
     <p>Explore opportunities from trusted portals.</p>
     <ul>
       <li><a href="https://www.naukri.com" target="_blank" rel="noopener noreferrer">Naukri.com</a></li>
@@ -309,80 +312,73 @@
     <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
   </footer>
 
-  <!-- Tawk.to Script -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7fag';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
+  <section id="news-trends">
+    <h2>Quick Com & E-commerce News</h2>
+    <ul>
+      <li>Stay updated with the latest market trends and platform updates.</li>
+      <li>Subscribe to our newsletter to never miss important news.</li>
+    </ul>
+  </section>
 
   <script>
+    // Menu toggle
     const menuIcon = document.getElementById('menu-icon');
     const menu = document.getElementById('menu');
 
-    menuIcon.addEventListener('click', () => {
+    function toggleMenu() {
       menu.classList.toggle('active');
-    });
+    }
 
-    // Close menu on link click and smooth scroll
-    menu.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
+    menuIcon.addEventListener('click', toggleMenu);
+    menuIcon.addEventListener('keypress', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        menu.classList.remove('active');
-
-        const targetId = anchor.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-
-        if(targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+        toggleMenu();
+      }
     });
 
-    // Contact form submit handler with success message
-    const form = document.getElementById('contact-form');
-    const thankYouMsg = document.getElementById('thank-you-message');
+    // Smooth scroll handled by CSS scroll-behavior: smooth
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+    // Contact form submission with Formspree and thank-you message
+    const form = document.getElementById('contact-form');
+    const thankYou = document.getElementById('thank-you-message');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
       const formData = new FormData(form);
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
         if (response.ok) {
           form.reset();
-          thankYouMsg.style.display = 'block';
-          setTimeout(() => { thankYouMsg.style.display = 'none'; }, 5000);
+          thankYou.style.display = 'block';
+          setTimeout(() => {
+            thankYou.style.display = 'none';
+          }, 5000);
         } else {
-          alert("Oops! There was a problem submitting your form.");
+          alert('Oops! There was a problem submitting your form.');
         }
-      }).catch(() => {
-        alert("Oops! There was a problem submitting your form.");
-      });
+      } catch (error) {
+        alert('Oops! There was a problem submitting your form.');
+      }
     });
   </script>
-  <!-- Tawk.to Script -->
+
+  <!-- Tawk.to live chat integration -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
       var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
       s1.async=true;
-      s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+      s1.src='https://embed.tawk.to/64626477b5f19f49e072e9ed/1h4m0hrpj';
       s1.charset='UTF-8';
       s1.setAttribute('crossorigin','*');
       s0.parentNode.insertBefore(s1,s0);
     })();
   </script>
-
 </body>
 </html>
