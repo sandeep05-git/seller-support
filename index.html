@@ -6,7 +6,6 @@
   <title>Ecoquicksupp - Seller Assistance</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Base Styles */
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -16,15 +15,15 @@
     }
 
     header, section, footer {
-      padding: 1rem 1rem;
-      margin: 0 auto 1.5rem auto;
+      padding: 1rem;
       max-width: 900px;
+      margin: 0 auto 1.5rem auto;
       text-align: center;
-      opacity: 0; /* start hidden for fade-in */
+      opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    /* When visible */
+
     header.visible, section.visible, footer.visible {
       opacity: 1;
       transform: none;
@@ -36,22 +35,28 @@
       padding: 2rem 1rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 94, 184, 0.4);
-      margin-bottom: 2rem;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    .hero-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .hero-images img {
+      width: 100%;
+      max-width: 400px;
       border-radius: 10px;
-      margin-top: 0.75rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
-    img:hover {
+
+    .hero-images img:hover {
       transform: scale(1.03);
     }
 
-    /* Menu styles */
     .menu-icon {
       position: fixed;
       top: 1rem;
@@ -61,10 +66,8 @@
       display: none;
       width: 35px;
       height: 28px;
-      user-select: none;
     }
 
-    /* Hamburger lines */
     .menu-line {
       width: 100%;
       height: 4px;
@@ -72,16 +75,16 @@
       margin: 5px 0;
       border-radius: 2px;
       transition: all 0.4s ease;
-      transform-origin: center;
     }
 
-    /* Animate hamburger to X when active */
     .menu-icon.active .menu-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
+
     .menu-icon.active .menu-line:nth-child(2) {
       opacity: 0;
     }
+
     .menu-icon.active .menu-line:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
@@ -105,42 +108,21 @@
     }
 
     .menu ul li {
-      border: none;
       padding: 0.5rem 1rem;
-      text-align: center;
     }
 
     .menu ul li a {
       color: white;
       text-decoration: none;
       font-size: 1rem;
-      display: block;
-      position: relative;
-      transition: color 0.3s ease;
     }
 
-    /* Underline animation on hover */
-    .menu ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -3px;
-      left: 0;
-      background-color: #3498db;
-      transition: width 0.3s ease;
-    }
-    .menu ul li a:hover::after,
-    .menu ul li a.active::after {
-      width: 100%;
-    }
     .menu ul li a:hover,
     .menu ul li a.active {
       color: #3498db;
       font-weight: 700;
     }
 
-    /* Responsive menu */
     @media (max-width: 768px) {
       .menu-icon {
         display: block;
@@ -152,8 +134,6 @@
         left: -250px;
         width: 220px;
         height: 100%;
-        padding-top: 60px;
-        box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
       }
 
       nav.menu.active {
@@ -162,7 +142,6 @@
 
       .menu ul {
         flex-direction: column;
-        gap: 0;
       }
 
       .menu ul li {
@@ -182,10 +161,6 @@
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       text-align: left;
-      transition: box-shadow 0.3s ease;
-    }
-    form:hover {
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
     label {
@@ -197,31 +172,19 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       font-size: 1rem;
-      width: 100%;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-      transition: border-color 0.3s ease;
-    }
-    input:focus, textarea:focus {
-      border-color: #005eb8;
-      outline: none;
-      box-shadow: 0 0 5px #005eb8;
     }
 
     button {
       background-color: #005eb8;
       color: white;
+      border: none;
       cursor: pointer;
       font-weight: 700;
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 0.5rem;
-      border: none;
-      border-radius: 12px;
+      transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #004a94;
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(0, 94, 184, 0.5);
     }
 
     #thank-you-message {
@@ -236,181 +199,158 @@
       padding: 1rem;
       font-size: 0.9rem;
       text-align: center;
-      margin-top: 2rem;
       border-radius: 12px;
-      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
     }
 
     #news-trends {
       background-color: #f0f8ff;
       border-left: 5px solid #005eb8;
       padding: 1rem 1.5rem;
-      margin: 1.5rem auto;
       max-width: 800px;
+      margin: 2rem auto;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
       text-align: left;
-    }
-
-    #news-trends h2 {
-      color: #005eb8;
-      margin-bottom: 1rem;
-    }
-
-    #news-trends ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    #news-trends li {
-      margin-bottom: 1rem;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-
-    #news-trends a {
-      color: #005eb8;
-      text-decoration: underline;
-      transition: color 0.3s ease;
-    }
-    #news-trends a:hover {
-      color: #003f7d;
     }
   </style>
 </head>
-
 <body>
-  <!-- Hamburger menu icon -->
-  <div class="menu-icon" id="menu-icon" aria-label="Toggle menu" role="button" tabindex="0">
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
+
+<div class="menu-icon" id="menu-icon" tabindex="0" role="button" aria-label="Toggle menu">
+  <div class="menu-line"></div>
+  <div class="menu-line"></div>
+  <div class="menu-line"></div>
+</div>
+
+<nav class="menu" id="menu">
+  <ul>
+    <li><a href="blogpages/index.html">Blog</a></li>
+    <li><a href="index.html#about">About Us</a></li>
+    <li><a href="index.html#how-it-works">How It Works</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#offers">Offers</a></li>
+    <li><a href="index.html#contact">Contact Us</a></li>
+    <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
+    <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
+  <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed.</p>
+  <div class="hero-images">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero 1" />
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Hero 2" />
   </div>
+</header>
 
-  <!-- Navigation Menu -->
-  <nav class="menu" id="menu" role="navigation" aria-label="Main menu">
-    <ul>
-      <li><a href="blogpages/index.html">Blog</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#offers">Offers</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
-      <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
-    </ul>
-  </nav>
+<section id="about">
+  <h2>About Us</h2>
+  <p>We have over 4 years of experience providing dedicated support to sellers...</p>
+</section>
 
-  <header>
-    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
-    <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed. Whether you're just starting out or looking to scale, our team provides end-to-end support—from account creation to professional cataloging and SEO-friendly product listings.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero Image" width="400" />
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Services Image" width="400" />
-  </header>
+<section id="how-it-works">
+  <h2>How It Works</h2>
+  <p>1. Contact us with your requirements.<br />2. We create your account...</p>
+</section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We have over 4 years of experience providing dedicated support to sellers on multiple platforms including Amazon, Flipkart, and others. Our goal is to simplify your online selling journey.</p>
-  </section>
+<section id="services">
+  <h2>Our Services</h2>
+  <ul style="list-style:none;padding-left:0;">
+    <li>✔️ Seller Account Creation</li>
+    <li>✔️ Product Listing & Cataloging</li>
+    <li>✔️ SEO-Friendly Descriptions</li>
+  </ul>
+</section>
 
-  <section id="how-it-works">
-    <h2>How It Works</h2>
-    <p>1. Contact us with your requirements.<br />
-       2. We create your seller account and listings.<br />
-       3. We optimize your product details with SEO and professional photos.<br />
-       4. You start selling with confidence!</p>
-  </section>
+<section id="offers">
+  <h2>Current Offers</h2>
+  <p>Sign up today and get 10% off your first 3 listings!</p>
+</section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <ul style="list-style-type:none; padding-left:0;">
-      <li>✔️ Seller Account Creation</li>
-      <li>✔️ Product Listing & Cataloging</li>
-      <li>✔️ SEO-Friendly Product Descriptions</li>
-      <li>✔️ Pricing & Offer Management</li>
-      <li>✔️ Dedicated Seller Support</li>
-      <li>✔️ Training & Guidance</li>
-    </ul>
-  </section>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST" onsubmit="return handleSubmit(event)">
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" required />
 
-  <section id="offers">
-    <h2>Current Offers</h2>
-    <p>Sign up today and get 10% off your first 3 listings!</p>
-  </section>
+    <label for="email">Email:</label>
+    <input id="email" name="email" type="email" required />
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form id="contact-form" onsubmit="return submitForm(event)">
-      <label for="name">Name:</label>
-      <input id="name" name="name" type="text" required />
+    <label for="phone">Phone:</label>
+    <input id="phone" name="phone" type="tel" pattern="[0-9]{10}" required placeholder="10 digit phone number" />
 
-      <label for="email">Email:</label>
-      <input id="email" name="email" type="email" required />
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
 
-      <label for="phone">Phone Number:</label>
-      <input id="phone" name="phone" type="tel" pattern="[0-9]{10}" placeholder="10 digit phone number" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div id="thank-you-message" role="alert" aria-live="polite"></div>
+</section>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+<section id="news-trends">
+  <h2>Latest News & Trends</h2>
+  <ul>
+    <li>India tops global sellers in 2023</li>
+    <li>Amazon launches new seller tools</li>
+  </ul>
+</section>
 
-      <button type="submit">Submit</button>
-    </form>
-    <div id="thank-you-message" role="alert" aria-live="polite"></div>
-  </section>
+<footer>
+  <p>© 2023 Ecoquicksupp - Expert Seller Support. All rights reserved.</p>
+</footer>
 
-  <section id="news-trends" aria-label="Latest News and Trends">
-    <h2>Quick Com & E-commerce News & Trends</h2>
-    <ul>
-      <li>India tops global sellers, earning $100B+ in e-commerce in 2023</li>
-      <li>New government policies ease online business registration</li>
-      <li><a href="https://www.example.com/news/e-commerce-updates" target="_blank" rel="noopener">Check latest platform policies & offers</a></li>
-      <li>Amazon launches new seller tools for enhanced analytics</li>
-    </ul>
-  </section>
+<script>
+  // Animate on scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('header, section, footer');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(el => observer.observe(el));
+  });
 
-  <footer>
-    <p>© 2023 Ecoquicksupp - Expert Seller Support. All rights reserved.</p>
-  </footer>
+  // Toggle menu
+  const menuIcon = document.getElementById('menu-icon');
+  const menu = document.getElementById('menu');
 
-  <script>
-    // Fade in sections on scroll using Intersection Observer
-    document.addEventListener('DOMContentLoaded', () => {
-      const elements = document.querySelectorAll('header, section, footer');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      elements.forEach(el => observer.observe(el));
-    });
+  menuIcon.addEventListener('click', () => {
+    menuIcon.classList.toggle('active');
+    menu.classList.toggle('active');
+  });
 
-    // Hamburger menu toggle
-    const menuIcon = document.getElementById('menu-icon');
-    const menu = document.getElementById('menu');
+  menuIcon.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      menuIcon.click();
+    }
+  });
 
-    menuIcon.addEventListener('click', () => {
-      menuIcon.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-
-    // Allow toggling menu with keyboard Enter key
-    menuIcon.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuIcon.click();
+  // Form submission
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        document.getElementById('thank-you-message').textContent =
+          'Thank you for contacting us! We will get back to you shortly.';
+        form.reset();
+      } else {
+        document.getElementById('thank-you-message').textContent =
+          'There was a problem submitting the form. Please try again.';
       }
     });
+    return false;
+  }
+</script>
 
-    // Simple form submit simulation with thank you message
-    function submitForm(event) {
-      event.preventDefault();
-      const thankYou = document.getElementById('thank-you-message');
-      thankYou.textContent = 'Thank you for contacting us! We will get back to you shortly.';
-      document.getElementById('contact-form').reset();
-      return false;
-    }
-  </script>
 </body>
 </html>
