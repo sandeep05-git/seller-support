@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: #f9f9f9;
+      background: #fefefe url('https://www.transparenttextures.com/patterns/flowers.png');
       color: #333;
       scroll-behavior: smooth;
     }
@@ -22,6 +22,9 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     }
 
     header.visible, section.visible, footer.visible {
@@ -46,7 +49,7 @@
     }
 
     .hero-images img {
-      width: 100%;
+      width: 48%;
       max-width: 400px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -57,97 +60,24 @@
       transform: scale(1.03);
     }
 
-    .menu-icon {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      cursor: pointer;
-      z-index: 1100;
-      display: none;
-      width: 35px;
-      height: 28px;
-    }
+    .menu-icon { position: fixed; top: 1rem; left: 1rem; cursor: pointer; z-index: 1100; display: none; width: 35px; height: 28px; }
+    .menu-line { width: 100%; height: 4px; background-color: #333; margin: 5px 0; border-radius: 2px; transition: all 0.4s ease; }
+    .menu-icon.active .menu-line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-icon.active .menu-line:nth-child(2) { opacity: 0; }
+    .menu-icon.active .menu-line:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-    .menu-line {
-      width: 100%;
-      height: 4px;
-      background-color: #333;
-      margin: 5px 0;
-      border-radius: 2px;
-      transition: all 0.4s ease;
-    }
-
-    .menu-icon.active .menu-line:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-icon.active .menu-line:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-icon.active .menu-line:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    nav.menu {
-      background: #333;
-      color: white;
-      padding-top: 60px;
-      z-index: 1000;
-      transition: left 0.3s ease;
-    }
-
-    .menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-    }
-
-    .menu ul li {
-      padding: 0.5rem 1rem;
-    }
-
-    .menu ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-
-    .menu ul li a:hover,
-    .menu ul li a.active {
-      color: #3498db;
-      font-weight: 700;
-    }
+    nav.menu { background: #333; color: white; padding-top: 60px; z-index: 1000; transition: left 0.3s ease; }
+    .menu ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem; }
+    .menu ul li { padding: 0.5rem 1rem; }
+    .menu ul li a { color: white; text-decoration: none; font-size: 1rem; }
+    .menu ul li a:hover { color: #3498db; font-weight: 700; }
 
     @media (max-width: 768px) {
-      .menu-icon {
-        display: block;
-      }
-
-      nav.menu {
-        position: fixed;
-        top: 0;
-        left: -250px;
-        width: 220px;
-        height: 100%;
-      }
-
-      nav.menu.active {
-        left: 0;
-      }
-
-      .menu ul {
-        flex-direction: column;
-      }
-
-      .menu ul li {
-        padding: 1rem;
-        border-bottom: 1px solid #444;
-      }
+      .menu-icon { display: block; }
+      nav.menu { position: fixed; top: 0; left: -250px; width: 220px; height: 100%; }
+      nav.menu.active { left: 0; }
+      .menu ul { flex-direction: column; }
+      .menu ul li { padding: 1rem; border-bottom: 1px solid #444; }
     }
 
     form {
@@ -163,10 +93,7 @@
       text-align: left;
     }
 
-    label {
-      font-weight: 600;
-    }
-
+    label { font-weight: 600; }
     input, textarea, button {
       padding: 0.8rem;
       border: 1px solid #ccc;
@@ -183,24 +110,9 @@
       transition: background-color 0.3s ease;
     }
 
-    button:hover {
-      background-color: #004a94;
-    }
-
-    #thank-you-message {
-      margin-top: 1rem;
-      color: green;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    footer {
-      background: linear-gradient(135deg, #e0e7f6, #c5d2f1);
-      padding: 1rem;
-      font-size: 0.9rem;
-      text-align: center;
-      border-radius: 12px;
-    }
+    button:hover { background-color: #004a94; }
+    #thank-you-message { margin-top: 1rem; color: green; font-weight: bold; text-align: center; }
+    footer { background: linear-gradient(135deg, #e0e7f6, #c5d2f1); padding: 1rem; font-size: 0.9rem; text-align: center; border-radius: 12px; }
 
     #news-trends {
       background-color: #f0f8ff;
@@ -223,84 +135,87 @@
 
 <nav class="menu" id="menu">
   <ul>
-    <li><a href="blogpages/index.html">Blog</a></li>
-    <li><a href="index.html#about">About Us</a></li>
-    <li><a href="index.html#how-it-works">How It Works</a></li>
-    <li><a href="index.html#services">Services</a></li>
-    <li><a href="index.html#offers">Offers</a></li>
-    <li><a href="index.html#contact">Contact Us</a></li>
-    <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
-    <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
+    <li><a href="blogpages/index.html" onclick="refreshPage(event)">Blog</a></li>
+    <li><a href="index.html#about" onclick="refreshPage(event)">About Us</a></li>
+    <li><a href="index.html#how-it-works" onclick="refreshPage(event)">How It Works</a></li>
+    <li><a href="index.html#services" onclick="refreshPage(event)">Services</a></li>
+    <li><a href="index.html#contact" onclick="refreshPage(event)">Contact Us</a></li>
+    <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;" onclick="refreshPage(event)">FAQs & Reviews</a></li>
+    <li><a href="news.html" onclick="refreshPage(event)">📢 Quick Com & E-commerce News</a></li>
   </ul>
 </nav>
 
-<header>
-  <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
-  <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed.</p>
-  <div class="hero-images">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero 1" />
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Hero 2" />
-  </div>
-</header>
+  <header>
+    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
+    <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed. Whether you're just starting out or looking to scale, our team provides end-to-end support—from account creation to professional cataloging and SEO-friendly product listings.</p>
+</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero Image" width="400" />
+     <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero Image" width="400" />
+  </header>
 
 <section id="about">
   <h2>About Us</h2>
-  <p>We have over 4 years of experience providing dedicated support to sellers...</p>
+  <p>We are passionate professionals dedicated to supporting e-commerce sellers through every step of their journey. From setting up seller accounts to managing product listings and resolving complex issues, Ecoquicksupp ensures that sellers focus on selling while we handle the support work.</p>
+  <p>Our mission is to simplify the online selling experience by offering expert guidance, fast resolutions, and personalized assistance tailored to your business needs.</p>
 </section>
 
 <section id="how-it-works">
   <h2>How It Works</h2>
-  <p>1. Contact us with your requirements.<br />2. We create your account...</p>
+  <ul style="text-align:left; max-width:700px; margin: auto;">
+    <li>Submit your seller concern or request via the contact form.</li>
+    <li>We analyze your requirement and respond within hours.</li>
+    <li>Our experts begin resolving issues or guiding you through steps.</li>
+    <li>Receive updates and solutions directly in your inbox.</li>
+    <li>FRELevant Support: Fast Resolution of E-commerce Logistics, Listings, Refunds & Compliance.</li>
+  </ul>
 </section>
 
 <section id="services">
   <h2>Our Services</h2>
-  <ul style="list-style:none;padding-left:0;">
-    <li>✔️ Seller Account Creation</li>
-    <li>✔️ Product Listing & Cataloging</li>
-    <li>✔️ SEO-Friendly Descriptions</li>
+  <ul style="text-align:left; max-width:700px; margin: auto;">
+    <li>Seller account creation and verification support.</li>
+    <li>Listing creation, optimization, and bulk uploads.</li>
+    <li>Handling suspended, blocked, or deactivated accounts.</li>
+    <li>Refund disputes, A-to-Z claims, return handling.</li>
+    <li>Assistance with brand registry, catalog issues, compliance.</li>
+    <li>Support for logistics, inventory syncing, and policy adherence.</li>
   </ul>
-</section>
-
-<section id="offers">
-  <h2>Current Offers</h2>
-  <p>Sign up today and get 10% off your first 3 listings!</p>
 </section>
 
 <section id="contact">
-  <h2>Contact Us</h2>
-  <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST" onsubmit="return handleSubmit(event)">
-    <label for="name">Name:</label>
-    <input id="name" name="name" type="text" required />
-
-    <label for="email">Email:</label>
-    <input id="email" name="email" type="email" required />
-
-    <label for="phone">Phone:</label>
-    <input id="phone" name="phone" type="tel" pattern="[0-9]{10}" required placeholder="10 digit phone number" />
-
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-  <div id="thank-you-message" role="alert" aria-live="polite"></div>
-</section>
-
-<section id="news-trends">
-  <h2>Latest News & Trends</h2>
-  <ul>
-    <li>India tops global sellers in 2023</li>
-    <li>Amazon launches new seller tools</li>
-  </ul>
-</section>
+    <h2>Contact Us</h2>
+    <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
+      <label>
+        Your Name:
+        <input type="text" name="name" required placeholder="Enter your name">
+      </label>
+      <label>
+        Mobile Number:
+        <input type="tel" name="mobile" required placeholder="Enter your mobile number">
+      </label>
+      <label>
+        Your Email:
+        <input type="email" name="email" required placeholder="Enter your email">
+      </label>
+      <label>
+        Your Message:
+        <textarea name="message" required placeholder="Enter your message"></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+    <div id="thank-you-message" style="display:none;">Thanks for contacting us!</div>
+  </section>
 
 <footer>
-  <p>© 2023 Ecoquicksupp - Expert Seller Support. All rights reserved.</p>
+  <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
 </footer>
 
 <script>
-  // Animate on scroll
+  function refreshPage(event) {
+    event.preventDefault();
+    window.location.href = event.target.href;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('header, section, footer');
     const observer = new IntersectionObserver(entries => {
@@ -313,7 +228,6 @@
     elements.forEach(el => observer.observe(el));
   });
 
-  // Toggle menu
   const menuIcon = document.getElementById('menu-icon');
   const menu = document.getElementById('menu');
 
@@ -329,7 +243,6 @@
     }
   });
 
-  // Form submission
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -339,13 +252,12 @@
       body: formData,
       headers: { Accept: 'application/json' }
     }).then(response => {
+      const msg = document.getElementById('thank-you-message');
       if (response.ok) {
-        document.getElementById('thank-you-message').textContent =
-          'Thank you for contacting us! We will get back to you shortly.';
+        msg.textContent = 'Thank you for contacting us! We will get back to you shortly.';
         form.reset();
       } else {
-        document.getElementById('thank-you-message').textContent =
-          'There was a problem submitting the form. Please try again.';
+        msg.textContent = 'There was a problem submitting the form. Please try again.';
       }
     });
     return false;
