@@ -1,199 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Talking Character - Realistic Lips & Shake + Language Switch</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: #f0f0f0;
-    padding: 20px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecoquicksupp - Seller Assistance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
 
-  #controls {
-    margin-bottom: 15px;
-  }
+    header, section, footer {
+      padding: 2rem;
+      text-align: center;
+    }
 
-  select, textarea, button {
-    padding: 10px;
-    font-size: 16px;
-    margin: 10px;
-  }
+    header {
+      background-color: #005eb8;
+      color: white;
+    }
 
-  #characterContainer {
-    position: relative;
-    width: 400px;
-    height: 300px;
-    margin: 0 auto;
-    overflow: visible;
-  }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-  #characterImage {
-    width: 100%;
-    height: auto;
-    display: block;
-    position: relative;
-  }
+    .menu-icon {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      cursor: pointer;
+      z-index: 1001;
+      display: none;
+    }
 
-  /* Shake animation */
-  .shake {
-    animation: shake 0.2s infinite;
-  }
+    .menu-line {
+      width: 30px;
+      height: 4px;
+      background-color: #333;
+      margin: 6px 0;
+      border-radius: 2px;
+    }
 
-  @keyframes shake {
-    0% { transform: translate(1px, 1px); }
-    25% { transform: translate(-1px, 2px); }
-    50% { transform: translate(2px, -1px); }
-    75% { transform: translate(-2px, 1px); }
-    100% { transform: translate(1px, -2px); }
-  }
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 200px;
+      height: 100%;
+      background: #333;
+      color: white;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
 
-  /* Mouth realistic shape */
-  #mouth {
-    position: absolute;
-    bottom: 70px; /* adjust to mouth position on image */
-    left: 160px;  /* adjust to mouth position on image */
-    width: 80px;
-    height: 30px;
-    background: black;
-    border-radius: 50% / 60%;
-    transition: height 0.1s ease;
-  }
+    .menu.active {
+      left: 0;
+    }
 
-  #mouth.open {
-    height: 50px;
-    background: #800000;
-    border-radius: 50% / 40%;
-  }
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu ul li {
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .menu {
+        display: flex;
+        justify-content: flex-end;
+        position: static;
+        background: transparent;
+        color: inherit;
+        padding: 0;
+      }
+
+      .menu ul {
+        display: flex;
+      }
+
+      .menu ul li {
+        border: none;
+        padding: 0 1rem;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+    }
+
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input, textarea, button {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #005eb8;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004a94;
+    }
+
+    #thank-you-message {
+      margin-top: 1rem;
+      color: green;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #eee;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    #news-trends {
+  background-color: #f0f8ff;
+  border-left: 5px solid #005eb8;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#news-trends h2 {
+  color: #005eb8;
+  margin-bottom: 1rem;
+}
+
+#news-trends ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#news-trends li {
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+#news-trends a {
+  color: #005eb8;
+  text-decoration: underline;
+}
 </style>
 </head>
+
 <body>
+  <div class="menu-icon" id="menu-icon">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+  </div>
 
-<h2>Talking Character - Realistic Lips + Shake + Language Switch</h2>
+  <nav class="menu" id="menu">
+    <ul>
+    <li><a href="blogpages/index.html">Blog</a></li>
+    <li><a href="#about">About Us</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#offers">Offers</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
+      <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
+  </ul>
+  </nav>
 
-<div id="controls">
-  <select id="language">
-    <option value="en-IN">English</option>
-    <option value="hi-IN">Hindi</option>
-  </select><br>
+  <header>
+    <h1>Expert online Seller Services for Instamart, Blinket, Amazon, Flipkart, Myntra, & More</h1>
+    <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed. Whether you're just starting out or looking to scale, our team provides end-to-end support—from account creation to professional cataloging and SEO-friendly product listings.</p>
+</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/bench-accounting-C3V88BOoRoM-unsplash.jpg" alt="Hero Image" width="400" />
+  </header>
 
-  <textarea id="scriptBox" rows="4" cols="60" placeholder="Type your script here...">Hello, this is a seller support demo in English.</textarea><br>
+  <section id="about">
+    <h2>🚀 What We Offer</h2>
+    <p>We are a professional team offering services to empower online sellers.</p>
+    <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Image" width="400" />
+  </section>
 
-  <button onclick="startTalking()">Start Talking</button>
-  <button onclick="stopTalking()">Stop Talking</button>
-</div>
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <p>We guide sellers step-by-step in leveraging our services efficiently.</p>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/jonas-jacobsson-MLSS52p0ze4-unsplash.jpg" alt="Workflow" width="400" />
+  </section>
 
-<div id="characterContainer">
-  <img
-    id="characterImage"
-    src="https://raw.githubusercontent.com/sandeep05-git/animated-video.html/main/ChatGPT%20Image%20May%2024%2C%202025%2C%2012_50_11%20PM.png"
-    alt="Character"
-  />
-  <div id="mouth"></div>
-</div>
+  <section id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li><strong>Account Setup</strong> - We assist with seller registration and account verification on platforms like Amazon, Flipkart, Meesho & More</li>
+      <li><strong>Cataloging</strong> - creates detailed, optimized product listings that boost visibility and sales</li>
+      <li><strong>Image Editing & Enhancement:</strong> High-quality visuals tailored to platform standards.</li>
+      <li><strong>Inventory Management Support:</strong> Keep your listings accurate and updated to avoid stock issues and penalties.</li>
+      <li><strong>Listing Optimization:</strong> Improve product rankings using keyword-rich titles, bullet points, and descriptions.</li>
+      <li><strong>Support</strong> - Chat, email & training</li>
+    </ul>
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/myriam-jessier-eveI7MOcSmw-unsplash.jpg" alt="Services Image" width="400" />
+  </section>
 
-<script>
-  const languageSelect = document.getElementById('language');
-  const scriptBox = document.getElementById('scriptBox');
-  const characterImage = document.getElementById('characterImage');
-  const mouth = document.getElementById('mouth');
-  const characterContainer = document.getElementById('characterContainer');
+  <section id="offers">
+    <h2>Special Offers</h2>
+    <ul>
+    <h2>💡 Why Choose Ecoquicksupp?</h2>
+       <li>✅ Fast and reliable support for sellers</li>
+      <li>✅ Affordable pricing for startups and growing businesses</li>
+      <li>✅ Experienced in handling multiple e-commerce platforms</li>
+      <li>🎁 Free consultation </li>
+      <li>💬 Free chat</li>
+  </ul>
+   <h2>📞 Get Started Today</h2>
+<p>Let us handle the technical work so you can focus on growing your business. <strong>Contact Ecoquicksupp</strong> now for a free consultation or to learn more about our services.</p>
+</section>
 
-  let synth = window.speechSynthesis;
-  let utterance;
-  let mouthInterval;
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
+      <label>
+        Your Name:
+        <input type="text" name="name" required placeholder="Enter your name">
+      </label>
+      <label>
+        Mobile Number:
+        <input type="tel" name="mobile" required placeholder="Enter your mobile number">
+      </label>
+      <label>
+        Your Email:
+        <input type="email" name="email" required placeholder="Enter your email">
+      </label>
+      <label>
+        Your Message:
+        <textarea name="message" required placeholder="Enter your message"></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+    <div id="thank-you-message" style="display:none;">Thanks for contacting us!</div>
+  </section>
 
-  function getVoice(langCode) {
-    const voices = synth.getVoices();
-    // Filter voices by language code
-    return voices.find(v => v.lang === langCode) || voices.find(v => v.lang.startsWith(langCode.split('-')[0])) || voices[0];
-  }
+  <section id="jobs">
+    <h2>Job Opportunities</h2>
+    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert!</p>
+    <p>Explore opportunities from trusted portals.</p>
+    <ul>
+      <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
+    </ul>
+  </section>
 
-  function animateMouth(open) {
-    if(open){
-      mouth.classList.add('open');
-    } else {
-      mouth.classList.remove('open');
-    }
-  }
+<footer>
+    <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
+  </footer>
 
-  function startMouthAnimation() {
-    let open = false;
-    mouthInterval = setInterval(() => {
-      open = !open;
-      animateMouth(open);
-    }, 200);
-  }
+  <!-- Tawk.to Script -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
 
-  function stopMouthAnimation() {
-    clearInterval(mouthInterval);
-    animateMouth(false);
-  }
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  function startShake() {
-    characterContainer.classList.add('shake');
-  }
+  <!-- Custom Script -->
+  <script>
+    // Hamburger toggle
+    $('#menu-icon').click(function () {
+      $('#menu').toggleClass('active');
+    });
 
-  function stopShake() {
-    characterContainer.classList.remove('shake');
-  }
+    // Close menu on link click (mobile)
+    $('.menu a').click(function () {
+      if ($(window).width() < 768) {
+        $('#menu').removeClass('active');
+      }
+    });
 
-  function startTalking() {
-    if(synth.speaking){
-      alert('Speech already in progress.');
-      return;
-    }
-
-    const script = scriptBox.value.trim();
-    if(!script) {
-      alert('Please enter script text.');
-      return;
-    }
-
-    const lang = languageSelect.value;
-    const voice = getVoice(lang);
-
-    utterance = new SpeechSynthesisUtterance(script);
-    utterance.lang = lang;
-    if(voice) {
-      utterance.voice = voice;
-    }
-
-    utterance.onstart = () => {
-      startMouthAnimation();
-      startShake();
-    };
-
-    utterance.onend = () => {
-      stopMouthAnimation();
-      stopShake();
-    };
-
-    utterance.onerror = () => {
-      stopMouthAnimation();
-      stopShake();
-      alert('Speech synthesis error.');
-    };
-
-    synth.speak(utterance);
-  }
-
-  function stopTalking() {
-    if(synth.speaking) {
-      synth.cancel();
-      stopMouthAnimation();
-      stopShake();
-    }
-  }
-
-  // Load voices asynchronously
-  window.speechSynthesis.onvoiceschanged = () => {
-    // Preload voices so getVoice works correctly
-    getVoice(languageSelect.value);
-  };
-
-</script>
-
+    // Contact form handler
+    $('#contact-form').submit(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: $(this).attr('action'),
+        method: $(this).attr('method'),
+        data: $(this).serialize(),
+        success: function () {
+          $('#contact-form').hide();
+          $('#thank-you-message').show();
+          setTimeout(() => window.location.reload(), 4000);
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
