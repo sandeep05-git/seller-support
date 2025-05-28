@@ -217,29 +217,38 @@
     <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
     <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Image" width="400" />
   </section>
-  <!-- Start of Animated Demo Embed -->
+ <!-- Start of Animated Demo Embed with Hindi & English -->
 <div id="animatedDemoContainer" style="max-width:700px; margin: 60px auto; background: #f9faff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
 
-  <h2 style="margin-bottom: 15px;">📦 Seller Support Demo</h2>
+  <h2 style="margin-bottom: 15px;">📦 Seller Support Demo / विक्रेता सहायता डेमो</h2>
 
   <img id="character" src="https://i.imgur.com/4AiXzf8.png" alt="Seller Character"
        style="width: 180px; animation: float 1.5s infinite alternate ease-in-out; margin: 20px auto; display: block;" />
 
+  <div style="margin-bottom: 15px;">
+    <label for="languageSelector" style="font-weight: bold;">Select Language / भाषा चुनें:</label><br />
+    <select id="languageSelector" style="padding: 10px; font-size: 16px; border-radius: 6px;">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </div>
+
   <div>
-    <label for="scenarioSelector" style="font-weight: bold;">Select a scenario:</label><br />
+    <label for="scenarioSelector" style="font-weight: bold;">Select a scenario / एक विकल्प चुनें:</label><br />
     <select id="scenarioSelector" style="padding: 10px; font-size: 16px; margin: 10px 0 20px 0; border-radius: 6px;">
-      <option value="listing">🛒 Product Listing Support</option>
-      <option value="growth">📈 Account Growth Tips</option>
-      <option value="faq">❓ FAQ Help</option>
+      <option value="listing">🛒 Product Listing Support / उत्पाद सूची सहायता</option>
+      <option value="growth">📈 Account Growth Tips / खाता वृद्धि सुझाव</option>
+      <option value="faq">❓ FAQ Help / सामान्य प्रश्न सहायता</option>
     </select>
   </div>
 
   <div id="dialogue" style="background: white; border-radius: 20px; padding: 20px; font-size: 18px; min-height: 80px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
-    Choose a support topic and click Start Demo.
+    Choose language and topic, then click Start Demo.
+    भाषा और विकल्प चुनें, फिर डेमो शुरू करें क्लिक करें।
   </div>
 
   <button id="startBtn" style="padding: 12px 25px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    ▶️ Start Demo
+    ▶️ Start Demo / डेमो शुरू करें
   </button>
 </div>
 
@@ -251,36 +260,64 @@
 </style>
 
 <script>
+  // Script texts in English and Hindi for each scenario
   const allScripts = {
-    listing: [
-      "Hello seller! Let's help you create your first product listing.",
-      "Step 1: Choose the correct product category.",
-      "Step 2: Upload clear, attractive images.",
-      "Step 3: Write a good title and short description.",
-      "Step 4: Set a competitive price and save your listing.",
-      "That’s it! Your product is now ready to go live."
-    ],
-    growth: [
-      "Welcome! Want to grow your seller account faster?",
-      "Keep your order defect rate low.",
-      "Use ads to boost visibility.",
-      "Offer discounts to attract new buyers.",
-      "Keep inventory updated to avoid order cancellations.",
-      "Happy selling!"
-    ],
-    faq: [
-      "Got questions? Let’s help answer them.",
-      "Q: How to upload GST? A: Go to Settings > Tax.",
-      "Q: How to update bank info? A: Use the Payment section.",
-      "Q: How to get more views? A: Improve images and use keywords.",
-      "Need more help? Contact our support anytime!"
-    ]
+    en: {
+      listing: [
+        "Hello seller! Let's help you create your first product listing.",
+        "Step 1: Choose the correct product category.",
+        "Step 2: Upload clear, attractive images.",
+        "Step 3: Write a good title and short description.",
+        "Step 4: Set a competitive price and save your listing.",
+        "That’s it! Your product is now ready to go live."
+      ],
+      growth: [
+        "Welcome! Want to grow your seller account faster?",
+        "Keep your order defect rate low.",
+        "Use ads to boost visibility.",
+        "Offer discounts to attract new buyers.",
+        "Keep inventory updated to avoid order cancellations.",
+        "Happy selling!"
+      ],
+      faq: [
+        "Got questions? Let’s help answer them.",
+        "Q: How to upload GST? A: Go to Settings > Tax.",
+        "Q: How to update bank info? A: Use the Payment section.",
+        "Q: How to get more views? A: Improve images and use keywords.",
+        "Need more help? Contact our support anytime!"
+      ]
+    },
+    hi: {
+      listing: [
+        "नमस्ते विक्रेता! आइए आपकी पहली उत्पाद सूची बनाने में मदद करें।",
+        "चरण 1: सही उत्पाद श्रेणी चुनें।",
+        "चरण 2: साफ़ और आकर्षक चित्र अपलोड करें।",
+        "चरण 3: एक अच्छा शीर्षक और संक्षिप्त विवरण लिखें।",
+        "चरण 4: प्रतिस्पर्धी कीमत सेट करें और अपनी सूची सहेजें।",
+        "बस हो गया! आपका उत्पाद अब लाइव होने के लिए तैयार है।"
+      ],
+      growth: [
+        "स्वागत है! क्या आप अपना विक्रेता खाता तेजी से बढ़ाना चाहते हैं?",
+        "अपने ऑर्डर दोष दर को कम रखें।",
+        "दृश्यता बढ़ाने के लिए विज्ञापन का उपयोग करें।",
+        "नए खरीदारों को आकर्षित करने के लिए छूट दें।",
+        "आदेश रद्दीकरण से बचने के लिए इन्वेंट्री अपडेट रखें।",
+        "शुभ बिक्री!"
+      ],
+      faq: [
+        "क्या आपके पास प्रश्न हैं? आइए उनकी मदद करें।",
+        "प्रश्न: GST कैसे अपलोड करें? उत्तर: सेटिंग्स > कर पर जाएं।",
+        "प्रश्न: बैंक जानकारी कैसे अपडेट करें? उत्तर: भुगतान अनुभाग का उपयोग करें।",
+        "प्रश्न: अधिक दृश्य कैसे प्राप्त करें? उत्तर: छवियों में सुधार करें और कीवर्ड का उपयोग करें।",
+        "अधिक सहायता चाहिए? कभी भी हमारी सहायता से संपर्क करें!"
+      ]
+    }
   };
 
-  async function speakLine(line) {
+  async function speakLine(line, lang) {
     return new Promise(resolve => {
       const utter = new SpeechSynthesisUtterance(line);
-      utter.lang = "en-US";
+      utter.lang = lang === 'hi' ? 'hi-IN' : 'en-US';
       utter.pitch = 1;
       utter.rate = 1;
       utter.onend = resolve;
@@ -288,23 +325,24 @@
     });
   }
 
-  async function runScript(lines) {
+  async function runScript(lines, lang) {
     const dialogue = document.getElementById("dialogue");
     document.getElementById("startBtn").style.display = "none";
 
     for (const line of lines) {
       dialogue.textContent = line;
-      await speakLine(line);
+      await speakLine(line, lang);
       await new Promise(res => setTimeout(res, 400));
     }
 
-    dialogue.textContent = "✅ Demo complete. Thank you!";
+    dialogue.textContent = lang === 'hi' ? "✅ डेमो पूरा हुआ। धन्यवाद!" : "✅ Demo complete. Thank you!";
     document.getElementById("startBtn").style.display = "inline-block";
   }
 
   document.getElementById("startBtn").addEventListener("click", () => {
-    const type = document.getElementById("scenarioSelector").value;
-    runScript(allScripts[type]);
+    const lang = document.getElementById("languageSelector").value;
+    const scenario = document.getElementById("scenarioSelector").value;
+    runScript(allScripts[lang][scenario], lang);
   });
 </script>
 
