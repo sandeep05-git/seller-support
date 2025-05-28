@@ -260,7 +260,40 @@
 </style>
 
 <script>
-  // Script texts in English and Hindi for each scenario
+  // Get all voices and wait for them to load
+  function loadVoices() {
+    return new Promise(resolve => {
+      let voices = speechSynthesis.getVoices();
+      if (voices.length) {
+        resolve(voices);
+      } else {
+        speechSynthesis.onvoiceschanged = () => {
+          voices = speechSynthesis.getVoices();
+          resolve(voices);
+        };
+      }
+    });
+  }
+
+  // Find a voice that matches the language code (e.g., 'hi' or 'en')
+  function getVoice(voices, lang) {
+    return voices.find(v => v.lang.toLowerCase().startsWith(lang)) || voices[0];
+  }
+
+  async function speakLine(line, lang) {
+    const voices = await loadVoices();
+    return new Promise(resolve => {
+      const utter = new SpeechSynthesisUtterance(line);
+      utter.lang = lang === 'hi' ? 'hi-IN' : 'en-US';
+      utter.voice = getVoice(voices, lang === 'hi' ? 'hi' : 'en');
+      utter.pitch = 1;
+      utter.rate = 1;
+      utter.onend = resolve;
+      speechSynthesis.speak(utter);
+    });
+  }
+
+  // Your demo scripts in English and Hindi
   const allScripts = {
     en: {
       listing: [
@@ -314,17 +347,6 @@
     }
   };
 
-  async function speakLine(line, lang) {
-    return new Promise(resolve => {
-      const utter = new SpeechSynthesisUtterance(line);
-      utter.lang = lang === 'hi' ? 'hi-IN' : 'en-US';
-      utter.pitch = 1;
-      utter.rate = 1;
-      utter.onend = resolve;
-      speechSynthesis.speak(utter);
-    });
-  }
-
   async function runScript(lines, lang) {
     const dialogue = document.getElementById("dialogue");
     document.getElementById("startBtn").style.display = "none";
@@ -345,7 +367,7 @@
     runScript(allScripts[lang][scenario], lang);
   });
 </script>
-
+  
   <section id="how-it-works">
     <h2>How It Works</h2>
     <p>We guide step-by-step in leveraging our services efficiently.</p>
