@@ -217,6 +217,96 @@
     <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
     <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Image" width="400" />
   </section>
+  <!-- Start of Animated Demo Embed -->
+<div id="animatedDemoContainer" style="max-width:700px; margin: 60px auto; background: #f9faff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
+
+  <h2 style="margin-bottom: 15px;">📦 Seller Support Demo</h2>
+
+  <img id="character" src="https://i.imgur.com/4AiXzf8.png" alt="Seller Character"
+       style="width: 180px; animation: float 1.5s infinite alternate ease-in-out; margin: 20px auto; display: block;" />
+
+  <div>
+    <label for="scenarioSelector" style="font-weight: bold;">Select a scenario:</label><br />
+    <select id="scenarioSelector" style="padding: 10px; font-size: 16px; margin: 10px 0 20px 0; border-radius: 6px;">
+      <option value="listing">🛒 Product Listing Support</option>
+      <option value="growth">📈 Account Growth Tips</option>
+      <option value="faq">❓ FAQ Help</option>
+    </select>
+  </div>
+
+  <div id="dialogue" style="background: white; border-radius: 20px; padding: 20px; font-size: 18px; min-height: 80px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
+    Choose a support topic and click Start Demo.
+  </div>
+
+  <button id="startBtn" style="padding: 12px 25px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    ▶️ Start Demo
+  </button>
+</div>
+
+<style>
+  @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-12px); }
+  }
+</style>
+
+<script>
+  const allScripts = {
+    listing: [
+      "Hello seller! Let's help you create your first product listing.",
+      "Step 1: Choose the correct product category.",
+      "Step 2: Upload clear, attractive images.",
+      "Step 3: Write a good title and short description.",
+      "Step 4: Set a competitive price and save your listing.",
+      "That’s it! Your product is now ready to go live."
+    ],
+    growth: [
+      "Welcome! Want to grow your seller account faster?",
+      "Keep your order defect rate low.",
+      "Use ads to boost visibility.",
+      "Offer discounts to attract new buyers.",
+      "Keep inventory updated to avoid order cancellations.",
+      "Happy selling!"
+    ],
+    faq: [
+      "Got questions? Let’s help answer them.",
+      "Q: How to upload GST? A: Go to Settings > Tax.",
+      "Q: How to update bank info? A: Use the Payment section.",
+      "Q: How to get more views? A: Improve images and use keywords.",
+      "Need more help? Contact our support anytime!"
+    ]
+  };
+
+  async function speakLine(line) {
+    return new Promise(resolve => {
+      const utter = new SpeechSynthesisUtterance(line);
+      utter.lang = "en-US";
+      utter.pitch = 1;
+      utter.rate = 1;
+      utter.onend = resolve;
+      speechSynthesis.speak(utter);
+    });
+  }
+
+  async function runScript(lines) {
+    const dialogue = document.getElementById("dialogue");
+    document.getElementById("startBtn").style.display = "none";
+
+    for (const line of lines) {
+      dialogue.textContent = line;
+      await speakLine(line);
+      await new Promise(res => setTimeout(res, 400));
+    }
+
+    dialogue.textContent = "✅ Demo complete. Thank you!";
+    document.getElementById("startBtn").style.display = "inline-block";
+  }
+
+  document.getElementById("startBtn").addEventListener("click", () => {
+    const type = document.getElementById("scenarioSelector").value;
+    runScript(allScripts[type]);
+  });
+</script>
 
   <section id="how-it-works">
     <h2>How It Works</h2>
