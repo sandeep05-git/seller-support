@@ -502,6 +502,47 @@
     <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
   </footer>
 
+  <div id="quiz-container" style="max-width:400px; margin:auto; font-family: Arial, sans-serif;">
+  <h3>Find the Best Seller Support Service for You</h3>
+  <form id="quiz-form">
+    <p>1. Are you a new or experienced seller?</p>
+    <label><input type="radio" name="q1" value="new" required> New Seller</label><br>
+    <label><input type="radio" name="q1" value="experienced"> Experienced Seller</label>
+
+    <p>2. What support do you need most?</p>
+    <label><input type="radio" name="q2" value="listing" required> Help creating or optimizing product listings</label><br>
+    <label><input type="radio" name="q2" value="support"> Customer support and order management</label>
+
+    <br><button type="submit" style="padding: 8px 15px; cursor:pointer;">Submit</button>
+  </form>
+
+  <div id="result" style="margin-top: 20px; font-weight: bold; color: #007BFF;"></div>
+</div>
+
+<script>
+document.getElementById('quiz-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const q1 = document.querySelector('input[name="q1"]:checked').value;
+  const q2 = document.querySelector('input[name="q2"]:checked').value;
+
+  let result = '';
+
+  if (q1 === 'new' && q2 === 'listing') {
+    result = 'We recommend our Product Listing Assistance service — perfect for new sellers!';
+  } else if (q1 === 'new' && q2 === 'support') {
+    result = 'Try our Customer Support Setup package to get started smoothly.';
+  } else if (q1 === 'experienced' && q2 === 'listing') {
+    result = 'Advanced Listing Optimization is ideal for experienced sellers.';
+  } else if (q1 === 'experienced' && q2 === 'support') {
+    result = 'Our Dedicated Support Team service will help you handle customers efficiently.';
+  } else {
+    result = 'Please contact us for personalized support.';
+  }
+
+  document.getElementById('result').innerText = result;
+});
+</script>
+
   <!-- Tawk.to Script -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
