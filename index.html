@@ -4,19 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoQuickSupp | Grow Your Ecommerce sells</title>
+<title>EcoQuickSupp | Grow Your Ecommerce</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{margin:0;font-family:Poppins;background:#020617;color:#fff;}
-nav{position:fixed;width:100%;top:0;background:#020617;padding:10px;text-align:center;}
+nav{position:fixed;width:100%;top:0;background:#020617;padding:10px;text-align:center;z-index:1000;}
 nav a{color:#fff;margin:0 10px;text-decoration:none;}
 
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover;}
-.hero h1{font-size:40px;}
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover no-repeat;}
+.hero h1{font-size:38px;text-align:center;}
 
-.button{background:#22c55e;padding:12px 25px;border-radius:25px;color:#fff;text-decoration:none;display:inline-block;margin:10px;}
+.button{background:#22c55e;padding:12px 25px;border-radius:25px;color:#fff;text-decoration:none;display:inline-block;margin:10px;border:none;}
 
 section{padding:60px 20px;text-align:center;}
 .flex{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;}
@@ -28,42 +28,53 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:12px;border-radius:50px;color:#fff;text-decoration:none;}
 
 /* POPUP */
-.popup{position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;justify-content:center;align-items:center;}
-.popup-box{background:#fff;color:#000;padding:20px;border-radius:10px;text-align:center;width:300px;}
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+.popup-box{
+background:#fff;color:#000;
+padding:20px;
+border-radius:10px;
+text-align:center;
+width:300px;
+}
+.close-btn{background:red;color:#fff;padding:8px;border:none;margin-top:10px;cursor:pointer;}
 
-.sticky-bar{position:fixed;bottom:0;width:100%;background:#22c55e;padding:10px;text-align:center;}
+.sticky-bar{
+position:fixed;
+bottom:0;
+width:100%;
+background:#22c55e;
+padding:10px;
+text-align:center;
+color:#000;
+}
 </style>
 
 </head>
 
 <body>
 
-<!-- ENTRY POPUP -->
+<!-- POPUP -->
 
-<script>
-let popupShown = true; // already shown at start
+<div class="popup" id="popup">
+<div class="popup-box">
+<h3>🚀 Free Ecommerce Guide</h3>
+<p>Only <span id="slots">10</span> slots left today</p>
 
-function closePopup(){
-  document.getElementById('popup').style.display='none';
-  popupShown = false; // stop reopening
-}
+<input type="email" id="email" placeholder="Enter Email">
 
-function saveLead(){
-  let email = document.getElementById('email').value;
-  if(email){
-    alert("Thanks! We will contact you.");
-    closePopup();
-  }
-}
+<button class="button" onclick="saveLead()">Get Free</button> <br> <button class="close-btn" onclick="closePopup()">Skip</button>
 
-// EXIT INTENT (ONLY ONCE)
-document.addEventListener("mouseout", function(e){
-  if(e.clientY < 10 && !popupShown){
-    document.getElementById('popup').style.display='flex';
-    popupShown = true;
-  }
-});
-</script>
+</div>
+</div>
 
 <nav>
 <a href="#">Home</a>
@@ -80,8 +91,8 @@ document.addEventListener("mouseout", function(e){
 <section>
 <h2>Services</h2>
 <div class="flex">
-<div class="card">Setup</div>
-<div class="card">Listing</div>
+<div class="card">Account Setup</div>
+<div class="card">Product Listing</div>
 <div class="card">Growth</div>
 </div>
 </section>
@@ -96,54 +107,60 @@ document.addEventListener("mouseout", function(e){
 </form>
 </section>
 
-<!-- STICKY CTA -->
+<!-- STICKY BAR -->
 
 <div class="sticky-bar">
-🚀 Need Help? <a href="https://wa.me/918148587929" style="color:#000;font-weight:bold;">Chat on WhatsApp</a>
+🚀 Need Help? <a href="https://wa.me/91XXXXXXXXXX" style="color:#000;font-weight:bold;">Chat on WhatsApp</a>
 </div>
 
-<a href="https://wa.me/918148587929" class="whatsapp">Chat</a>
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">Chat</a>
+
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+let popup = document.getElementById("popup");
 let popupShown = false;
 
 // DELAY POPUP
-setTimeout(() => {
-  if(!popupShown){
-    document.getElementById('popup').style.display='flex';
-    popupShown = true;
-  }
-}, 5000);
+setTimeout(()=>{
+if(!popupShown){
+popup.style.display = "flex";
+popupShown = true;
+}
+},5000);
 
 // CLOSE
-function closePopup(){
-  document.getElementById('popup').style.display='none';
+window.closePopup = function(){
+popup.style.display = "none";
 }
 
 // SAVE LEAD
-function saveLead(){
-  let email = document.getElementById('email').value;
-  if(email){
-    alert("Guide will be sent to your email!");
-    closePopup();
-  }
+window.saveLead = function(){
+let email = document.getElementById("email").value;
+if(email){
+alert("Thanks! We will contact you.");
+popup.style.display = "none";
+}
 }
 
 // EXIT INTENT
 document.addEventListener("mouseout", function(e){
-  if(e.clientY < 10 && !popupShown){
-    document.getElementById('popup').style.display='flex';
-    popupShown = true;
-  }
+if(e.clientY < 10 && !popupShown){
+popup.style.display = "flex";
+popupShown = true;
+}
 });
 
-// FAKE SLOT COUNTER (decreases randomly)
+// SLOT COUNTER
 let count = 10;
 setInterval(()=>{
-  if(count > 3){
-    count--;
-    document.getElementById('slots').innerText = count;
-  }
-}, 4000);
+if(count > 3){
+count--;
+document.getElementById("slots").innerText = count;
+}
+},4000);
+
+});
 </script>
 
 </body>
