@@ -40,16 +40,30 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 
 <!-- ENTRY POPUP -->
 
-<div class="popup" id="popup">
-<div class="popup-box">
-<h3>Free Ecommerce Guide 🎯</h3>
-<p>Enter email & get started</p>
-<input type="email" id="email">
-<button class="button" onclick="saveLead()">Get Free</button>
-<br><br>
-<button onclick="closePopup()">Skip</button>
-</div>
-</div>
+<script>
+let popupShown = true; // already shown at start
+
+function closePopup(){
+  document.getElementById('popup').style.display='none';
+  popupShown = false; // stop reopening
+}
+
+function saveLead(){
+  let email = document.getElementById('email').value;
+  if(email){
+    alert("Thanks! We will contact you.");
+    closePopup();
+  }
+}
+
+// EXIT INTENT (ONLY ONCE)
+document.addEventListener("mouseout", function(e){
+  if(e.clientY < 10 && !popupShown){
+    document.getElementById('popup').style.display='flex';
+    popupShown = true;
+  }
+});
+</script>
 
 <nav>
 <a href="#">Home</a>
