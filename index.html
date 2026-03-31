@@ -103,28 +103,47 @@ document.addEventListener("mouseout", function(e){
 </div>
 
 <a href="https://wa.me/918148587929" class="whatsapp">Chat</a>
-
 <script>
-// Close popup
+let popupShown = false;
+
+// DELAY POPUP
+setTimeout(() => {
+  if(!popupShown){
+    document.getElementById('popup').style.display='flex';
+    popupShown = true;
+  }
+}, 5000);
+
+// CLOSE
 function closePopup(){
-document.getElementById('popup').style.display='none';
+  document.getElementById('popup').style.display='none';
 }
 
-// Save email (basic)
+// SAVE LEAD
 function saveLead(){
-let email=document.getElementById('email').value;
-if(email){
-alert(\"Thanks! We will contact you.\");
-closePopup();
-}
+  let email = document.getElementById('email').value;
+  if(email){
+    alert("Guide will be sent to your email!");
+    closePopup();
+  }
 }
 
-// EXIT INTENT POPUP
-document.addEventListener(\"mouseout\", function(e){
-if(e.clientY < 10){
-document.getElementById('popup').style.display='flex';
-}
+// EXIT INTENT
+document.addEventListener("mouseout", function(e){
+  if(e.clientY < 10 && !popupShown){
+    document.getElementById('popup').style.display='flex';
+    popupShown = true;
+  }
 });
+
+// FAKE SLOT COUNTER (decreases randomly)
+let count = 10;
+setInterval(()=>{
+  if(count > 3){
+    count--;
+    document.getElementById('slots').innerText = count;
+  }
+}, 4000);
 </script>
 
 </body>
