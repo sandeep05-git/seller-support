@@ -1,591 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Need Help Listing Your Products Online? We Help You Sell on Amazon, Flipkart, Meesho & More</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Start & Grow Your Online Selling Business | EcoQuickSupp</title>
 
-    header, section, footer {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    header {
-      background-color: #005eb8;
-      color: white;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-top: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu-icon {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      cursor: pointer;
-      z-index: 1001;
-      display: none;
-    }
-
-    .menu-line {
-      width: 30px;
-      height: 4px;
-      background-color: #333;
-      margin: 6px 0;
-      border-radius: 2px;
-    }
-
-    .menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 200px;
-      height: 100%;
-      background: #333;
-      color: white;
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
-
-    .menu.active {
-      left: 0;
-    }
-
-    .menu ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .menu ul li {
-      padding: 1rem;
-      text-align: center;
-      border-bottom: 1px solid #444;
-    }
-
-    .menu ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    @media (max-width: 768px) {
-      .menu-icon {
-        display: block;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .menu {
-        display: flex;
-        justify-content: flex-end;
-        position: static;
-        background: transparent;
-        color: inherit;
-        padding: 0;
-      }
-
-      .menu ul {
-        display: flex;
-      }
-
-      .menu ul li {
-        border: none;
-        padding: 0 1rem;
-      }
-
-      .menu-icon {
-        display: none;
-      }
-    }
-
-    form {
-      max-width: 600px;
-      margin: 2rem auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    input, textarea, button {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    button {
-      background-color: #005eb8;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #004a94;
-    }
-
-    #thank-you-message {
-      margin-top: 1rem;
-      color: green;
-      font-weight: bold;
-    }
-
-    footer {
-      background-color: #eee;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-    #news-trends {
-  background-color: #f0f8ff;
-  border-left: 5px solid #005eb8;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-#news-trends h2 {
-  color: #005eb8;
-  margin-bottom: 1rem;
-}
-
-#news-trends ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-#news-trends li {
-  margin-bottom: 1.2rem;
-  line-height: 1.4;
-}
-
-#news-trends a {
-  color: #005eb8;
-  text-decoration: underline;
-}
+<style>
+body {font-family: Arial; margin:0; background:#f9f9f9; color:#333;}
+header {background:#005eb8; color:#fff; padding:40px 20px; text-align:center;}
+section {padding:30px 20px; text-align:center;}
+h1 {font-size:28px;}
+h2 {color:#005eb8;}
+.button {display:inline-block; margin:10px; padding:12px 20px; background:#28a745; color:#fff; text-decoration:none; border-radius:6px;}
+.card {background:#fff; padding:20px; margin:10px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);} 
+.flex {display:flex; flex-wrap:wrap; justify-content:center;}
+footer {background:#eee; padding:15px; text-align:center;}
+.whatsapp {position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:12px 18px; border-radius:50px; text-decoration:none; font-weight:bold;}
 </style>
-  
-<meta name="description" content="Get step-by-step seller support for listing creation, account setup, and problem resolution on e-commerce platforms.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.ecoquicksupp.com/" />
-<meta property="og:title" content="EcoQuick Support">
-<meta property="og:description" content="Support for online sellers to list products, resolve issues, and grow sales.">
-<meta property="og:url" content="https://www.ecoquicksupp.com/">
-<meta property="og:type" content="website">
-
 </head>
 
 <body>
-  <div class="menu-icon" id="menu-icon">
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
-  </div>
 
-  <nav class="menu" id="menu">
-    <ul>
-    <li><a href="blogpages/index.html">Blog</a></li>
-    <li><a href="#about">About Us</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#offers">Offers</a></li>
-      <li><a href="faqs%20%26%20reviews.html" style="color: #3498db; font-weight: bold;">FAQs & Reviews</a></li>
-      <li><a href="news.html">📢 Quick Com & E-commerce News</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-</ul>
-  </nav>
-  
-  <header style="display: flex; align-items: center; padding: 10px 20px;">
-  <img src="logo.svg" alt="EcoQuick Support Logo" style="width: 50px; height: auto; margin-right: 10px;">
-  <h1 style="font-family: Arial, sans-serif; font-weight: bold; font-size: 24px; color: #27ae60; margin: 0;">
-    EcoQuickSupp
-  </h1>
+<header>
+<h1>Start & Grow Your Online Selling Business</h1>
+<p>We help you sell on Amazon, Flipkart & more — even if you are a beginner.</p>
+<a href="#contact" class="button">Get Free Help</a>
+<a href="https://wa.me/918148587929" class="button">WhatsApp Now</a>
 </header>
 
-  <header>
-    <h1>Expert online Seller Services for Amazon, Flipkart, Myntra, & More</h1>
-    <p>At <strong>Ecoquicksupp</strong>, we specialize in helping new and existing online sellers succeed. Whether you're just starting out or looking to scale, our team provides end-to-end support—from account creation to professional cataloging and SEO-friendly product listings.</p>
-    <iframe width="100%" height="400" src="https://sandeep05-git.github.io/animated-video.html/" frameborder="0" allowhalfscreen></iframe>
-</header>
-
-  <section id="about">
-    <h2>🚀 What We Offer</h2>
-    <p>We are a professional team offering services to empower online sellers.</p>
-    <p>Our mission is to simplify your seller journey through expert guidance, support, and job assistance.</p>
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="About Image" width="400" />
-  </section>
- <!-- Start of Animated Demo Embed with Hindi & English -->
-<div id="animatedDemoContainer" style="max-width:700px; margin: 60px auto; background: #f9faff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-
-  <h2 style="margin-bottom: 15px;">📦 Seller Support Demo / विक्रेता सहायता डेमो</h2>
-
-  <img id="character" src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/brooke-cagle-WHWYBmtn3_0-unsplash.jpg" alt="Seller Character"
-       style="width: 180px; animation: float 1.5s infinite alternate ease-in-out; margin: 20px auto; display: block;" />
-
-  <div style="margin-bottom: 15px;">
-    <label for="languageSelector" style="font-weight: bold;">Select Language / भाषा चुनें:</label><br />
-    <select id="languageSelector" style="padding: 10px; font-size: 16px; border-radius: 6px;">
-      <option value="en">English</option>
-      <option value="hi">हिन्दी</option>
-    </select>
-  </div>
-
-  <div>
-    <label for="scenarioSelector" style="font-weight: bold;">Select a scenario / एक विकल्प चुनें:</label><br />
-    <select id="scenarioSelector" style="padding: 10px; font-size: 16px; margin: 10px 0 20px 0; border-radius: 6px;">
-      <option value="success story">🛒 online seller success story / विक्रेता की सफलता की कहानी</option> 
-      <option value="listing">🛒 Product Listing Support / उत्पाद सूची सहायता</option>
-      <option value="growth">📈 Account Growth Tips / खाता वृद्धि सुझाव</option>
-      <option value="faq">❓ FAQ Help / सामान्य प्रश्न सहायता</option>
-    </select>
-  </div>
-
-  <div id="dialogue" style="background: white; border-radius: 20px; padding: 20px; font-size: 18px; min-height: 80px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
-    Choose language and topic, then click Start Demo.
-    भाषा और विकल्प चुनें, फिर डेमो शुरू करें क्लिक करें।
-  </div>
-
-  <button id="startBtn" style="padding: 12px 25px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer;">
-    ▶️ Start Demo / डेमो शुरू करें
-  </button>
-</div>
-
-<style>
-  @keyframes float {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-12px); }
-  }
-</style>
-
-<script>
-  // Get all voices and wait for them to load
-  function loadVoices() {
-    return new Promise(resolve => {
-      let voices = speechSynthesis.getVoices();
-      if (voices.length) {
-        resolve(voices);
-      } else {
-        speechSynthesis.onvoiceschanged = () => {
-          voices = speechSynthesis.getVoices();
-          resolve(voices);
-        };
-      }
-    });
-  }
-
-  // Find a voice that matches the language code (e.g., 'hi' or 'en')
-  function getVoice(voices, lang) {
-    return voices.find(v => v.lang.toLowerCase().startsWith(lang)) || voices[0];
-  }
-
-  async function speakLine(line, lang) {
-    const voices = await loadVoices();
-    return new Promise(resolve => {
-      const utter = new SpeechSynthesisUtterance(line);
-      utter.lang = lang === 'hi' ? 'hi-IN' : 'en-US';
-      utter.voice = getVoice(voices, lang === 'hi' ? 'hi' : 'en');
-      utter.pitch = 1;
-      utter.rate = 1;
-      utter.onend = resolve;
-      speechSynthesis.speak(utter);
-    });
-  }
-
-  // Your demo scripts in English and Hindi
-  const allScripts = {
-    en: {
-         listing: [
-        "Hello seller! Let's help you create your first product listing.",
-        "Step 1: Choose the correct product category.",
-        "Step 2: Upload clear, attractive images.",
-        "Step 3: Write a good title and short description.",
-        "Step 4: Set a competitive price and save your listing.",
-        "That’s it! Your product is now ready to go live."
-      ],
-      growth: [
-        "Welcome! Want to grow your seller account faster?",
-        "Keep your order defect rate low.",
-        "Use ads to boost visibility.",
-        "Offer discounts to attract new buyers.",
-        "Keep inventory updated to avoid order cancellations.",
-        "Happy selling!"
-      ],
-      faq: [
-        "Got questions? Let’s help answer them.",
-        "Q: How to upload GST? A: Go to Settings > Tax.",
-        "Q: How to update bank info? A: Use the Payment section.",
-        "Q: How to get more views? A: Improve images and use keywords.",
-        "Need more help? Contact our support anytime!"
-      ]
-    },
-    hi: {
-    listing: [
-        "नमस्ते विक्रेता! आइए आपकी पहली उत्पाद सूची बनाने में मदद करें।",
-        "चरण 1: सही उत्पाद श्रेणी चुनें।",
-        "चरण 2: साफ़ और आकर्षक चित्र अपलोड करें।",
-        "चरण 3: एक अच्छा शीर्षक और संक्षिप्त विवरण लिखें।",
-        "चरण 4: प्रतिस्पर्धी कीमत सेट करें और अपनी सूची सहेजें।",
-        "बस हो गया! आपका उत्पाद अब लाइव होने के लिए तैयार है।"
-      ],
-      growth: [
-        "स्वागत है! क्या आप अपना विक्रेता खाता तेजी से बढ़ाना चाहते हैं?",
-        "अपने ऑर्डर दोष दर को कम रखें।",
-        "दृश्यता बढ़ाने के लिए विज्ञापन का उपयोग करें।",
-        "नए खरीदारों को आकर्षित करने के लिए छूट दें।",
-        "आदेश रद्दीकरण से बचने के लिए इन्वेंट्री अपडेट रखें।",
-        "शुभ बिक्री!"
-      ],
-      faq: [
-        "क्या आपके पास प्रश्न हैं? आइए उनकी मदद करें।",
-        "प्रश्न: GST कैसे अपलोड करें? उत्तर: सेटिंग्स > कर पर जाएं।",
-        "प्रश्न: बैंक जानकारी कैसे अपडेट करें? उत्तर: भुगतान अनुभाग का उपयोग करें।",
-        "प्रश्न: अधिक दृश्य कैसे प्राप्त करें? उत्तर: छवियों में सुधार करें और कीवर्ड का उपयोग करें।",
-        "अधिक सहायता चाहिए? कभी भी हमारी सहायता से संपर्क करें!"
-      ]
-    }
-  };
-
-  async function runScript(lines, lang) {
-    const dialogue = document.getElementById("dialogue");
-    document.getElementById("startBtn").style.display = "none";
-
-    for (const line of lines) {
-      dialogue.textContent = line;
-      await speakLine(line, lang);
-      await new Promise(res => setTimeout(res, 400));
-    }
-
-    dialogue.textContent = lang === 'hi' ? "✅ डेमो पूरा हुआ। धन्यवाद!" : "✅ Demo complete. Thank you!";
-    document.getElementById("startBtn").style.display = "inline-block";
-  }
-
-  document.getElementById("startBtn").addEventListener("click", () => {
-    const lang = document.getElementById("languageSelector").value;
-    const scenario = document.getElementById("scenarioSelector").value;
-    runScript(allScripts[lang][scenario], lang);
-  });
-</script>
-
-  <h3>Download Seller Onboarding Checklist</h3>
-<p>Click below to instantly download your free checklist PDF:</p>
-<a
-  href="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/Seller_Onboarding_Checklist.pdf"
-  download
-  style="
-    display: inline-block;
-    padding: 10px 20px;
-    background: #28a745;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-  "
->
-  📄 Download Checklist PDF
-</a>
-   <section id="contact">
-    <h2>Contact Us</h2>
-    <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
-      <label>
-        Your Name:
-        <input type="text" name="name" required placeholder="Enter your name">
-      </label>
-      <label>
-        Mobile Number:
-        <input type="tel" name="mobile" required placeholder="Enter your mobile number">
-      </label>
-      <label>
-        Your Email:
-        <input type="email" name="email" required placeholder="Enter your email">
-      </label>
-      <label>
-        Your Message:
-        <textarea name="message" required placeholder="Enter your message"></textarea>
-      </label>
-      <button type="submit">Send</button>
-    </form>
-    <div id="thank-you-message" style="display:none;">Thanks for contacting us!</div>
-  </section>
-  
- <section id="how-it-works">
-    <h2>How It Works</h2>
-    <p>We guide step-by-step in leveraging our services efficiently.</p>
-    <p>Raise Your Query – Ask questions like listing issues, product blocking, or policy doubts Anythings.</p>
-    <p>Instant Answer – Get replies based on Amazon/Flipkat Abd all other ecocommerce and quick commerce policies.</p>
-    <p>Multilingual Support – Responses available in both Hindi, English, tamil, Marathi, Gujarati, And all other indian local language included for better understanding.</p>
-    <p>Real-Time Simulation – See how conversations work in real support cases.</p>
-    <p>Issue Identification – Common problems like "Currently Unavailable", hazmat flags, or incorrect categories are explained clearly.</p>
-    <p>Step-by-Step Guidance – Each response includes what you needs to check/update (e.g., dimensions, images, documents).</p>
-    <p>Training Resource – Useful for training newly joined or started jorney for sell.</p>
-    <p>No Wait Time – Get instant guidance instead of waiting in long support queues.</p>
-    <p>Policy Awareness – Educates on compliance issues like SDS, brand approval, brand infringement etc.</p>
-    <p>Practical Scenarios – Covers real-world issues face on a daily basis.</p>
-</section>
-
-  <section id="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li><strong>Account Setup</strong> - We assist with seller registration and account verification on platforms like Amazon, Flipkart, Meesho & More</li>
-      <li><strong>Cataloging</strong> - creates detailed, optimized product listings that boost visibility and sales</li>
-      <li><strong>Image Editing & Enhancement:</strong> High-quality visuals tailored to platform standards.</li>
-      <li><strong>Inventory Management Support:</strong> Keep your listings accurate and updated to avoid stock issues and penalties.</li>
-      <li><strong>Listing Optimization:</strong> Improve product rankings using keyword-rich titles, bullet points, and descriptions.</li>
-      <li><strong>Support</strong> - Chat, email & training</li>
-    </ul>
-  </section>
-
-  <section id="offers">
-    <ul>
-  <h2>💡 Why Choose Ecoquicksupp?</h2>
-      <li>✅ Fast and reliable support for sellers</li>
-      <li>✅ Affordable pricing for startups and growing businesses</li>
-      <li>✅ Experienced in handling multiple e-commerce platforms</li>
-      <li>🎁 Free consultation </li>
-      <li>💬 Free chat</li>
-  </ul>
-   <h2>📞 Get Started Today</h2>
-<p>Let us handle the technical work so you can focus on growing your business. <strong>Contact Ecoquicksupp</strong> now for a free consultation or to learn more about our services.</p>
-</section>
-  
-<section style="padding:40px; background:#f9f9f9; text-align:center;">
-  <h2 style="margin-bottom:30px;">🛒 Platforms We Support</h2>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
-    
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.46%20PM.jpeg" alt="Flipkart" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.44%20PM(2).jpeg" alt="Zepto" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.44%20PM(1).jpeg" alt="Instamart" height="50">
-   <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.42%20PM(1).jpeg" alt="Snapdeal" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.45%20PM.jpeg" alt="Blinkit" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.45%20PM(1).jpeg" alt="Myntra" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.44%20PM.jpeg" alt="Meesho" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.43%20PM.jpeg" alt="Jio Mart" height="50">
-   <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.42%20PM(2).jpeg" alt="Nykaa" height="50">
-    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.42%20PM.jpeg" alt="Shopify" height="50">
-  
+<section>
+<h2>Our Services</h2>
+<div class="flex">
+<div class="card">🛒 <b>Account Setup</b><br><small>Amazon, Flipkart, Meesho</small></div>
+<div class="card">📦 <b>Product Listing</b><br><small>Title, images, description</small></div>
+<div class="card">🔍 <b>Product Research</b><br><small>Find profitable products</small></div>
+<div class="card">📈 <b>Growth Support</b><br><small>Ads & sales increase</small></div>
 </div>
 </section>
- <section id="testimonials" style="background: linear-gradient(to right, #f1f1f1, #ffffff); padding: 40px 20px;">
-  <h2 style="text-align: center; font-size: 32px; margin-bottom: 30px; color: #333;">What Sellers Are Saying</h2>
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-    <div style="background: white; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <p style="font-style: italic;">“EcoQuickSupport made it so easy for me to start on Amazon. Highly professional team!”</p>
-      <p style="text-align: right; font-weight: bold;">— Arun K., Bangalore</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <p style="font-style: italic;">“They handled my Meesho catalog and listing. I didn’t have to worry about anything.”</p>
-      <p style="text-align: right; font-weight: bold;">— Sneha R., Pune</p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <p style="font-style: italic;">“Quick support and great communication. Helped me list 20 products in one day!”</p>
-      <p style="text-align: right; font-weight: bold;">— Rohit S., Jaipur</p>
-    </div>
-  </div>
+<section>
+<h2>Who Is This For?</h2>
+<p>✔ Beginners starting online selling<br>
+✔ Sellers with low sales<br>
+✔ Businesses going online</p>
 </section>
 
-  <!-- Tawk.to Script -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/6817654e138f991917bc62b1/1iqdm7f77';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
+<section>
+<h2>How It Works</h2>
+<p>1️⃣ Contact us<br>
+2️⃣ Tell your goal<br>
+3️⃣ We help you start & grow</p>
+</section>
 
-  <section id="jobs">
-    <h2>Job Opportunities</h2>
-    <p>Avoid pay money for any jobs if asked money, it is scam stay Alert!</p>
-    <p>Explore opportunities from trusted portals.</p>
-    <ul>
-      <li><a href="https://www.naukri.com" target="_blank">Naukri.com</a></li>
-    </ul>
-  </section>
+<section>
+<h2>Our Plans</h2>
+<div class="flex">
+<div class="card"><b>Starter</b><br>Basic setup help<br>₹1 onwards</div>
+<div class="card"><b>Growth</b><br>Listing + support<br>₹9 onwards</div>
+<div class="card"><b>Pro</b><br>Full account management<br>Contact us</div>
+</div>
+</section>
+
+<section>
+<h2>Why Choose Us?</h2>
+<p>✔ Simple & easy guidance<br>
+✔ Beginner friendly<br>
+✔ Real support<br>
+✔ Free consultation</p>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<form action="https://formspree.io/f/xqaqpyjv" method="POST">
+<input type="text" name="name" placeholder="Your Name" required><br><br>
+<input type="tel" name="mobile" placeholder="Mobile Number" required><br><br>
+<input type="email" name="email" placeholder="Email" required><br><br>
+<textarea name="message" placeholder="Your Message" required></textarea><br><br>
+<button class="button">Send</button>
+</form>
+</section>
 
 <footer>
-    <p>&copy; 2025 Ecoquicksupp. All rights reserved.</p>
-  </footer>
+<p>Helping you start and grow your online business 🚀</p>
+</footer>
 
-<script>
-document.getElementById('quiz-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const q1 = document.querySelector('input[name="q1"]:checked').value;
-  const q2 = document.querySelector('input[name="q2"]:checked').value;
+<a href="https://wa.me/918148587929" class="whatsapp">Chat</a>
 
-  let result = '';
-
-  if (q1 === 'new' && q2 === 'listing') {
-    result = 'We recommend our Product Listing Assistance service — perfect for new sellers!';
-  } else if (q1 === 'new' && q2 === 'support') {
-    result = 'Try our Customer Support Setup package to get started smoothly.';
-  } else if (q1 === 'experienced' && q2 === 'listing') {
-    result = 'Advanced Listing Optimization is ideal for experienced sellers.';
-  } else if (q1 === 'experienced' && q2 === 'support') {
-    result = 'Our Dedicated Support Team service will help you handle customers efficiently.';
-  } else {
-    result = 'Please contact us for personalized support.';
-  }
-
-  document.getElementById('result').innerText = result;
-});
-</script>
-<!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- Custom Script -->
-  <script>
-    // Hamburger toggle
-    $('#menu-icon').click(function () {
-      $('#menu').toggleClass('active');
-    });
-
-    // Close menu on link click (mobile)
-    $('.menu a').click(function () {
-      if ($(window).width() < 768) {
-        $('#menu').removeClass('active');
-      }
-    });
-
-    // Contact form handler
-    $('#contact-form').submit(function (e) {
-      e.preventDefault();
-      $.ajax({
-        url: $(this).attr('action'),
-        method: $(this).attr('method'),
-        data: $(this).serialize(),
-        success: function () {
-          $('#contact-form').hide();
-          $('#thank-you-message').show();
-          setTimeout(() => window.location.reload(), 4000);
-        }
-      });
-    });
-  </script>
-  
 </body>
 </html>
