@@ -14,9 +14,9 @@ nav{position:fixed;width:100%;top:0;background:#020617;padding:10px;text-align:c
 nav a{color:#fff;margin:0 10px;text-decoration:none;}
 
 .hero{height:100vh;display:flex;align-items:center;justify-content:center;background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover no-repeat;}
-.hero h1{font-size:38px;text-align:center;}
+.hero h1{text-align:center;font-size:38px;}
 
-.button{background:#22c55e;padding:12px 25px;border-radius:25px;color:#fff;text-decoration:none;display:inline-block;margin:10px;border:none;}
+.button{background:#22c55e;padding:12px 25px;border-radius:25px;color:#fff;text-decoration:none;margin:10px;display:inline-block;border:none;}
 
 section{padding:60px 20px;text-align:center;}
 .flex{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;}
@@ -27,35 +27,17 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;padding:12px;border-radius:50px;color:#fff;text-decoration:none;}
 
+/* LOGOS */
+.logo-row{display:flex;justify-content:center;flex-wrap:wrap;gap:30px;margin-top:20px;}
+.logo-row img{height:40px;filter:brightness(0) invert(1);opacity:0.8;transition:0.3s;}
+.logo-row img:hover{opacity:1;transform:scale(1.1);}
+
 /* POPUP */
-.popup{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-.popup-box{
-background:#fff;color:#000;
-padding:20px;
-border-radius:10px;
-text-align:center;
-width:300px;
-}
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:9999;}
+.popup-box{background:#fff;color:#000;padding:20px;border-radius:10px;text-align:center;width:300px;}
 .close-btn{background:red;color:#fff;padding:8px;border:none;margin-top:10px;cursor:pointer;}
 
-.sticky-bar{
-position:fixed;
-bottom:0;
-width:100%;
-background:#22c55e;
-padding:10px;
-text-align:center;
-color:#000;
-}
+.sticky-bar{position:fixed;bottom:0;width:100%;background:#22c55e;padding:10px;text-align:center;color:#000;}
 </style>
 
 </head>
@@ -68,11 +50,10 @@ color:#000;
 <div class="popup-box">
 <h3>🚀 Free Ecommerce Guide</h3>
 <p>Only <span id="slots">10</span> slots left today</p>
-
 <input type="email" id="email" placeholder="Enter Email">
-
-<button class="button" onclick="saveLead()">Get Free</button> <br> <button class="close-btn" onclick="closePopup()">Skip</button>
-
+<button class="button" onclick="saveLead()">Get Free</button>
+<br>
+<button class="close-btn" onclick="closePopup()">Skip</button>
 </div>
 </div>
 
@@ -81,12 +62,34 @@ color:#000;
 <a href="#contact">Contact</a>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
 <div>
-<h1>Start & Scale Your Online Ecommerce & Quickcommerce Business 💰</h1>
+<h1>Start & Scale Your Online Business 💰</h1>
 <a href="#contact" class="button">Get Free Help</a>
 </div>
 </section>
+
+<!-- LOGOS -->
+
+<section>
+<h2 style="color:#38bdf8;">We Support All Major Platforms</h2>
+<div class="logo-row">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.46%20PM.jpeg" alt="Flipkart" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.44%20PM(2).jpeg" alt="Zepto" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.44%20PM(1).jpeg" alt="Instamart" height="50">
+   <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.42%20PM(1).jpeg" alt="Snapdeal" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.45%20PM.jpeg" alt="Blinkit" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.45%20PM(1).jpeg" alt="Myntra" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.44%20PM.jpeg" alt="Meesho" height="50">
+    <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.43%20PM.jpeg" alt="Jio Mart" height="50">
+   <img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.42%20PM(2).jpeg" alt="Nykaa" height="50">
+</div>
+</section>
+
+<!-- SERVICES -->
 
 <section>
 <h2>Services</h2>
@@ -96,6 +99,8 @@ color:#000;
 <div class="card">Growth</div>
 </div>
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 <h2>Get Consultation</h2>
@@ -134,7 +139,7 @@ window.closePopup = function(){
 popup.style.display = "none";
 }
 
-// SAVE LEAD
+// SAVE
 window.saveLead = function(){
 let email = document.getElementById("email").value;
 if(email){
@@ -151,7 +156,7 @@ popupShown = true;
 }
 });
 
-// SLOT COUNTER
+// COUNTER
 let count = 10;
 setInterval(()=>{
 if(count > 3){
