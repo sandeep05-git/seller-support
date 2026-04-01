@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,7 +15,7 @@ nav a{color:#fff;margin:0 10px;text-decoration:none;}
 .hero{height:100vh;display:flex;align-items:center;justify-content:center;background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover no-repeat;}
 .hero h1{text-align:center;font-size:38px;}
 
-.button{background:#22c55e;padding:12px 25px;border-radius:25px;color:#fff;text-decoration:none;margin:10px;display:inline-block;border:none;}
+.button{background:#22c55e;padding:12px 25px;border-radius:25px;color:#fff;text-decoration:none;margin:10px;display:inline-block;border:none;cursor:pointer;}
 
 section{padding:60px 20px;text-align:center;}
 .flex{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;}
@@ -29,15 +28,16 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 
 /* LOGO SLIDER */
 .logo-slider{overflow:hidden;width:100%;margin-top:30px;}
-.logo-track{display:flex;gap:40px;animation:scroll 20s linear infinite;align-items:center;}
-.logo-track img{height:50px;filter:brightness(0) invert(1);opacity:0.8;transition:0.3s;}
-.logo-track img:hover{opacity:1;transform:scale(1.1);}
+.logo-track{display:flex;gap:40px;animation:scroll 25s linear infinite;align-items:center;}
+.logo-track img{height:50px;object-fit:contain;background:#fff;padding:5px;border-radius:6px;}
 @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 /* POPUP */
 .popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:9999;}
 .popup-box{background:#fff;color:#000;padding:20px;border-radius:10px;text-align:center;width:300px;}
 .close-btn{background:red;color:#fff;padding:8px;border:none;margin-top:10px;cursor:pointer;}
+
+.success-msg{color:lightgreen;margin-top:10px;}
 
 .sticky-bar{position:fixed;bottom:0;width:100%;background:#22c55e;padding:10px;text-align:center;color:#000;}
 </style>
@@ -47,14 +47,13 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 <body>
 
 <!-- POPUP -->
-
 <div class="popup" id="popup">
 <div class="popup-box">
 <h3>🚀 Free Ecommerce Guide</h3>
 <p>Only <span id="slots">10</span> slots left today</p>
-<input type="email" id="email" placeholder="Enter Email">
+<input type="email" id="popupEmail" placeholder="Enter Email">
 <button class="button" onclick="saveLead()">Get Free</button>
-<br>
+<div id="popupMsg" class="success-msg"></div>
 <button class="close-btn" onclick="closePopup()">Skip</button>
 </div>
 </div>
@@ -65,7 +64,6 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 </nav>
 
 <!-- HERO -->
-
 <section class="hero">
 <div>
 <h1>Start & Scale Your Online Business 💰</h1>
@@ -74,7 +72,6 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 </section>
 
 <!-- LOGO SLIDER -->
-
 <section>
 <h2 style="color:#38bdf8;">We Support All Major Platforms</h2>
 <div class="logo-slider">
@@ -89,17 +86,15 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Jiomart_logo.png">
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Nykaa_Logo.png">
 
-<!-- duplicate for smooth scroll -->
-
+<!-- duplicate -->
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-<img src="https://raw.githubusercontent.com/sandeep05-git/seller-support/main/images/WhatsApp%20Image%202025-05-31%20at%201.16.46%20PM.jpeg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Flipkart_logo.png">
 
 </div>
 </div>
 </section>
 
 <!-- SERVICES -->
-
 <section>
 <h2>Services</h2>
 <div class="flex">
@@ -110,19 +105,20 @@ input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:non
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact">
 <h2>Get Consultation</h2>
+
 <form id="contact-form" action="https://formspree.io/f/xqaqpyjv" method="POST">
-<input type="text" placeholder="Name" required>
-<input type="email" placeholder="Email" required>
-<textarea placeholder="Your Goal"></textarea>
-<button class="button">Submit</button>
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Your Goal"></textarea>
+<button type="submit" class="button">Submit</button>
+<div id="formMsg" class="success-msg"></div>
 </form>
+
 </section>
 
 <!-- STICKY BAR -->
-
 <div class="sticky-bar">
 🚀 Need Help? <a href="https://wa.me/918148587929" style="color:#000;font-weight:bold;">Chat on WhatsApp</a>
 </div>
@@ -135,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function(){
 let popup = document.getElementById("popup");
 let popupShown = false;
 
-// DELAY POPUP
+// Popup delay
 setTimeout(()=>{
 if(!popupShown){
 popup.style.display = "flex";
@@ -143,21 +139,31 @@ popupShown = true;
 }
 },5000);
 
-// CLOSE
 window.closePopup = function(){
 popup.style.display = "none";
 }
 
-// SAVE
+// Popup form submit
 window.saveLead = function(){
-let email = document.getElementById("email").value;
+let email = document.getElementById("popupEmail").value;
+
 if(email){
-alert("Thanks! We will contact you.");
-popup.style.display = "none";
+fetch("https://formspree.io/f/xqaqpyjv", {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({ email: email, source: "Popup" })
+})
+.then(()=>{
+document.getElementById("popupMsg").innerText = "✅ Sent successfully!";
+setTimeout(()=>popup.style.display="none",2000);
+})
+.catch(()=>{
+document.getElementById("popupMsg").innerText = "❌ Error. Try again.";
+});
 }
 }
 
-// EXIT INTENT
+// Exit intent
 document.addEventListener("mouseout", function(e){
 if(e.clientY < 10 && !popupShown){
 popup.style.display = "flex";
@@ -165,7 +171,7 @@ popupShown = true;
 }
 });
 
-// COUNTER
+// Counter
 let count = 10;
 setInterval(()=>{
 if(count > 3){
@@ -173,6 +179,27 @@ count--;
 document.getElementById("slots").innerText = count;
 }
 },4000);
+
+// Contact form AJAX
+document.getElementById("contact-form").addEventListener("submit", function(e){
+e.preventDefault();
+
+let form = this;
+let data = new FormData(form);
+
+fetch(form.action, {
+method: "POST",
+body: data,
+headers: { 'Accept': 'application/json' }
+})
+.then(()=>{
+document.getElementById("formMsg").innerText = "✅ Submitted successfully!";
+form.reset();
+})
+.catch(()=>{
+document.getElementById("formMsg").innerText = "❌ Error submitting form";
+});
+});
 
 });
 </script>
