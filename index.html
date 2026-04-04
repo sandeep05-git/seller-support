@@ -149,6 +149,42 @@ background:#25D366;
 padding:14px;
 border-radius:50%;
 box-shadow:0 6px 20px rgba(0,0,0,0.4);
+z-index:2000;
+}
+
+/* TEXT ANIMATION */
+.fade-text{
+opacity:0;
+transform:translateY(30px);
+transition:0.8s ease;
+}
+.fade-text.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:3000;
+}
+.popup-box{
+background:#0f172a;
+padding:30px;
+border-radius:15px;
+text-align:center;
+width:300px;
+animation:scaleIn 0.5s ease;
+}
+@keyframes scaleIn{
+0%{transform:scale(0.8);opacity:0;}
+100%{transform:scale(1);opacity:1;}
 }
 
 /* MOBILE */
@@ -160,6 +196,15 @@ box-shadow:0 6px 20px rgba(0,0,0,0.4);
 </head>
 
 <body>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+<h3>🚀 Limited Slots Available!</h3>
+<p>Get free ecommerce consultation today.</p>
+<a href="#contact" class="btn">Get Started</a>
+</div>
+</div>
 
 <nav>
 <div class="logo">EcoQuickSupp</div>
@@ -255,6 +300,25 @@ box-shadow:0 6px 20px rgba(0,0,0,0.4);
 <a href="https://wa.me/918148587929?text=Hi%20I%20need%20help" class="whatsapp">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
 </a>
+
+<script>
+// TEXT ANIMATION
+const elements = document.querySelectorAll(\"h1, h2, h3, p, a, .card\");
+elements.forEach(el => el.classList.add(\"fade-text\"));
+
+window.addEventListener(\"scroll\", () => {
+elements.forEach(el => {
+if(el.getBoundingClientRect().top < window.innerHeight - 50){
+el.classList.add(\"show\");
+}
+});
+});
+
+// POPUP AUTO CLOSE
+setTimeout(()=>{
+document.getElementById(\"popup\").style.display=\"none\";
+},4000);
+</script>
 
 </body>
 </html>
