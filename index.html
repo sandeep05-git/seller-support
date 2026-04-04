@@ -8,38 +8,25 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Poppins;color:#fff;overflow-x:hidden;background:#020617;}
+body{font-family:Poppins;color:#fff;background:#020617;overflow-x:hidden;}
 
-/* SECTION BG */
-section{
-padding:100px 20px;
-text-align:center;
-position:relative;
-}
-
+/* SECTIONS */
+section{padding:100px 20px;text-align:center;position:relative;}
 section::before{
-content:"";
-position:absolute;
-top:0;left:0;width:100%;height:100%;
+content:"";position:absolute;width:100%;height:100%;
 background:url('https://images.unsplash.com/photo-1557821552-17105176677c') center/cover no-repeat;
-opacity:0.18;
-z-index:0;
+opacity:0.15;z-index:0;
 }
-
 .hero::before{background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover no-repeat;opacity:0.25;}
 #services::before{background:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f') center/cover no-repeat;opacity:0.2;}
-
-#contact{
-background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') center/cover no-repeat;
-}
+#contact{background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') center/cover no-repeat;}
 #contact::before{background:rgba(0,0,0,0.75);}
-
-section > *{position:relative;z-index:1;}
+section>*{position:relative;z-index:1;}
 
 /* NAV */
 nav{
 position:fixed;width:100%;top:0;
-display:flex;justify-content:space-between;
+display:flex;justify-content:space-between;align-items:center;
 padding:15px 20px;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(15px);
@@ -47,25 +34,44 @@ z-index:1000;
 }
 .logo{font-weight:700;}
 
-/* HERO */
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
+.menu{display:flex;gap:20px;}
+.menu a{color:#fff;text-decoration:none;font-size:14px;}
+
+.hamburger{
+display:none;
+font-size:26px;
+cursor:pointer;
 }
+
+/* MOBILE MENU */
+.mobile-menu{
+position:fixed;
+top:0;right:-100%;
+width:70%;
+height:100%;
+background:#020617;
+padding:40px;
+transition:0.4s;
+z-index:2000;
+}
+.mobile-menu a{
+display:block;
+margin:20px 0;
+color:#fff;
+text-decoration:none;
+font-size:18px;
+}
+.mobile-menu.active{right:0;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;}
 .hero h1{
 font-size:48px;
 background:linear-gradient(90deg,#22c55e,#4ade80);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-.subtext{
-max-width:600px;
-margin:auto;
-opacity:0.8;
-margin-top:15px;
-}
+.subtext{max-width:600px;margin:auto;margin-top:15px;opacity:0.8;}
 
 /* HEADINGS */
 h2{
@@ -87,9 +93,6 @@ backdrop-filter:blur(20px);
 transition:0.3s;
 }
 .card:hover{transform:translateY(-10px) scale(1.05);}
-.card img{margin-bottom:12px;}
-.card h3{margin-bottom:8px;}
-.card p{opacity:0.7;font-size:14px;}
 
 /* BUTTON */
 .btn{
@@ -101,62 +104,36 @@ background:linear-gradient(135deg,#22c55e,#4ade80);
 color:#000;
 font-weight:600;
 text-decoration:none;
-transition:0.3s;
-}
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 6px 20px rgba(34,197,94,0.4);
 }
 
 /* CONTACT */
-.contact-wrapper{
-max-width:900px;
-margin:auto;
-display:flex;
-flex-wrap:wrap;
-gap:30px;
-}
+.contact-wrapper{max-width:900px;margin:auto;display:flex;flex-wrap:wrap;gap:30px;}
 .contact-box{
-flex:1;
-min-width:300px;
+flex:1;min-width:300px;
 background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
+padding:30px;border-radius:20px;
 backdrop-filter:blur(20px);
 }
 form input,form textarea{
-width:100%;
-padding:14px;
-margin:12px 0;
-border-radius:10px;
-border:none;
+width:100%;padding:14px;margin:12px 0;border-radius:10px;border:none;
 }
 textarea{min-height:120px;}
 form button{
-width:100%;
-padding:14px;
-border:none;
-border-radius:30px;
+width:100%;padding:14px;border:none;border-radius:30px;
 background:linear-gradient(135deg,#22c55e,#4ade80);
 }
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:30px;
-right:20px;
-background:#25D366;
-padding:14px;
-border-radius:50%;
-box-shadow:0 6px 20px rgba(0,0,0,0.4);
-z-index:2000;
+position:fixed;bottom:25px;right:20px;
+background:#25D366;padding:14px;border-radius:50%;
 }
 
-/* TEXT ANIMATION */
+/* ANIMATION */
 .fade-text{
 opacity:0;
-transform:translateY(30px);
-transition:0.8s ease;
+transform:translateY(40px);
+transition:1s;
 }
 .fade-text.show{
 opacity:1;
@@ -165,30 +142,21 @@ transform:translateY(0);
 
 /* POPUP */
 .popup{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
+position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.7);
-display:flex;
-justify-content:center;
-align-items:center;
+display:flex;justify-content:center;align-items:center;
 z-index:3000;
 }
 .popup-box{
-background:#0f172a;
-padding:30px;
-border-radius:15px;
-text-align:center;
-width:300px;
-animation:scaleIn 0.5s ease;
+background:#0f172a;padding:25px;border-radius:15px;width:300px;
+position:relative;text-align:center;
 }
-@keyframes scaleIn{
-0%{transform:scale(0.8);opacity:0;}
-100%{transform:scale(1);opacity:1;}
-}
+.close-btn{position:absolute;top:10px;right:15px;cursor:pointer;}
 
 /* MOBILE */
 @media(max-width:768px){
+.menu{display:none;}
+.hamburger{display:block;}
 .hero h1{font-size:28px;}
 .card{width:90%;}
 }
@@ -200,58 +168,58 @@ animation:scaleIn 0.5s ease;
 <!-- POPUP -->
 <div id="popup" class="popup">
 <div class="popup-box">
+<span class="close-btn" onclick="closePopup()">✖</span>
 <h3>🚀 Limited Slots Available!</h3>
 <p>Get free ecommerce consultation today.</p>
-<a href="#contact" class="btn">Get Started</a>
+<a href="#contact" class="btn" onclick="closePopup()">Get Started</a>
 </div>
 </div>
 
+<!-- NAV -->
 <nav>
 <div class="logo">EcoQuickSupp</div>
+
+<div class="menu">
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+<a href="#" onclick="toggleMenu()">Home</a>
+<a href="#services" onclick="toggleMenu()">Services</a>
+<a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
 <section class="hero">
 <div>
 <h1>Grow Your Ecommerce Business 🚀</h1>
 <p class="subtext">We provide complete support to build, manage and scale your online business successfully.</p>
+<a href="#contact" class="btn">Get Free Help</a>
 </div>
 </section>
 
+<!-- PLATFORM -->
 <section>
 <h2>Platforms We Support</h2>
-<p class="subtext">We help you sell and grow across top marketplaces.</p>
+<p class="subtext">We help you grow across marketplaces.</p>
 
 <div class="flex">
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968885.png" width="50">
-<h3>Amazon Selling</h3>
-<p>Sell & scale your products</p>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732084.png" width="50">
-<h3>Flipkart Growth</h3>
-<p>Boost your growth</p>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" width="50">
-<h3>JioMart Setup</h3>
-<p>Expand reach</p>
-</div>
-
-<div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" width="50">
-<h3>Food Platforms</h3>
-<p>Swiggy & Zomato</p>
-</div>
-
+<div class="card">Amazon Selling</div>
+<div class="card">Flipkart Growth</div>
+<div class="card">JioMart Setup</div>
+<div class="card">Swiggy & Zomato</div>
 </div>
 
 <a href="#contact" class="btn">Start Selling Now</a>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
 <h2>Our Services</h2>
 <p class="subtext">Complete ecommerce solutions.</p>
@@ -266,6 +234,7 @@ animation:scaleIn 0.5s ease;
 <a href="#contact" class="btn">Get Expert Help</a>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <h2>Get Consultation</h2>
 
@@ -273,22 +242,20 @@ animation:scaleIn 0.5s ease;
 
 <div class="contact-box">
 <h3>Tell us your requirement</h3>
-
 <form action="https://formspree.io/f/xqaqpyjv" method="POST">
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Describe your business / issue clearly..."></textarea>
-<button type="submit">Submit Request</button>
+<textarea name="message" placeholder="Describe your business..."></textarea>
+<button type="submit">Submit</button>
 </form>
-
 </div>
 
 <div class="contact-box">
 <h3>Why choose us?</h3>
 <p class="subtext">
-✔ Expert ecommerce support<br>
+✔ Expert support<br>
 ✔ Fast response<br>
-✔ Trusted solutions<br>
+✔ Trusted service<br>
 ✔ Growth focused
 </p>
 </div>
@@ -297,27 +264,36 @@ animation:scaleIn 0.5s ease;
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/918148587929?text=Hi%20I%20need%20help" class="whatsapp">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
+<a href="https://wa.me/918148587929" class="whatsapp">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="28">
 </a>
 
 <script>
-// TEXT ANIMATION
-const elements = document.querySelectorAll(\"h1, h2, h3, p, a, .card\");
-elements.forEach(el => el.classList.add(\"fade-text\"));
+// MENU
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("active");
+}
 
-window.addEventListener(\"scroll\", () => {
-elements.forEach(el => {
-if(el.getBoundingClientRect().top < window.innerHeight - 50){
-el.classList.add(\"show\");
+// ANIMATION
+const els=document.querySelectorAll("h1,h2,h3,p,a,.card");
+els.forEach(e=>e.classList.add("fade-text"));
+
+window.addEventListener("scroll",()=>{
+els.forEach(e=>{
+if(e.getBoundingClientRect().top < window.innerHeight-50){
+e.classList.add("show");
 }
 });
 });
 
-// POPUP AUTO CLOSE
-setTimeout(()=>{
-document.getElementById(\"popup\").style.display=\"none\";
-},4000);
+// POPUP
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+setTimeout(closePopup,4000);
+document.getElementById("popup").addEventListener("click",(e)=>{
+if(e.target.id==="popup"){closePopup();}
+});
 </script>
 
 </body>
