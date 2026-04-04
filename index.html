@@ -4,266 +4,125 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EcoQuickSupp</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:Poppins;
-background:#020617;
 color:#fff;
 overflow-x:hidden;
+background: linear-gradient(-45deg, #020617, #0f172a, #020617, #1e293b);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
 }
+@keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-/* NAVBAR */
-nav{
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
+/* NAV */
+nav{position:fixed;width:100%;top:0;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);z-index:1000;}
 .logo{font-weight:700;font-size:18px;}
-
-.menu{
-display:flex;
-gap:20px;
-}
-
-.menu a{
-color:#fff;
-text-decoration:none;
-font-size:14px;
-}
+.menu{display:flex;gap:20px;}
+.menu a{color:#fff;text-decoration:none;font-size:14px;position:relative;}
+.menu a::after{content:"";position:absolute;width:0;height:2px;background:#4ade80;left:0;bottom:-4px;transition:0.3s;}
+.menu a:hover::after{width:100%;}
 
 /* HAMBURGER */
-.hamburger{
-display:none;
-font-size:24px;
-cursor:pointer;
-}
+.hamburger{display:none;cursor:pointer;width:28px;height:22px;flex-direction:column;justify-content:space-between;}
+.hamburger span{height:3px;background:#fff;border-radius:5px;transition:0.3s;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);} 
+.hamburger.active span:nth-child(2){opacity:0;} 
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
 
 /* MOBILE MENU */
-.mobile-menu{
-position:fixed;
-top:0;
-right:-100%;
-width:70%;
-height:100%;
-background:#020617;
-padding:30px;
-transition:0.4s;
-z-index:2000;
-}
+.mobile-menu{position:fixed;top:0;right:-100%;width:75%;height:100%;background:rgba(2,6,23,0.95);backdrop-filter:blur(20px);padding:40px 30px;transition:0.4s;z-index:2000;}
+.mobile-menu a{display:block;margin:20px 0;color:#fff;text-decoration:none;font-size:18px;}
+.mobile-menu.active{right:0;}
 
-.mobile-menu a{
-display:block;
-margin:20px 0;
-color:#fff;
-text-decoration:none;
-font-size:18px;
-}
-
-.mobile-menu.active{
-right:0;
-}
+/* OVERLAY */
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);opacity:0;visibility:hidden;transition:0.3s;z-index:1500;}
+.overlay.active{opacity:1;visibility:visible;}
 
 /* HERO */
-.hero{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-background:linear-gradient(135deg,#020617,#020617,#0f172a);
-}
+.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:20px;}
+.hero h1{font-size:50px;font-weight:700;background:linear-gradient(90deg,#22c55e,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{margin-top:15px;opacity:0.85;font-size:16px;}
 
-.hero h1{
-font-size:48px;
-font-weight:700;
-background:linear-gradient(90deg,#22c55e,#4ade80);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+/* TYPEWRITER */
+.typewriter{color:#4ade80;font-weight:600;}
 
-.hero p{
-margin-top:15px;
-opacity:0.8;
-}
+.button{margin-top:25px;display:inline-block;padding:14px 32px;border-radius:30px;background:linear-gradient(135deg,#22c55e,#4ade80);color:#000;font-weight:600;text-decoration:none;box-shadow:0 8px 25px rgba(34,197,94,0.4);transition:0.3s;}
+.button:hover{transform:scale(1.05);} 
 
-.button{
-margin-top:20px;
-display:inline-block;
-padding:14px 30px;
-border-radius:30px;
-background:linear-gradient(135deg,#22c55e,#4ade80);
-color:#000;
-font-weight:600;
-text-decoration:none;
-box-shadow:0 6px 20px rgba(34,197,94,0.4);
-}
+/* CARD */
+.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border-radius:20px;padding:25px;width:260px;border:1px solid rgba(255,255,255,0.1);transition:0.3s;}
+.card:hover{transform:translateY(-10px) scale(1.03);} 
 
-/* GLASS CARD */
-.card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:25px;
-width:250px;
-border:1px solid rgba(255,255,255,0.1);
-transition:0.3s;
-}
+section{padding:90px 20px;text-align:center;}
+.flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
 
-.card:hover{
-transform:translateY(-8px);
-}
+.fade{opacity:0;transform:translateY(40px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);} 
 
-/* SECTIONS */
-section{
-padding:80px 20px;
-text-align:center;
-}
+/* CHAT BUTTON */
+.chatbot{position:fixed;bottom:150px;right:20px;background:#4ade80;color:#000;padding:12px 18px;border-radius:30px;font-weight:600;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.3);} 
 
-.flex{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-}
-
-/* LOGOS */
-.logo-track{
-display:flex;
-gap:25px;
-overflow-x:auto;
-padding:10px;
-}
-
-.logo-track img{
-height:40px;
-background:#fff;
-padding:6px;
-border-radius:10px;
-}
-
-/* FORM */
-form{
-max-width:350px;
-margin:auto;
-}
-
-input,textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
-border:none;
-}
+.chatbox{position:fixed;bottom:210px;right:20px;width:260px;background:#020617;border-radius:15px;padding:15px;display:none;box-shadow:0 10px 30px rgba(0,0,0,0.5);} 
+.chatbox.active{display:block;} 
 
 /* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:80px;
-right:20px;
-background:#25D366;
-padding:12px;
-border-radius:50%;
-box-shadow:0 4px 15px rgba(0,0,0,0.3);
-}
+.whatsapp{position:fixed;bottom:90px;right:20px;background:#25D366;padding:14px;border-radius:50%;box-shadow:0 6px 20px rgba(0,0,0,0.4);} 
 
-/* STICKY BAR */
-.sticky{
-position:fixed;
-bottom:0;
-width:100%;
-background:linear-gradient(90deg,#22c55e,#4ade80);
-padding:12px;
-text-align:center;
-color:#000;
-font-weight:600;
-}
+/* STICKY */
+.sticky{position:fixed;bottom:0;width:100%;background:linear-gradient(90deg,#22c55e,#4ade80);padding:14px;text-align:center;color:#000;font-weight:600;} 
 
-/* ANIMATION */
-.fade{
-opacity:0;
-transform:translateY(30px);
-transition:1s;
-}
+/* LOADER */
+.loader{position:fixed;width:100%;height:100%;background:#020617;display:flex;align-items:center;justify-content:center;z-index:3000;}
+.loader.hidden{display:none;}
 
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-.menu{display:none;}
-.hamburger{display:block;}
-
-.hero h1{font-size:28px;}
-
-.card{width:90%;}
-
-}
+@media(max-width:768px){.menu{display:none;}.hamburger{display:flex;}.hero h1{font-size:30px;}.card{width:90%;}}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<div class="loader" id="loader">Loading...</div>
+
 <nav>
 <div class="logo">EcoQuickSupp</div>
-
 <div class="menu">
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
 </div>
-
-<div class="hamburger" onclick="toggleMenu()">☰</div>
+<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
 </div>
 
-<!-- HERO -->
+<div class="overlay" id="overlay"></div>
+
 <section class="hero">
 <div>
-<h1>Grow Your Ecommerce Business 🚀</h1>
-<p>We help you scale on all platforms</p>
+<h1>Grow Your Ecommerce <span class="typewriter" id="typing"></span></h1>
+<p>We help you scale faster with expert support</p>
 <a href="#contact" class="button">Get Free Help</a>
 </div>
 </section>
 
-<!-- LOGOS -->
 <section class="fade">
 <h2>Platforms</h2>
-<div class="logo-track">
-Amazon
-  Flipkart
-  Jiomart
-  Nykaa
-  Zepto
-  Instamart
-  swiggy
-  Zomato
+<div class="flex">
+<div class="card">Amazon</div>
+<div class="card">Flipkart</div>
+<div class="card">JioMart</div>
+<div class="card">Swiggy</div>
 </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="fade">
 <h2>Services</h2>
 <div class="flex">
@@ -273,45 +132,70 @@ Amazon
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="fade">
 <h2>Get Consultation</h2>
-
 <form action="https://formspree.io/f/xqaqpyjv" method="POST">
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <textarea name="message" placeholder="Your Goal"></textarea>
 <button class="button">Submit</button>
 </form>
-
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/918148587929?text=Hi%20I%20need%20help" class="whatsapp">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="28">
-</a>
+<div class="chatbot" onclick="toggleChat()">Chat</div>
+<div class="chatbox" id="chatbox">Hi 👋 Need help? Message on WhatsApp</div>
 
-<!-- STICKY -->
-<div class="sticky">
-Need Help? Chat on WhatsApp
-</div>
+<a href="https://wa.me/918148587929?text=Hi%20I%20need%20help" class="whatsapp"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30"></a>
+
+<div class="sticky">Need Help? Chat on WhatsApp</div>
 
 <script>
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
+window.onload=()=>{setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1000);}
+
+const words=["Business","Sales","Growth"];
+let i=0,j=0,current="",isDeleting=false;
+function type(){
+current=words[i];
+if(isDeleting){j--;} else{j++;}
+document.getElementById('typing').innerText=current.substring(0,j);
+if(!isDeleting && j===current.length){isDeleting=true;setTimeout(type,1000);return;}
+if(isDeleting && j===0){isDeleting=false;i=(i+1)%words.length;}
+setTimeout(type,isDeleting?60:120);
 }
+type();
 
-/* SCROLL ANIMATION */
-const fades=document.querySelectorAll(".fade");
+const hamburger=document.getElementById('hamburger');
+const menu=document.getElementById('mobileMenu');
+const overlay=document.getElementById('overlay');
 
-window.addEventListener("scroll",()=>{
+hamburger.addEventListener('click',()=>{
+hamburger.classList.toggle('active');
+menu.classList.toggle('active');
+overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click',()=>{
+hamburger.classList.remove('active');
+menu.classList.remove('active');
+overlay.classList.remove('active');
+});
+
+document.querySelectorAll('#mobileMenu a').forEach(link=>{
+link.addEventListener('click',()=>{
+hamburger.classList.remove('active');
+menu.classList.remove('active');
+overlay.classList.remove('active');
+});
+});
+
+const fades=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
 fades.forEach(el=>{
-let top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add("show");
-}
+if(el.getBoundingClientRect().top<window.innerHeight-100){el.classList.add('show');}
 });
 });
+
+function toggleChat(){document.getElementById('chatbox').classList.toggle('active');}
 </script>
 
 </body>
