@@ -4,141 +4,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EcoQuickSupp</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Poppins;color:#fff;background:#020617;overflow-x:hidden;}
-
-/* SECTIONS */
-section{padding:100px 20px;text-align:center;position:relative;}
-section::before{
-content:"";position:absolute;width:100%;height:100%;
-background:url('https://images.unsplash.com/photo-1557821552-17105176677c') center/cover no-repeat;
-opacity:0.15;z-index:0;
-}
-.hero::before{background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover no-repeat;opacity:0.25;}
-#services::before{background:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f') center/cover no-repeat;opacity:0.2;}
-#contact{background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') center/cover no-repeat;}
-#contact::before{background:rgba(0,0,0,0.75);}
-section>*{position:relative;z-index:1;}
+body{font-family:Poppins;background:#020617;color:#fff;overflow-x:hidden;}
 
 /* NAV */
 nav{
 position:fixed;width:100%;top:0;
 display:flex;justify-content:space-between;align-items:center;
-padding:15px 20px;
+padding:15px 25px;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(15px);
 z-index:1000;
 }
-.logo{font-weight:700;}
-
 .menu{display:flex;gap:20px;}
-.menu a{color:#fff;text-decoration:none;font-size:14px;}
-
-.hamburger{
-display:none;
-font-size:26px;
-cursor:pointer;
-}
+.menu a{color:#fff;text-decoration:none;}
+.hamburger{display:none;font-size:24px;cursor:pointer;}
 
 /* MOBILE MENU */
 .mobile-menu{
-position:fixed;
-top:0;right:-100%;
-width:70%;
-height:100%;
-background:#020617;
-padding:40px;
-transition:0.4s;
-z-index:2000;
+position:fixed;top:0;right:-100%;
+width:70%;height:100%;
+background:#020617;padding:40px;
+transition:0.4s;z-index:2000;
 }
-.mobile-menu a{
-display:block;
-margin:20px 0;
-color:#fff;
-text-decoration:none;
-font-size:18px;
-}
+.mobile-menu a{display:block;margin:20px 0;color:#fff;text-decoration:none;}
 .mobile-menu.active{right:0;}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;}
+.hero{
+min-height:100vh;
+display:flex;align-items:center;justify-content:center;
+text-align:center;padding:20px;
+}
 .hero h1{
-font-size:48px;
+font-size:42px;
 background:linear-gradient(90deg,#22c55e,#4ade80);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-.subtext{max-width:600px;margin:auto;margin-top:15px;opacity:0.8;}
+.sub{opacity:0.8;margin-top:10px;}
 
-/* HEADINGS */
+.btn{
+margin-top:20px;
+display:inline-block;
+padding:12px 25px;
+border-radius:25px;
+background:#4ade80;
+color:#000;
+font-weight:600;
+text-decoration:none;
+}
+
+/* SECTION */
+section{padding:80px 20px;text-align:center;}
 h2{
 font-size:32px;
-margin-bottom:20px;
+margin-bottom:15px;
 background:linear-gradient(90deg,#22c55e,#4ade80);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 /* CARDS */
-.flex{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
+.flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
 .card{
 background:rgba(255,255,255,0.07);
-padding:25px;
-border-radius:20px;
+padding:20px;
+border-radius:15px;
 width:260px;
-backdrop-filter:blur(20px);
-transition:0.3s;
-}
-.card:hover{transform:translateY(-10px) scale(1.05);}
-
-/* BUTTON */
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:14px 30px;
-border-radius:30px;
-background:linear-gradient(135deg,#22c55e,#4ade80);
-color:#000;
-font-weight:600;
-text-decoration:none;
 }
 
 /* CONTACT */
-.contact-wrapper{max-width:900px;margin:auto;display:flex;flex-wrap:wrap;gap:30px;}
-.contact-box{
+.contact{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.box{
 flex:1;min-width:300px;
 background:rgba(255,255,255,0.08);
-padding:30px;border-radius:20px;
-backdrop-filter:blur(20px);
+padding:25px;border-radius:15px;
 }
-form input,form textarea{
-width:100%;padding:14px;margin:12px 0;border-radius:10px;border:none;
-}
-textarea{min-height:120px;}
-form button{
-width:100%;padding:14px;border:none;border-radius:30px;
-background:linear-gradient(135deg,#22c55e,#4ade80);
+input,textarea{
+width:100%;padding:12px;margin:10px 0;border:none;border-radius:8px;
 }
 
-/* WHATSAPP */
-.whatsapp{
-position:fixed;bottom:25px;right:20px;
-background:#25D366;padding:14px;border-radius:50%;
-}
-
-/* ANIMATION */
-.fade-text{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-.fade-text.show{
-opacity:1;
-transform:translateY(0);
-}
+/* FLOAT BUTTONS */
+.float{position:fixed;right:20px;z-index:2000;}
+.whatsapp{bottom:90px;}
+.call{bottom:30px;background:#22c55e;padding:12px;border-radius:50%;}
 
 /* POPUP */
 .popup{
@@ -148,17 +102,29 @@ display:flex;justify-content:center;align-items:center;
 z-index:3000;
 }
 .popup-box{
-background:#0f172a;padding:25px;border-radius:15px;width:300px;
-position:relative;text-align:center;
+background:#111827;padding:20px;border-radius:10px;text-align:center;
 }
-.close-btn{position:absolute;top:10px;right:15px;cursor:pointer;}
+.close{cursor:pointer;float:right;}
+
+/* LIVE POPUP */
+#livePopup{
+position:fixed;bottom:20px;left:20px;
+background:#111827;padding:10px 15px;border-radius:8px;
+display:none;z-index:4000;
+}
+
+/* STICKY */
+.sticky{
+position:fixed;bottom:0;width:100%;
+background:#4ade80;color:#000;text-align:center;
+padding:10px;font-weight:600;
+}
 
 /* MOBILE */
 @media(max-width:768px){
 .menu{display:none;}
 .hamburger{display:block;}
 .hero h1{font-size:28px;}
-.card{width:90%;}
 }
 </style>
 </head>
@@ -168,132 +134,139 @@ position:relative;text-align:center;
 <!-- POPUP -->
 <div id="popup" class="popup">
 <div class="popup-box">
-<span class="close-btn" onclick="closePopup()">✖</span>
-<h3>🚀 Limited Slots Available!</h3>
-<p>Get free ecommerce consultation today.</p>
+<span class="close" onclick="closePopup()">✖</span>
+<h3>🚀 Free Consultation</h3>
+<p>Start your ecommerce journey today</p>
 <a href="#contact" class="btn" onclick="closePopup()">Get Started</a>
 </div>
 </div>
 
 <!-- NAV -->
 <nav>
-<div class="logo">EcoQuickSupp</div>
-
+<div>EcoQuickSupp</div>
 <div class="menu">
 <a href="#">Home</a>
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
 </div>
-
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-<a href="#" onclick="toggleMenu()">Home</a>
-<a href="#services" onclick="toggleMenu()">Services</a>
-<a href="#contact" onclick="toggleMenu()">Contact</a>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
 <div>
-<h1>Grow Your Ecommerce Business 🚀</h1>
-<p class="subtext">We provide complete support to build, manage and scale your online business successfully.</p>
-<a href="#contact" class="btn">Get Free Help</a>
+<h1>Start Selling on Amazon & Flipkart in 3 Days 🚀</h1>
+<p class="sub">We help you grow from 0 to ₹1L/month</p>
+<p style="color:#4ade80;font-weight:600;">Free Consultation Worth ₹2999</p>
+<a href="#contact" class="btn">Book Free Call</a>
 </div>
-</section>
-
-<!-- PLATFORM -->
-<section>
-<h2>Platforms We Support</h2>
-<p class="subtext">We help you grow across marketplaces.</p>
-
-<div class="flex">
-<div class="card">Amazon Selling</div>
-<div class="card">Flipkart Growth</div>
-<div class="card">JioMart Setup</div>
-<div class="card">Swiggy & Zomato</div>
-</div>
-
-<a href="#contact" class="btn">Start Selling Now</a>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
 <h2>Our Services</h2>
-<p class="subtext">Complete ecommerce solutions.</p>
-
 <div class="flex">
 <div class="card">Account Setup</div>
 <div class="card">Product Listing</div>
-<div class="card">Ads & Marketing</div>
-<div class="card">Sales Boost</div>
+<div class="card">Marketing</div>
+<div class="card">Growth Strategy</div>
 </div>
+</section>
 
-<a href="#contact" class="btn">Get Expert Help</a>
+<!-- PROCESS -->
+<section>
+<h2>How It Works</h2>
+<div class="flex">
+<div class="card">1. Contact Us</div>
+<div class="card">2. We Analyze</div>
+<div class="card">3. Setup</div>
+<div class="card">4. Start Selling</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+<h2>Results</h2>
+<div class="flex">
+<div class="card">₹50K/month in 2 months</div>
+<div class="card">100 orders in 30 days</div>
+<div class="card">Boosted sales instantly</div>
+</div>
+</section>
+
+<!-- OFFER -->
+<section>
+<h2>Limited Offer</h2>
+<p>Free consultation (₹2999 value)</p>
+<p style="color:#facc15;">Only 3 slots left</p>
+<a href="#contact" class="btn">Claim Now</a>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-<h2>Get Consultation</h2>
+<h2>Book Free Consultation</h2>
+<p style="color:#4ade80;">✔ No spam ✔ Quick response</p>
 
-<div class="contact-wrapper">
+<div class="contact">
 
-<div class="contact-box">
-<h3>Tell us your requirement</h3>
-<form action="https://formspree.io/f/xqaqpyjv" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Describe your business..."></textarea>
-<button type="submit">Submit</button>
+<div class="box">
+<form>
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Your business"></textarea>
+<button class="btn">Submit</button>
 </form>
 </div>
 
-<div class="contact-box">
+<div class="box">
 <h3>Why choose us?</h3>
-<p class="subtext">
-✔ Expert support<br>
-✔ Fast response<br>
-✔ Trusted service<br>
-✔ Growth focused
-</p>
+<p>✔ Expert support<br>✔ Fast growth<br>✔ Trusted</p>
 </div>
 
 </div>
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/918148587929" class="whatsapp">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="28">
+<!-- FLOAT BUTTONS -->
+<a href="https://wa.me/918148587929" class="float whatsapp">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40">
 </a>
 
+<a href="tel:+918148587929" class="float call">📞</a>
+
+<!-- LIVE POPUP -->
+<div id="livePopup"></div>
+
+<!-- STICKY -->
+<div class="sticky">🚀 Limited Slots - Get Free Consultation</div>
+
 <script>
-// MENU
 function toggleMenu(){
 document.getElementById("mobileMenu").classList.toggle("active");
 }
 
-// ANIMATION
-const els=document.querySelectorAll("h1,h2,h3,p,a,.card");
-els.forEach(e=>e.classList.add("fade-text"));
-
-window.addEventListener("scroll",()=>{
-els.forEach(e=>{
-if(e.getBoundingClientRect().top < window.innerHeight-50){
-e.classList.add("show");
-}
-});
-});
-
-// POPUP
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 setTimeout(closePopup,4000);
-document.getElementById("popup").addEventListener("click",(e)=>{
-if(e.target.id==="popup"){closePopup();}
-});
+
+// LIVE POPUP
+const msgs=[
+"Someone just booked consultation",
+"New seller joined today",
+"Only few slots left"
+];
+setInterval(()=>{
+let box=document.getElementById("livePopup");
+box.innerText=msgs[Math.floor(Math.random()*msgs.length)];
+box.style.display="block";
+setTimeout(()=>{box.style.display="none";},3000);
+},6000);
 </script>
 
 </body>
