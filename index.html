@@ -3,90 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoQuickSupp</title>
+<title>EcoQuickSupp Premium</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Poppins;background:#020617;color:#fff;overflow-x:hidden;}
+body{
+font-family:Poppins;
+color:#fff;
+overflow-x:hidden;
+background:#020617;
+}
+
+/* SECTION BACKGROUNDS */
+section{
+padding:100px 20px;
+text-align:center;
+position:relative;
+background-size:cover;
+background-position:center;
+}
+
+.hero{background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover no-repeat;}
+#services{background:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f') center/cover no-repeat;}
+#contact{background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') center/cover no-repeat;}
+section::before{
+content:"";
+position:absolute;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+z-index:0;
+}
+section>*{position:relative;z-index:1;}
 
 /* NAV */
 nav{
 position:fixed;width:100%;top:0;
-display:flex;justify-content:space-between;align-items:center;
+display:flex;justify-content:space-between;
 padding:15px 25px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
-.menu{display:flex;gap:20px;}
-.menu a{color:#fff;text-decoration:none;}
-.hamburger{display:none;font-size:24px;cursor:pointer;}
-
-/* MOBILE MENU */
-.mobile-menu{
-position:fixed;top:0;right:-100%;
-width:70%;height:100%;
-background:#020617;padding:40px;
-transition:0.4s;z-index:2000;
-}
-.mobile-menu a{display:block;margin:20px 0;color:#fff;text-decoration:none;}
-.mobile-menu.active{right:0;}
 
 /* HERO */
 .hero{
 min-height:100vh;
-display:flex;align-items:center;justify-content:center;
-text-align:center;padding:20px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
+
 .hero h1{
-font-size:42px;
+font-size:48px;
 background:linear-gradient(90deg,#22c55e,#4ade80);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+animation:slideUp 1s ease;
 }
-.sub{opacity:0.8;margin-top:10px;}
+
+.sub{opacity:0.8;margin-top:10px;animation:fadeIn 2s;}
 
 .btn{
 margin-top:20px;
-display:inline-block;
-padding:12px 25px;
-border-radius:25px;
+padding:14px 30px;
+border-radius:30px;
 background:#4ade80;
 color:#000;
-font-weight:600;
 text-decoration:none;
-}
-
-/* SECTION */
-section{padding:80px 20px;text-align:center;}
-h2{
-font-size:32px;
-margin-bottom:15px;
-background:linear-gradient(90deg,#22c55e,#4ade80);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+display:inline-block;
+animation:fadeIn 2.5s;
 }
 
 /* CARDS */
 .flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
 .card{
-background:rgba(255,255,255,0.07);
-padding:20px;
-border-radius:15px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:20px;
 width:260px;
+transition:0.3s;
 }
+.card:hover{transform:translateY(-10px) scale(1.05);}
 
 /* CONTACT */
 .contact{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
 .box{
 flex:1;min-width:300px;
-background:rgba(255,255,255,0.08);
-padding:25px;border-radius:15px;
+background:rgba(255,255,255,0.1);
+padding:25px;border-radius:20px;
+backdrop-filter:blur(20px);
 }
+
 input,textarea{
-width:100%;padding:12px;margin:10px 0;border:none;border-radius:8px;
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:10px;
+border:none;
 }
 
 /* FLOAT BUTTONS */
@@ -96,34 +112,56 @@ width:100%;padding:12px;margin:10px 0;border:none;border-radius:8px;
 
 /* POPUP */
 .popup{
-position:fixed;top:0;left:0;width:100%;height:100%;
+position:fixed;
+top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.7);
 display:flex;justify-content:center;align-items:center;
 z-index:3000;
 }
 .popup-box{
-background:#111827;padding:20px;border-radius:10px;text-align:center;
+background:#111827;
+padding:20px;
+border-radius:10px;
+text-align:center;
 }
 .close{cursor:pointer;float:right;}
 
-/* LIVE POPUP */
+/* LIVE */
 #livePopup{
-position:fixed;bottom:20px;left:20px;
-background:#111827;padding:10px 15px;border-radius:8px;
-display:none;z-index:4000;
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111827;
+padding:10px 15px;
+border-radius:8px;
+display:none;
 }
 
 /* STICKY */
 .sticky{
-position:fixed;bottom:0;width:100%;
-background:#4ade80;color:#000;text-align:center;
-padding:10px;font-weight:600;
+position:fixed;
+bottom:0;
+width:100%;
+background:#4ade80;
+color:#000;
+padding:10px;
+text-align:center;
+font-weight:600;
+}
+
+/* ANIMATIONS */
+@keyframes slideUp{
+from{opacity:0;transform:translateY(50px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 /* MOBILE */
 @media(max-width:768px){
-.menu{display:none;}
-.hamburger{display:block;}
 .hero h1{font-size:28px;}
 }
 </style>
@@ -137,34 +175,21 @@ padding:10px;font-weight:600;
 <span class="close" onclick="closePopup()">✖</span>
 <h3>🚀 Free Consultation</h3>
 <p>Start your ecommerce journey today</p>
-<a href="#contact" class="btn" onclick="closePopup()">Get Started</a>
+<a href="#contact" class="btn" onclick="closePopup()">Start Now</a>
 </div>
 </div>
 
 <!-- NAV -->
 <nav>
 <div>EcoQuickSupp</div>
-<div class="menu">
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
-</div>
-<div class="hamburger" onclick="toggleMenu()">☰</div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
-</div>
 
 <!-- HERO -->
 <section class="hero">
 <div>
-<h1>Start Selling on Amazon & Flipkart in 3 Days 🚀</h1>
-<p class="sub">We help you grow from 0 to ₹1L/month</p>
-<p style="color:#4ade80;font-weight:600;">Free Consultation Worth ₹2999</p>
-<a href="#contact" class="btn">Book Free Call</a>
+<h1>Start Selling in 3 Days 🚀</h1>
+<p class="sub">Grow to ₹1L/month</p>
+<a href="#contact" class="btn">Get Started</a>
 </div>
 </section>
 
@@ -175,92 +200,43 @@ padding:10px;font-weight:600;
 <div class="card">Account Setup</div>
 <div class="card">Product Listing</div>
 <div class="card">Marketing</div>
-<div class="card">Growth Strategy</div>
 </div>
-</section>
-
-<!-- PROCESS -->
-<section>
-<h2>How It Works</h2>
-<div class="flex">
-<div class="card">1. Contact Us</div>
-<div class="card">2. We Analyze</div>
-<div class="card">3. Setup</div>
-<div class="card">4. Start Selling</div>
-</div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section>
-<h2>Results</h2>
-<div class="flex">
-<div class="card">₹50K/month in 2 months</div>
-<div class="card">100 orders in 30 days</div>
-<div class="card">Boosted sales instantly</div>
-</div>
-</section>
-
-<!-- OFFER -->
-<section>
-<h2>Limited Offer</h2>
-<p>Free consultation (₹2999 value)</p>
-<p style="color:#facc15;">Only 3 slots left</p>
-<a href="#contact" class="btn">Claim Now</a>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-<h2>Book Free Consultation</h2>
-<p style="color:#4ade80;">✔ No spam ✔ Quick response</p>
-
+<h2>Contact Us</h2>
 <div class="contact">
-
 <div class="box">
-<form>
 <input placeholder="Name">
 <input placeholder="Email">
 <textarea placeholder="Your business"></textarea>
 <button class="btn">Submit</button>
-</form>
 </div>
-
-<div class="box">
-<h3>Why choose us?</h3>
-<p>✔ Expert support<br>✔ Fast growth<br>✔ Trusted</p>
-</div>
-
 </div>
 </section>
 
-<!-- FLOAT BUTTONS -->
+<!-- FLOAT -->
 <a href="https://wa.me/918148587929" class="float whatsapp">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40">
 </a>
 
 <a href="tel:+918148587929" class="float call">📞</a>
 
-<!-- LIVE POPUP -->
+<!-- LIVE -->
 <div id="livePopup"></div>
 
 <!-- STICKY -->
 <div class="sticky">🚀 Limited Slots - Get Free Consultation</div>
 
 <script>
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
-}
-
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 setTimeout(closePopup,4000);
 
-// LIVE POPUP
-const msgs=[
-"Someone just booked consultation",
-"New seller joined today",
-"Only few slots left"
-];
+// LIVE
+const msgs=["Someone joined","New seller started","Limited slots"];
 setInterval(()=>{
 let box=document.getElementById("livePopup");
 box.innerText=msgs[Math.floor(Math.random()*msgs.length)];
