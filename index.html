@@ -8,110 +8,78 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Poppins;color:#fff;overflow-x:hidden;background: linear-gradient(-45deg, #020617, #0f172a, #020617, #1e293b);background-size:400% 400%;animation:gradientMove 12s ease infinite;}
-@keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+body{font-family:Poppins;color:#fff;overflow-x:hidden;background:#020617;}
 
+/* GLOBAL SECTION BG */
+section{
+padding:100px 20px;
+text-align:center;
+position:relative;
+}
+
+section::before{
+content:"";
+position:absolute;
+top:0;left:0;width:100%;height:100%;
+background:url('https://images.unsplash.com/photo-1518770660439-4636190af475') center/cover no-repeat;
+opacity:0.15;
+z-index:0;
+}
+
+section > *{position:relative;z-index:1;}
+
+/* NAV */
 nav{position:fixed;width:100%;top:0;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);z-index:1000;}
 .logo{font-weight:700;font-size:18px;}
 .menu{display:flex;gap:20px;}
 .menu a{color:#fff;text-decoration:none;font-size:14px;}
 
-.hamburger{display:none;cursor:pointer;width:28px;height:22px;flex-direction:column;justify-content:space-between;}
-.hamburger span{height:3px;background:#fff;border-radius:5px;transition:0.3s;}
-.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);} 
-.hamburger.active span:nth-child(2){opacity:0;} 
-.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);} 
+/* HERO */
+.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;}
+.hero h1{font-size:48px;background:linear-gradient(90deg,#22c55e,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{margin-top:15px;opacity:0.8;}
 
-.mobile-menu{position:fixed;top:0;right:-100%;width:75%;height:100%;background:rgba(2,6,23,0.95);backdrop-filter:blur(20px);padding:40px 30px;transition:0.4s;z-index:2000;}
-.mobile-menu a{display:block;margin:20px 0;color:#fff;text-decoration:none;font-size:18px;}
-.mobile-menu.active{right:0;}
-
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);opacity:0;visibility:hidden;transition:0.3s;z-index:1500;}
-.overlay.active{opacity:1;visibility:visible;}
-
-.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:20px;}
-.hero h1{font-size:50px;font-weight:700;background:linear-gradient(90deg,#22c55e,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero p{margin-top:15px;opacity:0.85;font-size:16px;}
-.typewriter{color:#4ade80;font-weight:600;}
-
-.button{margin-top:25px;display:inline-block;padding:14px 32px;border-radius:30px;background:linear-gradient(135deg,#22c55e,#4ade80);color:#000;font-weight:600;text-decoration:none;box-shadow:0 8px 25px rgba(34,197,94,0.4);transition:0.3s;}
-.button:hover{transform:scale(1.05);} 
-
-.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border-radius:20px;padding:25px;width:260px;border:1px solid rgba(255,255,255,0.1);transition:0.3s;}
-.card:hover{transform:translateY(-10px) scale(1.03);} 
-
-section{padding:90px 20px;text-align:center;}
-.flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
-
-.fade{opacity:0;transform:translateY(40px);transition:1s;}
-.fade.show{opacity:1;transform:translateY(0);} 
-
-/* 🔥 CONTACT SECTION PREMIUM */
-#contact{
-background: url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') no-repeat center/cover;
-position:relative;
-}
-#contact::before{
-content:"";
-position:absolute;
-top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.75);
-z-index:0;
+/* TITLE STYLE */
+h2{
+font-size:32px;
+margin-bottom:20px;
+background:linear-gradient(90deg,#22c55e,#4ade80);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.contact-wrapper{
-position:relative;
-z-index:1;
-max-width:900px;
+.subtext{
+max-width:600px;
 margin:auto;
-display:flex;
-flex-wrap:wrap;
-gap:30px;
-justify-content:center;
+opacity:0.8;
+margin-bottom:40px;
 }
 
-.contact-box{
-flex:1;
-min-width:300px;
-background:rgba(255,255,255,0.08);
-padding:30px;
+/* CARDS */
+.flex{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
+.card{
+background:rgba(255,255,255,0.07);
+padding:25px;
 border-radius:20px;
+width:260px;
 backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
 }
+.card:hover{transform:translateY(-10px) scale(1.05);}
 
-form input, form textarea{
-width:100%;
-padding:14px;
-margin:12px 0;
-border-radius:10px;
-border:none;
-font-size:15px;
-}
+/* CONTACT SAME AS BEFORE */
+#contact{background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') center/cover no-repeat;}
+#contact::before{background:rgba(0,0,0,0.75);} 
 
-textarea{
-min-height:120px;
-resize:none;
-}
+.contact-wrapper{max-width:900px;margin:auto;display:flex;flex-wrap:wrap;gap:30px;justify-content:center;}
+.contact-box{flex:1;min-width:300px;background:rgba(255,255,255,0.08);padding:30px;border-radius:20px;backdrop-filter:blur(20px);} 
 
-form button{
-width:100%;
-padding:14px;
-border:none;
-border-radius:30px;
-background:linear-gradient(135deg,#22c55e,#4ade80);
-font-weight:600;
-cursor:pointer;
-}
+form input,form textarea{width:100%;padding:14px;margin:12px 0;border-radius:10px;border:none;}
+textarea{min-height:120px;}
+form button{width:100%;padding:14px;border:none;border-radius:30px;background:linear-gradient(135deg,#22c55e,#4ade80);} 
 
-.chatbot{position:fixed;bottom:150px;right:20px;background:#4ade80;color:#000;padding:12px 18px;border-radius:30px;font-weight:600;cursor:pointer;}
-.chatbox{position:fixed;bottom:210px;right:20px;width:260px;background:#020617;border-radius:15px;padding:15px;display:none;}
-.chatbox.active{display:block;}
-
-.whatsapp{position:fixed;bottom:90px;right:20px;background:#25D366;padding:14px;border-radius:50%;}
-.sticky{position:fixed;bottom:0;width:100%;background:linear-gradient(90deg,#22c55e,#4ade80);padding:14px;text-align:center;color:#000;font-weight:600;}
-
-@media(max-width:768px){.menu{display:none;}.hamburger{display:flex;}.hero h1{font-size:30px;}.card{width:90%;}}
+/* MOBILE */
+@media(max-width:768px){.menu{display:none;}.hero h1{font-size:28px;}.card{width:90%;}}
 </style>
 </head>
 
@@ -124,48 +92,40 @@ cursor:pointer;
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
 </div>
-<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
-</div>
-
-<div class="overlay" id="overlay"></div>
 
 <section class="hero">
 <div>
-<h1>Grow Your Ecommerce <span class="typewriter" id="typing"></span></h1>
-<p>We help you scale faster with expert support</p>
-<a href="#contact" class="button">Get Free Help</a>
+<h1>Grow Your Ecommerce Business 🚀</h1>
+<p class="subtext">We provide complete support to build, manage and scale your online business successfully.</p>
 </div>
 </section>
 
-<section class="fade">
-<h2>Platforms</h2>
+<section>
+<h2>Platforms We Support</h2>
+<p class="subtext">We help you sell and grow across top marketplaces with expert guidance.</p>
 <div class="flex">
-<div class="card">Amazon</div>
-<div class="card">Flipkart</div>
-<div class="card">JioMart</div>
-<div class="card">Swiggy</div>
+<div class="card">Amazon Selling</div>
+<div class="card">Flipkart Growth</div>
+<div class="card">JioMart Setup</div>
+<div class="card">Swiggy & Zomato</div>
 </div>
 </section>
 
-<section id="services" class="fade">
-<h2>Services</h2>
+<section id="services">
+<h2>Our Services</h2>
+<p class="subtext">From beginner setup to advanced growth strategies, we cover everything.</p>
 <div class="flex">
 <div class="card">Account Setup</div>
 <div class="card">Product Listing</div>
-<div class="card">Growth Strategy</div>
+<div class="card">Ads & Marketing</div>
+<div class="card">Sales Boost Strategy</div>
 </div>
 </section>
 
-<section id="contact" class="fade">
+<section id="contact">
 <h2 style="position:relative;z-index:1;">Get Consultation</h2>
 <div class="contact-wrapper">
-
 <div class="contact-box">
 <h3>Tell us your requirement</h3>
 <form action="https://formspree.io/f/xqaqpyjv" method="POST">
@@ -175,73 +135,12 @@ cursor:pointer;
 <button type="submit">Submit Request</button>
 </form>
 </div>
-
 <div class="contact-box">
 <h3>Why choose us?</h3>
-<p style="opacity:0.8;margin-top:10px;line-height:1.6;">
-✔ Expert ecommerce support<br>
-✔ Fast response time<br>
-✔ Trusted solutions<br>
-✔ 100% guidance for growth
-</p>
+<p class="subtext">✔ Expert ecommerce support<br>✔ Fast response<br>✔ Trusted solutions<br>✔ Growth focused</p>
 </div>
-
 </div>
 </section>
-
-<div class="chatbot" onclick="toggleChat()">Chat</div>
-<div class="chatbox" id="chatbox">Hi 👋 Need help? Message on WhatsApp</div>
-
-<a href="https://wa.me/918148587929?text=Hi%20I%20need%20help" class="whatsapp"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30"></a>
-
-<div class="sticky">Need Help? Chat on WhatsApp</div>
-
-<script>
-const words=["Business","Sales","Growth"];
-let i=0,j=0,current="",isDeleting=false;
-function type(){
-current=words[i];
-if(isDeleting){j--;} else{j++;}
-document.getElementById('typing').innerText=current.substring(0,j);
-if(!isDeleting && j===current.length){isDeleting=true;setTimeout(type,1000);return;}
-if(isDeleting && j===0){isDeleting=false;i=(i+1)%words.length;}
-setTimeout(type,isDeleting?60:120);
-}
-type();
-
-const hamburger=document.getElementById('hamburger');
-const menu=document.getElementById('mobileMenu');
-const overlay=document.getElementById('overlay');
-
-hamburger.addEventListener('click',()=>{
-hamburger.classList.toggle('active');
-menu.classList.toggle('active');
-overlay.classList.toggle('active');
-});
-
-overlay.addEventListener('click',()=>{
-hamburger.classList.remove('active');
-menu.classList.remove('active');
-overlay.classList.remove('active');
-});
-
-document.querySelectorAll('#mobileMenu a').forEach(link=>{
-link.addEventListener('click',()=>{
-hamburger.classList.remove('active');
-menu.classList.remove('active');
-overlay.classList.remove('active');
-});
-});
-
-const fades=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-fades.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){el.classList.add('show');}
-});
-});
-
-function toggleChat(){document.getElementById('chatbox').classList.toggle('active');}
-</script>
 
 </body>
 </html>
