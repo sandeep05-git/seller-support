@@ -48,9 +48,8 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:100px 40px;
+padding:120px 40px 80px;
 gap:40px;
-position:relative;
 }
 
 .hero-text{flex:1;}
@@ -63,7 +62,7 @@ background:linear-gradient(90deg,#22c55e,#4ade80);
 -webkit-text-fill-color:transparent;
 }
 
-.sub{opacity:0.8;margin-top:15px;}
+.sub{opacity:0.8;margin-top:15px;line-height:1.6;}
 
 .btn{
 margin-top:25px;
@@ -73,6 +72,8 @@ border-radius:30px;
 background:#4ade80;
 color:#000;
 text-decoration:none;
+border:none;
+cursor:pointer;
 transition:0.3s;
 }
 .btn:hover{
@@ -88,7 +89,6 @@ border-radius:20px;
 animation:float 4s ease-in-out infinite;
 }
 
-/* FLOAT */
 @keyframes float{
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-15px);}
@@ -98,19 +98,11 @@ animation:float 4s ease-in-out infinite;
 section{
 padding:100px 20px;
 text-align:center;
-position:relative;
 }
 
-.parallax{
-background-attachment:fixed;
-background-size:cover;
-background-position:center;
-}
-
-/* HEADINGS */
 h2{
 font-size:34px;
-margin-bottom:10px;
+margin-bottom:20px;
 background:linear-gradient(90deg,#22c55e,#4ade80);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -120,7 +112,7 @@ background:linear-gradient(90deg,#22c55e,#4ade80);
 .platforms{
 display:flex;
 flex-wrap:wrap;
-gap:20px;
+gap:15px;
 justify-content:center;
 margin-top:20px;
 }
@@ -136,10 +128,16 @@ color:#000;
 transform:scale(1.1);
 }
 
-/* CARDS */
-.flex{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
+/* SERVICES */
+.flex{
+display:flex;
+flex-wrap:wrap;
+gap:25px;
+justify-content:center;
+margin-top:30px;
+}
 .card{
-background:rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.08);
 padding:25px;
 border-radius:20px;
 width:260px;
@@ -147,7 +145,11 @@ backdrop-filter:blur(15px);
 transition:0.3s;
 }
 .card img{width:60px;margin-bottom:10px;}
-.card:hover{transform:translateY(-10px);}
+.card p{opacity:0.8;font-size:14px;margin-top:5px;}
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.15);
+}
 
 /* CONTACT */
 .contact{
@@ -155,20 +157,23 @@ display:flex;
 flex-wrap:wrap;
 gap:30px;
 justify-content:center;
+margin-top:30px;
 }
 .box{
 flex:1;
 min-width:320px;
-background:rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.08);
 padding:30px;
 border-radius:20px;
 }
+
 input,textarea{
 width:100%;
 padding:14px;
 margin:10px 0;
 border-radius:10px;
 border:none;
+outline:none;
 }
 
 /* FLOAT BUTTONS */
@@ -179,12 +184,12 @@ border:none;
 /* SCROLL ANIMATION */
 .reveal{
 opacity:0;
-transform:translateY(80px) scale(0.95);
+transform:translateY(80px);
 transition:all 0.8s ease;
 }
 .reveal.active{
 opacity:1;
-transform:translateY(0) scale(1);
+transform:translateY(0);
 }
 
 /* MOBILE */
@@ -224,7 +229,7 @@ transform:translateY(0) scale(1);
 <section class="hero">
 <div class="hero-text">
 <h1 id="typing"></h1>
-<p class="sub">We setup your ecommerce business & help you start getting orders.</p>
+<p class="sub">We setup your ecommerce business & help you start getting orders fast.</p>
 <a href="#contact" class="btn">Get Free Consultation</a>
 </div>
 
@@ -245,13 +250,34 @@ transform:translateY(0) scale(1);
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="reveal parallax" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f');">
+<section id="services" class="reveal">
 <h2>Our Services</h2>
 <div class="flex">
-<div class="card"><img src="https://img.icons8.com/color/96/shop.png">Account Setup</div>
-<div class="card"><img src="https://img.icons8.com/color/96/product.png">Product Listing</div>
-<div class="card"><img src="https://img.icons8.com/color/96/advertising.png">Marketing</div>
-<div class="card"><img src="https://img.icons8.com/color/96/growth.png">Growth Strategy</div>
+
+<div class="card">
+<img src="https://img.icons8.com/color/96/shop.png">
+<h3>Account Setup</h3>
+<p>Complete store setup with all configurations done for you.</p>
+</div>
+
+<div class="card">
+<img src="https://img.icons8.com/color/96/product.png">
+<h3>Product Listing</h3>
+<p>High converting listings with SEO optimized titles.</p>
+</div>
+
+<div class="card">
+<img src="https://img.icons8.com/color/96/advertising.png">
+<h3>Marketing</h3>
+<p>Run ads & promotions to boost visibility and sales.</p>
+</div>
+
+<div class="card">
+<img src="https://img.icons8.com/color/96/growth.png">
+<h3>Growth Strategy</h3>
+<p>Scale your business with expert planning & insights.</p>
+</div>
+
 </div>
 </section>
 
@@ -260,17 +286,24 @@ transform:translateY(0) scale(1);
 <h2>Book Free Consultation</h2>
 
 <div class="contact">
+
 <div class="box">
-<input placeholder="Name">
-<input placeholder="Email">
-<textarea placeholder="Your business"></textarea>
-<button class="btn">Submit</button>
+<form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Describe your business" required></textarea>
+
+<button type="submit" class="btn">Submit</button>
+
+</form>
 </div>
 
 <div class="box">
 <h3>Why choose us?</h3>
-<p>✔ Expert support<br>✔ Fast growth<br>✔ Trusted</p>
+<p>✔ Expert support<br>✔ Fast growth<br>✔ Trusted service</p>
 </div>
+
 </div>
 </section>
 
@@ -287,7 +320,7 @@ function toggleMenu(){
 document.getElementById("mobileMenu").classList.toggle("active");
 }
 
-// SCROLL ANIMATION
+// SCROLL
 const reveals=document.querySelectorAll(".reveal");
 window.addEventListener("scroll",()=>{
 reveals.forEach(el=>{
@@ -297,7 +330,28 @@ el.classList.add("active");
 });
 });
 
-// TYPING TEXT
+// FORM FIX
+document.getElementById("contactForm").addEventListener("submit", async function(e){
+e.preventDefault();
+
+const form=e.target;
+const data=new FormData(form);
+
+const response=await fetch(form.action,{
+method:form.method,
+body:data,
+headers:{'Accept':'application/json'}
+});
+
+if(response.ok){
+alert("✅ Message Sent Successfully!");
+form.reset();
+}else{
+alert("❌ Error sending message!");
+}
+});
+
+// TYPING
 const texts=[
 "Start Selling on Amazon in 3 Days 🚀",
 "Get Your First Order Fast 📦",
