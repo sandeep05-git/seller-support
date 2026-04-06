@@ -12,8 +12,13 @@
 
 body{
 font-family:Poppins;
-background:#020617;
 color:#fff;
+background:
+linear-gradient(rgba(2,6,23,0.85), rgba(2,6,23,0.95)),
+url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
 /* NAV */
@@ -66,7 +71,7 @@ font-size:30px;
 }
 
 .hero p{
-opacity:0.8;
+opacity:0.9;
 margin-top:10px;
 }
 
@@ -86,6 +91,26 @@ padding:50px 20px;
 text-align:center;
 }
 
+/* BACKGROUND SECTION */
+.bg-section{
+background-size:cover;
+background-position:center;
+position:relative;
+}
+
+.bg-section::before{
+content:"";
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.65);
+}
+
+.bg-section *{
+position:relative;
+z-index:1;
+}
+
 /* CARDS */
 .flex{
 display:flex;
@@ -95,10 +120,11 @@ justify-content:center;
 }
 
 .card{
-background:#0f172a;
+background:rgba(15,23,42,0.85);
 padding:15px;
 border-radius:10px;
 width:260px;
+backdrop-filter:blur(6px);
 }
 
 .card img{
@@ -118,7 +144,7 @@ justify-content:center;
 }
 
 .box{
-background:#0f172a;
+background:rgba(15,23,42,0.9);
 padding:20px;
 border-radius:10px;
 min-width:280px;
@@ -199,8 +225,8 @@ text-align:center;
 <a href="#contact" class="btn">Get Started</a>
 </section>
 
-  <!-- PLATFORMS -->
-<section id="platforms">
+<!-- PLATFORMS -->
+<section id="platforms" class="bg-section" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');">
 <h2>Platforms We Support</h2>
 
 <div class="flex">
@@ -239,7 +265,7 @@ Zepto
 </section>
 
 <!-- TRUST -->
-<section>
+<section class="bg-section" style="background-image:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7');">
 <h2>Why Choose Us</h2>
 <div class="flex">
 <div class="card">50+ Clients</div>
@@ -249,7 +275,7 @@ Zepto
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" class="bg-section" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f');">
 <h2>Services</h2>
 <div class="flex">
 
@@ -277,7 +303,7 @@ Growth Strategy
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="bg-section" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216');">
 <h2>Contact</h2>
 
 <div class="contact">
