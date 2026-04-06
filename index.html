@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EcoQuickSupp</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -14,21 +14,23 @@ font-family:Poppins;
 background:#020617;
 color:#fff;
 overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
 /* NAV */
 nav{
-position:fixed;width:100%;top:0;
+position:fixed;width:100%;
 display:flex;justify-content:space-between;
 padding:15px 25px;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(20px);
 z-index:1000;
 }
 .menu{display:flex;gap:20px;}
 .menu a{color:#fff;text-decoration:none;}
 .hamburger{display:none;cursor:pointer;}
 
-/* MOBILE */
+/* MOBILE MENU */
 .mobile-menu{
 position:fixed;top:0;right:-100%;
 width:80%;height:100%;
@@ -40,93 +42,131 @@ transition:0.3s;
 
 /* HERO */
 .hero{
-min-height:100vh;
+min-height:85vh;
 display:flex;align-items:center;
 justify-content:space-between;
-padding:120px 40px;
+padding:100px 30px;
 flex-wrap:wrap;
+background:linear-gradient(135deg,#020617,#0f172a);
 }
-.hero h1{font-size:40px;color:#4ade80;}
+
+.hero h1{
+font-size:42px;
+background:linear-gradient(90deg,#22c55e,#4ade80);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.sub{opacity:0.8;margin-top:10px;}
+
 .btn{
-padding:14px 25px;
-background:#4ade80;
-border-radius:25px;
-display:inline-block;
 margin-top:20px;
+padding:14px 28px;
+border-radius:30px;
+background:linear-gradient(45deg,#22c55e,#4ade80);
 color:#000;
 text-decoration:none;
+display:inline-block;
 }
 
-/* SECTION */
-section{padding:80px 20px;text-align:center;}
-.flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
-
-/* CARD */
+/* GLASS CARD */
 .card{
-background:#111;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+border-radius:15px;
 padding:20px;
-border-radius:12px;
 width:260px;
+transition:0.3s;
+}
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
 }
 .card img{
 width:100%;height:150px;
-object-fit:cover;
-border-radius:10px;
+object-fit:cover;border-radius:10px;
 }
+
+/* SECTION */
+section{
+padding:70px 20px;
+text-align:center;
+}
+
+.flex{
+display:flex;flex-wrap:wrap;
+gap:25px;
+justify-content:center;
+}
+
+/* BACKGROUND */
+.bg{
+background-size:cover;
+background-position:center;
+position:relative;
+}
+.bg::before{
+content:"";
+position:absolute;
+width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+}
+.bg *{position:relative;}
 
 /* TESTIMONIAL */
 .testimonial{
-background:#111;
-padding:20px;
-border-radius:10px;
-width:300px;
+background:rgba(255,255,255,0.08);
+padding:20px;border-radius:10px;
+width:280px;
 }
 
 /* CONTACT */
 .contact{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
+display:flex;flex-wrap:wrap;
+gap:20px;justify-content:center;
 }
 .box{
-background:#111;
-padding:20px;
-border-radius:10px;
+background:rgba(255,255,255,0.08);
+padding:25px;border-radius:15px;
 min-width:300px;
 }
-
 input,textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:8px;
+width:100%;padding:12px;margin:10px 0;
+border:none;border-radius:8px;
 }
 
 /* FLOAT */
 .float{position:fixed;right:20px;}
 .whatsapp{bottom:90px;}
-.call{bottom:30px;background:#4ade80;padding:12px;border-radius:50%;}
+.call{bottom:30px;background:#22c55e;padding:12px;border-radius:50%;}
 
 /* POPUP */
 .popup{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-align-items:center;
-justify-content:center;
+position:fixed;bottom:-100%;
+left:0;width:100%;
+display:flex;justify-content:center;
+transition:0.5s;
 }
-.popup-content{
+.popup.show{bottom:20px;}
+.popup-box{
 background:#111;
-padding:20px;
-border-radius:10px;
+padding:20px;border-radius:15px;
+width:90%;max-width:350px;
 text-align:center;
 }
 
-/* MOBILE FIX */
+/* SCROLL ANIMATION */
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:0.8s;
+}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
 @media(max-width:768px){
 .menu{display:none;}
 .hamburger{display:block;}
@@ -137,6 +177,7 @@ text-align:center;
 
 <body>
 
+<!-- NAV -->
 <nav>
 <div>EcoQuickSupp</div>
 <div class="menu">
@@ -156,8 +197,8 @@ text-align:center;
 <!-- HERO -->
 <section class="hero">
 <div>
-<h1>Grow Your Online Business 🚀</h1>
-<p>Amazon, Flipkart, Meesho expert support from Chennai</p>
+<h1>Start & Grow Your Online Business 🚀</h1>
+<p class="sub">Amazon • Flipkart • Meesho experts from Chennai</p>
 <a href="#contact" class="btn">Get Free Consultation</a>
 </div>
 
@@ -165,45 +206,62 @@ text-align:center;
 </section>
 
 <!-- TRUST -->
-<section>
-<h2>Why Choose Us</h2>
+<section class="reveal">
+<h2>Trusted By Sellers</h2>
 <div class="flex">
-<div class="card"><h3>50+ Clients</h3></div>
-<div class="card"><h3>24H Support</h3></div>
-<div class="card"><h3>Real Experts</h3></div>
+<div class="card"><h3>50+</h3><p>Clients</p></div>
+<div class="card"><h3>24H</h3><p>Support</p></div>
+<div class="card"><h3>100%</h3><p>Real Help</p></div>
 </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" class="bg reveal" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d');">
 <h2>Services</h2>
 <div class="flex">
-<div class="card"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d"><p>Account Setup</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1586880244406-556ebe35f282"><p>Product Listing</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312"><p>Marketing</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"><p>Growth Strategy</p></div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1586880244406-556ebe35f282">
+<p>Account Setup</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312">
+<p>Product Listing</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+<p>Marketing</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d">
+<p>Growth Strategy</p>
+</div>
+
 </div>
 </section>
 
 <!-- TESTIMONIAL -->
-<section>
+<section class="reveal">
 <h2>Client Feedback</h2>
 <div class="flex">
-<div class="testimonial">"Got my first order in 5 days!"</div>
-<div class="testimonial">"Very helpful team, fast response."</div>
+<div class="testimonial">"Got my first order in 7 days!"</div>
+<div class="testimonial">"Very genuine support team."</div>
 </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-<h2>Contact Us</h2>
+<section id="contact" class="reveal">
+<h2>Contact</h2>
 <div class="contact">
 
 <div class="box">
 <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 <input name="name" placeholder="Name" required>
 <input name="email" placeholder="Email" required>
-<textarea name="message"></textarea>
+<textarea name="message" placeholder="Message"></textarea>
 <button class="btn">Submit</button>
 </form>
 </div>
@@ -216,40 +274,55 @@ text-align:center;
 </section>
 
 <!-- FLOAT -->
-<a href="https://wa.me/918148587929?text=Hi I need help with ecommerce" class="float whatsapp">
+<a href="https://wa.me/918148587929?text=Hi I need help" class="float whatsapp">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="45">
 </a>
 <a href="tel:+918148587929" class="float call">📞</a>
 
 <!-- POPUP -->
 <div id="popup" class="popup">
-<div class="popup-content">
+<div class="popup-box">
 <h3>Need Help?</h3>
-<input id="lead" placeholder="Enter phone/email">
-<button onclick="submitLead()">Submit</button>
+<input placeholder="Phone or Email (optional)">
+<button class="btn" onclick="closePopup()">Continue</button>
 </div>
 </div>
 
 <script>
+// MENU
 function toggleMenu(){
 let m=document.getElementById("mobileMenu");
 m.classList.toggle("active");
 }
 
-// popup
-setTimeout(()=>{document.getElementById("popup").style.display="flex";},7000);
-
-function submitLead(){
-alert("We will contact you!");
-document.getElementById("popup").style.display="none";
+// SCROLL
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+reveals.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add("active");
 }
+});
+});
 
-// form
+// FORM
 document.getElementById("contactForm").onsubmit=async(e)=>{
 e.preventDefault();
 let r=await fetch(e.target.action,{method:"POST",body:new FormData(e.target)});
 alert(r.ok?"Sent":"Error");
 };
+
+// POPUP
+setTimeout(()=>{
+if(!localStorage.getItem("popup")){
+document.getElementById("popup").classList.add("show");
+}
+},6000);
+
+function closePopup(){
+document.getElementById("popup").classList.remove("show");
+localStorage.setItem("popup",true);
+}
 </script>
 
 </body>
