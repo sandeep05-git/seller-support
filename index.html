@@ -5,152 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EcoQuickSupp</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 body{
 font-family:Poppins;
-background:linear-gradient(135deg,#020617,#0f172a,#020617);
+background:#020617;
 color:#fff;
 overflow-x:hidden;
-scroll-behavior:smooth;
 }
 
 /* NAV */
 nav{
 position:fixed;width:100%;top:0;
-display:flex;justify-content:space-between;align-items:center;
+display:flex;justify-content:space-between;
 padding:15px 25px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.7);
 z-index:1000;
 }
-.menu{display:flex;gap:25px;}
+.menu{display:flex;gap:20px;}
 .menu a{color:#fff;text-decoration:none;}
-.hamburger{display:none;font-size:24px;cursor:pointer;}
+.hamburger{display:none;cursor:pointer;}
 
-/* MOBILE MENU */
+/* MOBILE */
 .mobile-menu{
 position:fixed;top:0;right:-100%;
-width:70%;height:100%;
-background:#020617;padding:40px;
-transition:0.4s;z-index:2000;
+width:80%;height:100%;
+background:#020617;
+padding:40px;
+transition:0.3s;
 }
 .mobile-menu.active{right:0;}
-.mobile-menu a{display:block;margin:20px 0;color:#fff;text-decoration:none;}
 
 /* HERO */
 .hero{
 min-height:100vh;
-display:flex;
-align-items:center;
+display:flex;align-items:center;
 justify-content:space-between;
-padding:120px 40px 80px;
-gap:40px;
+padding:120px 40px;
+flex-wrap:wrap;
 }
-.hero-text{flex:1;}
-#typing{
-font-size:42px;
-font-weight:700;
-background:linear-gradient(90deg,#22c55e,#4ade80);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-.sub{opacity:0.8;margin-top:15px;}
-
+.hero h1{font-size:40px;color:#4ade80;}
 .btn{
-margin-top:25px;
-display:inline-block;
-padding:14px 30px;
-border-radius:30px;
+padding:14px 25px;
 background:#4ade80;
+border-radius:25px;
+display:inline-block;
+margin-top:20px;
 color:#000;
-border:none;
-cursor:pointer;
-transition:0.3s;
-}
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 10px 25px rgba(74,222,128,0.5);
-}
-
-/* HERO IMAGE */
-.hero-img img{
-width:80%;
-border-radius:20px;
-animation:float 4s infinite;
-}
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
+text-decoration:none;
 }
 
 /* SECTION */
-section{padding:100px 20px;text-align:center;}
+section{padding:80px 20px;text-align:center;}
+.flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
 
-.parallax{
-background-attachment:fixed;
-background-size:cover;
-background-position:center;
-position:relative;
-}
-.parallax::before{
-content:"";
-position:absolute;
-width:100%;height:100%;
-background:rgba(0,0,0,0.6);
-}
-.parallax *{position:relative;z-index:1;}
-
-h2{
-font-size:34px;
-margin-bottom:20px;
-background:linear-gradient(90deg,#22c55e,#4ade80);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-/* PLATFORM */
-.platforms{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
-.platform{
-padding:12px 20px;
-border-radius:30px;
-background:rgba(255,255,255,0.08);
-transition:0.3s;
-}
-.platform:hover{
-background:#4ade80;color:#000;transform:scale(1.1);
-}
-
-/* SERVICES */
-.flex{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
+/* CARD */
 .card{
-background:rgba(255,255,255,0.08);
-padding:25px;border-radius:20px;width:260px;
-backdrop-filter:blur(15px);
-transition:0.3s;
+background:#111;
+padding:20px;
+border-radius:12px;
+width:260px;
 }
-.card img{width:60px;margin-bottom:10px;}
-.card:hover{transform:translateY(-10px);}
+.card img{
+width:100%;height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* TESTIMONIAL */
+.testimonial{
+background:#111;
+padding:20px;
+border-radius:10px;
+width:300px;
+}
 
 /* CONTACT */
-.contact{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;}
-.box{
-flex:1;min-width:320px;
-background:rgba(255,255,255,0.08);
-padding:30px;border-radius:20px;
+.contact{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
 }
+.box{
+background:#111;
+padding:20px;
+border-radius:10px;
+min-width:300px;
+}
+
 input,textarea{
-width:100%;padding:14px;margin:10px 0;
-border-radius:10px;border:none;
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
 }
 
 /* FLOAT */
-.float{position:fixed;right:20px;z-index:2000;}
+.float{position:fixed;right:20px;}
 .whatsapp{bottom:90px;}
-.call{bottom:30px;background:#22c55e;padding:14px;border-radius:50%;}
+.call{bottom:30px;background:#4ade80;padding:12px;border-radius:50%;}
 
 /* POPUP */
 .popup{
@@ -158,47 +115,22 @@ position:fixed;
 top:0;left:0;
 width:100%;height:100%;
 background:rgba(0,0,0,0.7);
-display:flex;
+display:none;
 align-items:center;
 justify-content:center;
-opacity:0;
-visibility:hidden;
-transition:0.4s;
-z-index:3000;
 }
-.popup.show{opacity:1;visibility:visible;}
-
 .popup-content{
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
-text-align:center;
-width:90%;max-width:350px;
-backdrop-filter:blur(15px);
-}
-.popup input{
-width:100%;
-padding:12px;
-margin-top:10px;
+background:#111;
+padding:20px;
 border-radius:10px;
-border:none;
-}
-.close-btn{
-position:absolute;
-top:15px;right:20px;
-cursor:pointer;font-size:22px;
+text-align:center;
 }
 
-/* SCROLL */
-.reveal{opacity:0;transform:translateY(80px);transition:0.8s;}
-.reveal.active{opacity:1;transform:translateY(0);}
-
-/* MOBILE */
+/* MOBILE FIX */
 @media(max-width:768px){
 .menu{display:none;}
 .hamburger{display:block;}
-.hero{flex-direction:column;}
-.card{width:90%;}
+.hero{flex-direction:column;text-align:center;}
 }
 </style>
 </head>
@@ -215,59 +147,76 @@ cursor:pointer;font-size:22px;
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
+<div id="mobileMenu" class="mobile-menu">
+<a href="#" onclick="toggleMenu()">Home</a>
+<a href="#services" onclick="toggleMenu()">Services</a>
+<a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
 <div>
-<h1 id="typing"></h1>
-<p class="sub">We setup your ecommerce business & help you start getting orders.</p>
+<h1>Grow Your Online Business 🚀</h1>
+<p>Amazon, Flipkart, Meesho expert support from Chennai</p>
 <a href="#contact" class="btn">Get Free Consultation</a>
 </div>
-<div class="hero-img">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" width="300">
+</section>
+
+<!-- TRUST -->
+<section>
+<h2>Why Choose Us</h2>
+<div class="flex">
+<div class="card"><h3>50+ Clients</h3></div>
+<div class="card"><h3>24H Support</h3></div>
+<div class="card"><h3>Real Experts</h3></div>
 </div>
 </section>
 
-<section class="reveal parallax" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');">
-<h2>Platforms</h2>
-<div class="platforms">
-<div class="platform">Amazon</div>
-<div class="platform">Flipkart</div>
-<div class="platform">Meesho</div>
-<div class="platform">JioMart</div>
-<div class="platform">Zepto</div>
-<div class="platform">Swiggy Instamart</div>
-<div class="platform">Blinkit</div>
-<div class="platform">BigBasket</div>
-</div>
-</section>
-
-<section id="services" class="reveal">
+<!-- SERVICES -->
+<section id="services">
 <h2>Services</h2>
 <div class="flex">
-<div class="card"><img src="https://img.icons8.com/color/96/shop.png"><p>Account Setup</p></div>
-<div class="card"><img src="https://img.icons8.com/color/96/product.png"><p>Product Listing</p></div>
-<div class="card"><img src="https://img.icons8.com/color/96/advertising.png"><p>Marketing</p></div>
-<div class="card"><img src="https://img.icons8.com/color/96/growth.png"><p>Growth Strategy</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d"><p>Account Setup</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1586880244406-556ebe35f282"><p>Product Listing</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312"><p>Marketing</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"><p>Growth Strategy</p></div>
 </div>
 </section>
 
+<!-- TESTIMONIAL -->
+<section>
+<h2>Client Feedback</h2>
+<div class="flex">
+<div class="testimonial">"Got my first order in 5 days!"</div>
+<div class="testimonial">"Very helpful team, fast response."</div>
+</div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
-<h2>Contact</h2>
-<form id="contactForm" action="https://formspree.io/f/xqaqpyjv" method="POST">
+<h2>Contact Us</h2>
+<div class="contact">
+
+<div class="box">
+<form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 <input name="name" placeholder="Name" required>
 <input name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message"></textarea>
+<textarea name="message"></textarea>
 <button class="btn">Submit</button>
 </form>
+</div>
+
+<div class="box">
+<p>📞 +91 81485 87929<br>📍 Chennai</p>
+</div>
+
+</div>
 </section>
 
 <!-- FLOAT -->
-<a href="https://wa.me/918148587929" class="float whatsapp">
+<a href="https://wa.me/918148587929?text=Hi I need help with ecommerce" class="float whatsapp">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="45">
 </a>
 <a href="tel:+918148587929" class="float call">📞</a>
@@ -275,66 +224,31 @@ cursor:pointer;font-size:22px;
 <!-- POPUP -->
 <div id="popup" class="popup">
 <div class="popup-content">
-<span class="close-btn" onclick="closePopup()">×</span>
-<h3>Get Free Tips 🚀</h3>
-<form id="popupForm">
-<input id="popupInput" placeholder="Email or Phone" required>
-<button class="btn">Submit</button>
-</form>
+<h3>Need Help?</h3>
+<input id="lead" placeholder="Enter phone/email">
+<button onclick="submitLead()">Submit</button>
 </div>
 </div>
 
 <script>
 function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
+let m=document.getElementById("mobileMenu");
+m.classList.toggle("active");
 }
-
-// scroll
-const reveals=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-100){
-el.classList.add("active");
-}
-});
-});
-
-// typing
-let texts=["Start Selling 🚀","Get Orders Fast 📦"];
-let i=0,j=0;
-function type(){
-if(i<texts[j].length){
-document.getElementById("typing").innerHTML+=texts[j][i++];
-setTimeout(type,50);
-}else{
-setTimeout(()=>{
-document.getElementById("typing").innerHTML="";
-i=0;j=(j+1)%texts.length;type();
-},1500);
-}}
-type();
-
-// form
-document.getElementById("contactForm").addEventListener("submit",async e=>{
-e.preventDefault();
-let res=await fetch(e.target.action,{method:"POST",body:new FormData(e.target)});
-alert(res.ok?"✅ Sent":"❌ Error");
-});
 
 // popup
-window.onload=()=>{
-if(!localStorage.getItem("popup")){
-setTimeout(()=>document.getElementById("popup").classList.add("show"),3000);
+setTimeout(()=>{document.getElementById("popup").style.display="flex";},7000);
+
+function submitLead(){
+alert("We will contact you!");
+document.getElementById("popup").style.display="none";
 }
-};
-function closePopup(){
-document.getElementById("popup").classList.remove("show");
-localStorage.setItem("popup",true);
-}
-document.getElementById("popupForm").onsubmit=(e)=>{
+
+// form
+document.getElementById("contactForm").onsubmit=async(e)=>{
 e.preventDefault();
-alert("Thanks! We’ll contact you");
-closePopup();
+let r=await fetch(e.target.action,{method:"POST",body:new FormData(e.target)});
+alert(r.ok?"Sent":"Error");
 };
 </script>
 
