@@ -3,10 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>EcoQuickSupp</title>
 
-<!-- ✅ FAVICON -->
-<link rel="icon" type="image/png" href="https://sandeep05-git.github.io/seller-support/favicon.png">
+<!-- ✅ SEO -->
+<meta name="description" content="EcoQuickSupp helps you start and grow your online business on Amazon, Flipkart, Meesho and more.">
+
+<!-- ✅ FULL FAVICON SUPPORT -->
+<link rel="icon" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta name="theme-color" content="#020617">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
@@ -35,6 +42,22 @@ padding:15px 20px;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 z-index:1000;
+}
+
+/* ✅ LOGO */
+.logo{
+display:flex;
+align-items:center;
+gap:8px;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.logo img{
+width:32px;
+height:32px;
+border-radius:6px;
 }
 
 .menu{display:flex;gap:20px;}
@@ -197,7 +220,8 @@ text-align:center;
 .hamburger{display:block;}
 .hero h1{font-size:26px;}
 }
-  .fade-up{
+
+.fade-up{
 opacity:0;
 transform:translateY(30px);
 animation:fadeUp 0.8s ease forwards;
@@ -220,7 +244,11 @@ transform:translateY(0);
 
 <!-- NAV -->
 <nav>
-<div><b>EcoQuickSupp</b></div>
+
+<a href="#" class="logo">
+<img src="/favicon.png">
+EcoQuickSupp
+</a>
 
 <div class="menu">
 <a href="#">Home</a>
@@ -364,12 +392,10 @@ Growth Strategy
 </div>
 
 <script>
-// MENU
 function toggleMenu(){
 document.getElementById("mobileMenu").classList.toggle("active");
 }
 
-// POPUP
 setTimeout(()=>{
 document.getElementById("popup").classList.add("show");
 },5000);
